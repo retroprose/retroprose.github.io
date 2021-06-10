@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'retrofont';
+  src: url('vt323-regular.ttf');
+}
+
+.hero__title {
+  font-family: retrofont;
+  font-size: 64px;
+}
+
+.hero__desc {
+  font-family: retrofont;
+}
