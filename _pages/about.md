@@ -5,4 +5,4 @@ permalink: /about/
 image: '/images/60.jpg'
 ---
 
-Hi, my name is Jason Eaton.
+This is a company that helps other companies make things.
