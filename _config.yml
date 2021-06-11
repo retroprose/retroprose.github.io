@@ -1,7 +1,7 @@
 #-------------------------------
 # General Site Settings
 title: Retroprose
-logo: # You can add own logo. For example '/images/logo.png'.
+logo: # '/images/barrel.png' You can add own logo. For example '/images/logo.png'.
 description: Retro Games!
 baseurl: "" # The subpath of your site, e.g. /blog
 url: "http://retroprose.net" # The base hostname & protocol for your site, e.g. http://example.com
