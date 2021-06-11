@@ -4,7 +4,7 @@ title: Retroprose
 logo: # You can add own logo. For example '/images/logo.png'.
 description: Retro Games!
 baseurl: "" # The subpath of your site, e.g. /blog
-url: "" # The base hostname & protocol for your site, e.g. http://example.com
+url: "http://retroprose.net" # The base hostname & protocol for your site, e.g. http://example.com
 
 
 #-------------------------------
@@ -26,7 +26,7 @@ hero:
 # Contact Settings
 contact:
   email: retroprose.contact@gmail.com # Add your email for contant form
-  description: Contact Retroprose!
+  description: You can contact Retroprose at retroprose.contact(at)gmail.com.
 
 # NOTE
 # Aditu theme comes with a contact form built-in. You can use this form with Formspree service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
@@ -37,12 +37,12 @@ contact:
 # Example of adding a new link to the footer - {icon: "ion-logo-github", link: "https://github.com"}
 # Other icons can be found at https://ionicons.com
 social:
-- {icon: "ion-logo-twitter", link: "https://twitter.com"}
-- {icon: "ion-logo-facebook", link: "https://facebook.com"}
+- {icon: "ion-logo-twitter", link: "https://twitter.com/retroprose"}
+#- {icon: "ion-logo-facebook", link: "https://facebook.com"}
 #- {icon: "ion-logo-dribbble", link: "https://dribbble.com"}
-- {icon: "ion-logo-instagram", link: "https://instagram.com"}
+#- {icon: "ion-logo-instagram", link: "https://instagram.com"}
 #- {icon: "ion-logo-pinterest", link: "https://pinterest.com"}
-- {icon: "ion-logo-github", link: "https://github.com"}
+- {icon: "ion-logo-github", link: "https://github.com/retroprose"}
 
 
 #-------------------------------

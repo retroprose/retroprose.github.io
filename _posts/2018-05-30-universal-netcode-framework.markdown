@@ -3,7 +3,7 @@ layout: post
 title:  A Universal Netcode Framework
 date:  21-06-10 18:05:55 +0300
 image:  '/images/gm_img.jpg'
-tags:   Game Dev
+tags:   Netcode GameDev
 ---
 
 The goal of this article is to establish a system of network code that can be reused for nearly any type of game that is session based.  The motivation for this work is to make the creation of networked games more accessible to hobbyists and indie game developers.  I hope to accomplish this by developing a methodology that allows you to design your game nearly as if you were designing a local multiplayer game. If you browse hobbyist and indie games on the many platforms that are out there, you will see thousands of interesting games, but you will rarely see any that are multiplayer across the internet.  However, when you do see multiplayer games, they are all local multiplayer or sometimes playable across a local area network.  It is pretty common knowledge that if you want to make a game that is playable across the internet, the netcode needs to be hashed out from the beginning which can be a lot of tricky work.  Many college students get intimidated by how difficult it can be to design netcode that is free of bugs, and even AAA titles can have many strange artifacts due to sloppy netcode.  When focusing on local multiplayer, however, it is pretty much just as easy as making a single player game: use an array of player input rather than one player’s input.  It is a very simple architecture.  Gather every player’s input.  Run a frame of game simulation using that input.  Render results.  Rinse and repeat.  Wouldn’t it be nice if you could get your internet multiplayer up and running within the first few days using the process above, then use the rest of your energy simply making a great game?
@@ -22,9 +22,9 @@ So the key to making this all happen is to completely isolate your game state.  
 
 Notice all of the arrows are pointing away from Unity.  These are code dependencies, and allow for the replacement of Untiy with other frameworks without changing any of the other libraries.  Ideally developers would not need to implement servers at all, and all of the tricky input queue netcode would have packages for Unity, Unreal, FNA, etc.  Then the developer would create the game core with deterministic and stateless libraries which would allow them to run on any framework that allowed the languages used to make those libraries.  The only framework specific code developers would have to write would be the input encoding/decoding, asset management, and output of rendering and sound effects.
 
-For this demo I have two deterministic and stateless libraries.  One is a C# fixed point math library I found online and modified to fit my needs.  I went with fixed point to sidestep any floating point difficulties, but floating point math is deterministic, the problem is different compilers can have different implementations of various math functions.  Spring RTS Engine uses a special float point math library for it to work.  The second is a simple hash table that I used to create a container that is simply a set of hash tables that can be iterated using a filter.  This is basically all an entity component system is, if I wrapped my update functions into system objects, it would be a micro ECS.  Those two sets of code are found in the ECS and FixedMath folders. The repository for the entire project can be found here (Article branch).  A running demo can be found here.
+For this demo I have two deterministic and stateless libraries.  One is a C# fixed point math library I found online and modified to fit my needs.  I went with fixed point to sidestep any floating point difficulties, but floating point math is deterministic, the problem is different compilers can have different implementations of various math functions.  Spring RTS Engine uses a special float point math library for it to work.  The second is a simple hash table that I used to create a container that is simply a set of hash tables that can be iterated using a filter.  This is basically all an entity component system is, if I wrapped my update functions into system objects, it would be a micro ECS.  Those two sets of code are found in the ECS and FixedMath folders. The repository for the entire project can be found <a href="https://github.com/retroprose/universal-netcode-framework" target="_blank" rel="noreferrer">here</a>.  A running demo can be found <a href="http://jeaton.matero.net/misc/galactic_marauders_demo/" target="_blank" rel="noreferrer">here</a>.
 
-The game core itself needs to be implemented as an object that has a five function interface.  This interface is key to completely decoupling your game logic code from the netcode.  In fact I can think of several relay methods and queue algorithms that could be implemented with this interface.  I mention more details in a later section.  The game core of the demo is completely contained in the GalacticMarauders folder.  The five functions are as follows:
+The game core itself needs to be implemented as an object that has a five function interface.  This interface is key to completely decoupling your game logic code from the netcode.  In fact I can think of several relay methods and queue algorithms that could be implemented with this interface.  I mention more details in a later section.  The game core of the demo is completely contained in the GalacticMarauders folder of the github.  The five functions are as follows:
 
 * Initialize:  A function that initializes your game session with data that is identical for all players, such as map selection, difficulty, world modifiers gotten from the match making server.
 * SetInput:  A function that sets the current player input array, set from the network queues
@@ -36,7 +36,7 @@ I don’t use a render function because I don’t want my game state to know any
 
 ### More Complex Example
 
-I have a game here written in C++ that I eventually intend to use this system, but haven’t put together the deterministic math and ECS libraries yet.  It uses C++’s built in math library, and an ECS I wrote from the standard template library.  I used Unity and enscripten to compile it to web assembly so that I can run in a browser.  It only took me two days to port to unity this way!  This game was built with my own libraries that I have been using for the past 10-20 years.  It’s nice to get to write code and not worry about your libraries getting updated under you breaking everything you have done.  The itch.io link is here, there is a web assembly version (single player) and a windows downloadable version (local multiplayer).  The illustrations give an idea of what the game looks like.  There are 1000’s of monkeys running around, in the first image you see whats visible to the player.  The second is a zoomed out view so you can see all the monkeys running around out of view.  Many of those monkies will not affect anything on the screen for the next 100ms or so.  So its safe to simulate just what the player sees or will see in the next 100ms (shown as a white box in image 2).  You need to take some things outside the screen that may enter it in the next few frames.  Also you must be aware that the screen itself is moving, so this part is a little bit tricky and game specific.  Also the architecture in the previous section only used two game states, you could also have a third state that remembers the last guessed state and lerp those objects to the new corrected fast forwarded state.  Or you could simply use the Unity objects as the third state and lerp them to the new fast forwarded state to smooth out warping and network jitters.  
+I have a game here written in C++ that I eventually intend to use this system, but haven’t put together the deterministic math and ECS libraries yet.  It uses C++’s built in math library, and an ECS I wrote from the standard template library.  I used Unity and enscripten to compile it to web assembly so that I can run in a browser.  It only took me two days to port to unity this way!  This game was built with my own libraries that I have been using for the past 10-20 years.  It’s nice to get to write code and not worry about your libraries getting updated under you breaking everything you have done.  The itch.io link is <a href="https://eatjason.itch.io/the-sand-man-defends-sand-land-from-the-monkey-horde-of-doom-and-some-kind-of-cr" target="_blank" rel="noreferrer">here</a>, there is a web assembly version (single player) and a windows downloadable version (local multiplayer).  The illustrations give an idea of what the game looks like.  There are 1000’s of monkeys running around, in the first image you see whats visible to the player.  The second is a zoomed out view so you can see all the monkeys running around out of view.  Many of those monkies will not affect anything on the screen for the next 100ms or so.  So its safe to simulate just what the player sees or will see in the next 100ms (shown as a white box in image 2).  You need to take some things outside the screen that may enter it in the next few frames.  Also you must be aware that the screen itself is moving, so this part is a little bit tricky and game specific.  Also the architecture in the previous section only used two game states, you could also have a third state that remembers the last guessed state and lerp those objects to the new corrected fast forwarded state.  Or you could simply use the Unity objects as the third state and lerp them to the new fast forwarded state to smooth out warping and network jitters.  
 
 <div class="gallery-box">
   <div class="gallery">
@@ -49,7 +49,7 @@ The first image is the player view, the second is a zoomed out view showing obje
 
 ### Netcode
 
-The demo’s netcode is actually incomplete, as there is not a matchmaking server yet, you have to manually join rooms on my input relay server.  What I would do is create an architecture that uses a player discovery and room management server to manage all of the input relay servers.  The demo uses an input relay server programmed in golang that is currently running on Heroku.  I wanted to make this server as simple as possible, and not have to do anything but relay input. Right now it uses websockets, but the beauty of this design is that the netcode implementation and the gameplay logic are nearly completely decoupled.  As long as the master simulations all receive the same remote inputs every frame the games should stay synced.  I am using a websockets library I found online for Unity that has a nice layer of abstraction to allow your code to work with webassembly and desktop applications with the dot net framework.  Ideally this part of the architecture would only need to be developed once and shared among developers.  Also ideally there would already be servers running input relays, my concept was to have a site like itch.io where people could upload their games and automatically get multiplayer for free.  The whole point of this methodology is so that you can ignore netcode details except for the copying  fast forward functions.  For example if your game has the properties laid out in the earlier section, you should be able to write a peer to peer or client server model.  You can also change the relay algorithm without affecting the core game code.  For example my current algorithm forces the game to advance if input is dropped by lagging players, you could also make the server wait until all input is received to send out the frame.  I also found I could adjust the rewind/delay settings differently for individual players to deal with dropped input.  This is very similar to how you configure GGPO.  The method of relay and algorithm shouldn’t matter.
+The demo’s netcode is actually incomplete, as there is not a matchmaking server yet, you have to manually join rooms on my input relay server.  What I would do is create an architecture that uses a player discovery and room management server to manage all of the input relay servers.  The demo uses an input relay server programmed in golang that is currently running on Heroku.  I wanted to make this server as simple as possible, and not have to do anything but relay input. Right now it uses websockets, but the beauty of this design is that the netcode implementation and the gameplay logic are nearly completely decoupled.  As long as the master simulations all receive the same remote inputs every frame the games should stay synced.  I am using a websockets library I found online for Unity that has a nice layer of abstraction to allow your code to work with webassembly and desktop applications with the dot net framework.  Ideally this part of the architecture would only need to be developed once and shared among developers.  Also ideally there would already be servers running input relays, my concept was to have a site like itch.io where people could upload their games and automatically get multiplayer for free.  The whole point of this methodology is so that you can ignore netcode details except for the copying  fast forward functions.  For example if your game has the properties laid out in the earlier section, you should be able to write a peer to peer or client server model.  You can also change the relay algorithm without affecting the core game code.  For example my current algorithm forces the game to advance if input is dropped by lagging players, you could also make the server wait until all input is received to send out the frame (this would make the game pause if players lag though).  I also found I could adjust the rewind/delay settings differently for individual players to deal with dropped input.  This is very similar to how you configure GGPO.  The method of relay and algorithm shouldn’t matter.
 
 ### Conclusion
 
@@ -61,32 +61,35 @@ Unity appears to be headed in the direction to allow developers to use the strat
 
 ### References
 
-For honor amazon gamelift<br />
-<a href="https://www.youtube.com/watch?v=BPnxtmDRtrk" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=BPnxtmDRtrk</a>
-
-For honor<br />
-<a href="https://www.youtube.com/watch?v=NL60AssTI4U" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=NL60AssTI4U</a>
-
-Code mystics GGPO<br />
-<a href="https://www.youtube.com/watch?v=1JHetORRpfQ" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=1JHetORRpfQ</a>
-
-Fixed point 64<br />
-<a href="https://github.com/asik/FixedMath.Net" target="_blank" rel="noreferrer">https://github.com/asik/FixedMath.Net</a>
-  
-Web socket<br />
-<a href="https://github.com/endel/NativeWebSocket" target="_blank" rel="noreferrer">https://github.com/endel/NativeWebSocket</a>
-
-Sand Man<br />
-<a href="https://eatjason.itch.io/the-sand-man-defends-sand-land-from-the-monkey-horde-of-doom-and-some-kind-of-cr" target="_blank" rel="noreferrer">https://eatjason.itch.io/the-sand-man-defends-sand-land-from-the-monkey-horde-of-doom-and-some-kind-of-cr</a>
+Universal Netcode Framework github<br />
+<a href="https://github.com/retroprose/universal-netcode-framework" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=BPnxtmDRtrk</a>
 
 Space Invaders demo<br />
 <a href="http://jeaton.matero.net/misc/galactic_marauders_demo/" target="_blank" rel="noreferrer">http://jeaton.matero.net/misc/galactic_marauders_demo/</a>
 
-An updated game<br />
+Another demo using the same framework<br />
 <a href="http://jeaton.matero.net/misc/hurkle/" target="_blank" rel="noreferrer">http://jeaton.matero.net/misc/hurkle/</a>
 
-Source Engine<br />
+Discussion with For Honor team about changing to client-server model<br />
+<a href="https://www.youtube.com/watch?v=BPnxtmDRtrk" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=BPnxtmDRtrk</a>
+
+For Honor Core Combat Update Example<br />
+<a href="https://www.youtube.com/watch?v=NL60AssTI4U" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=NL60AssTI4U</a>
+
+Code Mystics GGPO<br />
+<a href="https://www.youtube.com/watch?v=1JHetORRpfQ" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=1JHetORRpfQ</a>
+
+Fixed point 64 math<br />
+<a href="https://github.com/asik/FixedMath.Net" target="_blank" rel="noreferrer">https://github.com/asik/FixedMath.Net</a>
+  
+Web sockets<br />
+<a href="https://github.com/endel/NativeWebSocket" target="_blank" rel="noreferrer">https://github.com/endel/NativeWebSocket</a>
+
+My C++ game ported to unity<br />
+<a href="https://eatjason.itch.io/the-sand-man-defends-sand-land-from-the-monkey-horde-of-doom-and-some-kind-of-cr" target="_blank" rel="noreferrer">https://eatjason.itch.io/the-sand-man-defends-sand-land-from-the-monkey-horde-of-doom-and-some-kind-of-cr</a>
+
+Source Engine, example of how tricky muliplayer is with traditional client-server model<br />
 <a href="https://developer.valvesoftware.com/wiki/Latency_Compensating_Methods_in_Client/Server_In-game_Protocol_Design_and_Optimization" target="_blank" rel="noreferrer">https://developer.valvesoftware.com/wiki/Latency_Compensating_Methods_in_Client/Server_In-game_Protocol_Design_and_Optimization</a>
 
-Uncle Bob!<br />
+Interesting discussion on web architecture with "Uncle Bob"<br />
 <a href="https://www.youtube.com/watch?v=o_TH-Y78tt4" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=o_TH-Y78tt4</a>
