@@ -1,0 +1,74 @@
+{
+    "player_boom": [
+        "player_boom_0",
+        "player_boom_1",
+        "player_boom_2",
+        "player_boom_3",
+        "player_boom_4",
+        "player_boom_5",
+        "player_boom_6",
+        "_null"
+    ],
+    "enemy_boom": [
+        "enemy_boom_0",
+        "enemy_boom_1",
+        "enemy_boom_2",
+        "enemy_boom_3",
+        "enemy_boom_4",
+        "enemy_boom_5",
+        "enemy_boom_6",
+        "_null"
+    ],
+    "player": [
+        "player_ship_0",
+        "player_ship_1"
+    ],
+    "player_local": [
+        "local_player_0",
+        "local_player_1"
+    ],
+    "enemy_00": [
+        "enemy_00_a",
+        "enemy_00_b"
+    ],
+    "enemy_01": [
+        "enemy_01_a",
+        "enemy_01_b"
+    ],
+    "enemy_02": [
+        "enemy_02_a",
+        "enemy_02_b"
+    ],
+    "enemy_03": [
+        "enemy_03_a",
+        "enemy_03_b"
+    ],
+    "enemy_04": [
+        "enemy_04_a",
+        "enemy_04_b"
+    ],
+    "enemy_05": [
+        "enemy_05_a",
+        "enemy_05_b"
+    ],
+    "enemy_06": [
+        "enemy_06_a",
+        "enemy_06_b"
+    ],
+    "enemy_07": [
+        "enemy_07_a",
+        "enemy_07_b"
+    ],
+    "enemy_08": [
+        "enemy_08_a",
+        "enemy_08_b"
+    ],
+    "enemy_09": [
+        "enemy_09_a",
+        "enemy_09_b"
+    ],
+    "enemy_10": [
+        "enemy_10_a",
+        "enemy_10_b"
+    ]
+}
