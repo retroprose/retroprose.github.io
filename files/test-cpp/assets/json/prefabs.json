@@ -1,0 +1,108 @@
+[
+    {
+        "_arch": "Null",
+        "Type": "Null"
+    },
+    {
+        "_arch": "Player",
+        "Type": "Player",
+        "Body": {
+            "size": {
+                "x": 16,
+                "y": 10
+            }
+        },
+        "Player": {
+            "slot": -1
+        },
+        "Animator": {
+            "frame": "player_ship_0"
+        }
+    },
+    {
+        "_arch": "Enemy",
+        "Type": "Enemy",
+        "Body": {
+            "size": {
+                "x": 16,
+                "y": 10
+            }
+        },
+        "Enemy": {
+            "direction": 1
+        },
+        "Animator": {
+            "frame": "enemy_00_a"
+        }
+    },
+    {
+        "_arch": "Rendered",
+        "Type": "Bullet",
+        "Body": {
+            "velocity": {
+                "x": 0,
+                "y": 16
+            },
+            "size": {
+                "x": 12,
+                "y": 20
+            }
+        },
+        "Animator": {
+            "frame": "player_shot"
+        }
+    },
+    {
+        "_arch": "Rendered",
+        "Type": "BadBullet",
+        "Body": {
+            "velocity": {
+                "x": 0,
+                "y": -8
+            },
+            "size": {
+                "x": 7,
+                "y": 7
+            }
+        },
+        "Animator": {
+            "frame": "enemy_shot"
+        }
+    },
+    {
+        "_arch": "Rendered",
+        "Type": "Boom",
+        "Body": {
+            "size": {
+                "x": 14,
+                "y": 14
+            }
+        },
+        "Animator": {
+            "frame": "enemy_boom_0"
+        }
+    },
+    {
+        "_arch": "Rendered",
+        "Type": "PlayerBoom",
+        "Body": {
+            "size": {
+                "x": 22,
+                "y": 21
+            }
+        },
+        "Animator": {
+            "frame": "player_boom_0"
+        }
+    },
+    {
+        "_arch": "Generic",
+        "Type": "ShotCleaner",
+        "Body": {
+            "size": {
+                "x": 960,
+                "y": 540
+            }
+        }
+    }
+]

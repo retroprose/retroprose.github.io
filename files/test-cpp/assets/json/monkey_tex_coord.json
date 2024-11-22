@@ -1,0 +1,155 @@
+[
+ {
+    "name": "_null",
+    "x": 756,
+    "y": 50,
+    "width": 1,
+    "height": 1,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "_null_persist",
+    "x": 839,
+    "y": 50,
+    "width": 1,
+    "height": 1,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+
+  {
+    "name": "sand",
+    "x": 433,
+    "y": 333,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "block",
+    "x": 465,
+    "y": 461,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+
+
+  {
+    "name": "circle",
+    "x": 0,
+    "y": 0,
+    "width": 400,
+    "height": 400,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "boom",
+    "x": 401,
+    "y": 0,
+    "width": 300,
+    "height": 300,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "barrel",
+    "x": 1,
+    "y": 357,
+    "width": 48,
+    "height": 48,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  
+  {
+    "name": "pwr_shot",
+    "x": 1,
+    "y": 406,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "pwr_banana",
+    "x": 34,
+    "y": 406,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "pwr_grenade",
+    "x": 67,
+    "y": 406,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "pwr_energy",
+    "x": 100,
+    "y": 406,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "pwr_health",
+    "x": 133,
+    "y": 406,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+
+  {
+    "name": "player_1",
+    "x": 1,
+    "y": 439,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+
+  {
+    "name": "player_2",
+    "x": 34,
+    "y": 439,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+
+  {
+    "name": "player_3",
+    "x": 67,
+    "y": 439,
+    "width": 32,
+    "height": 32,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+
+  {
+    "name": "dir",
+    "x": 1,
+    "y": 549,
+    "width": 8,
+    "height": 8,
+    "cx": 0.5,
+    "cy": 0.5
+  }
+
+]
