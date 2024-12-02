@@ -70,5 +70,29 @@
     "enemy_10": [
         "enemy_10_a",
         "enemy_10_b"
+    ],
+    "enemy_11_n": [
+        "enemy_11_n_a",
+        "enemy_11_n_b"
+    ],
+    "enemy_11_s": [
+        "enemy_11_s_a",
+        "enemy_11_s_b"
+    ],
+    "enemy_11_se": [
+        "enemy_11_se_a",
+        "enemy_11_se_b"
+    ],
+    "enemy_11_sw": [
+        "enemy_11_sw_a",
+        "enemy_11_sw_b"
+    ],
+    "enemy_11_ne": [
+        "enemy_11_ne_a",
+        "enemy_11_ne_b"
+    ],
+    "enemy_11_nw": [
+        "enemy_11_nw_a",
+        "enemy_11_nw_b"
     ]
 }

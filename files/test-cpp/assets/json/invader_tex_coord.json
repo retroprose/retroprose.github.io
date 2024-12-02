@@ -1,8 +1,8 @@
 [
- {
+  {
     "name": "_null",
     "x": 9,
-    "y": 297,
+    "y": 214,
     "width": 1,
     "height": 1,
     "cx": 0.5,
@@ -11,81 +11,79 @@
   {
     "name": "_null_persist",
     "x": 10,
-    "y": 285,
+    "y": 226,
     "width": 1,
     "height": 1,
     "cx": 0.5,
     "cy": 0.5
   },
-  
   {
     "name": "enemy_00_a",
     "x": 273,
-    "y": 457,
+    "y": 45,
     "width": 16,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-    {
+  {
     "name": "enemy_01_a",
     "x": 275,
-    "y": 446,
+    "y": 56,
     "width": 13,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-    {
+  {
     "name": "enemy_02_a",
     "x": 70,
-    "y": 414,
+    "y": 89,
     "width": 15,
     "height": 9,
     "cx": 0.5,
     "cy": 0.5
   },
-    {
+  {
     "name": "enemy_03_a",
     "x": 173,
-    "y": 219,
+    "y": 283,
     "width": 15,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-    {
+  {
     "name": "enemy_04_a",
     "x": 208,
-    "y": 219,
+    "y": 283,
     "width": 15,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-    {
+  {
     "name": "enemy_05_a",
     "x": 273,
-    "y": 424,
+    "y": 78,
     "width": 16,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-  
-    {
+  {
     "name": "enemy_06_a",
     "x": 103,
-    "y": 391,
+    "y": 112,
     "width": 15,
     "height": 9,
     "cx": 0.5,
     "cy": 0.5
   },
-    {
+  {
     "name": "enemy_07_a",
     "x": 276,
-    "y": 254,
+    "y": 248,
     "width": 15,
     "height": 10,
     "cx": 0.5,
@@ -94,25 +92,25 @@
   {
     "name": "enemy_08_a",
     "x": 275,
-    "y": 402,
+    "y": 100,
     "width": 13,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-    {
+  {
     "name": "enemy_09_a",
     "x": 39,
-    "y": 391,
+    "y": 112,
     "width": 13,
     "height": 9,
     "cx": 0.5,
     "cy": 0.5
   },
-    {
+  {
     "name": "enemy_10_a",
     "x": 175,
-    "y": 277,
+    "y": 225,
     "width": 13,
     "height": 10,
     "cx": 0.5,
@@ -121,121 +119,106 @@
   {
     "name": "enemy_00_b",
     "x": 290,
-    "y": 457,
+    "y": 45,
     "width": 16,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-
   {
     "name": "enemy_01_b",
     "x": 291,
-    "y": 446,
+    "y": 56,
     "width": 15,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-
   {
     "name": "enemy_02_b",
     "x": 87,
-    "y": 414,
+    "y": 89,
     "width": 15,
     "height": 9,
     "cx": 0.5,
     "cy": 0.5
   },
-
   {
     "name": "enemy_03_b",
     "x": 190,
-    "y": 219,
+    "y": 283,
     "width": 15,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-
   {
     "name": "enemy_04_b",
     "x": 225,
-    "y": 219,
+    "y": 283,
     "width": 15,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-
-    {
+  {
     "name": "enemy_05_b",
     "x": 290,
-    "y": 424,
+    "y": 78,
     "width": 16,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-  
   {
     "name": "enemy_06_b",
     "x": 120,
-    "y": 391,
+    "y": 112,
     "width": 15,
     "height": 9,
     "cx": 0.5,
     "cy": 0.5
   },
-  
   {
     "name": "enemy_07_b",
     "x": 293,
-    "y": 254,
+    "y": 248,
     "width": 15,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-
   {
     "name": "enemy_08_b",
     "x": 291,
-    "y": 402,
+    "y": 100,
     "width": 15,
     "height": 10,
     "cx": 0.5,
     "cy": 0.5
   },
-
   {
     "name": "enemy_09_b",
     "x": 58,
-    "y": 391,
+    "y": 112,
     "width": 9,
     "height": 9,
     "cx": 0.5,
     "cy": 0.5
   },
-
   {
     "name": "enemy_10_b",
     "x": 191,
-    "y": 277,
+    "y": 226,
     "width": 15,
     "height": 9,
     "cx": 0.5,
     "cy": 0.5
   },
-
-
-  
-  
-  
   {
     "name": "player_ship_0",
     "x": 205,
-    "y": 347,
+    "y": 155,
     "width": 16,
     "height": 10,
     "cx": 0.5,
@@ -244,7 +227,7 @@
   {
     "name": "player_ship_1",
     "x": 222,
-    "y": 347,
+    "y": 155,
     "width": 16,
     "height": 10,
     "cx": 0.5,
@@ -262,7 +245,7 @@
   {
     "name": "enemy_shot",
     "x": 100,
-    "y": 253,
+    "y": 252,
     "width": 7,
     "height": 7,
     "cx": 0.5,
@@ -271,7 +254,7 @@
   {
     "name": "easy_0",
     "x": 6,
-    "y": 470,
+    "y": 4,
     "width": 57,
     "height": 38,
     "cx": 0.5,
@@ -280,7 +263,7 @@
   {
     "name": "easy_1",
     "x": 71,
-    "y": 470,
+    "y": 4,
     "width": 63,
     "height": 38,
     "cx": 0.5,
@@ -289,7 +272,7 @@
   {
     "name": "player_boom_0",
     "x": 97,
-    "y": 185,
+    "y": 306,
     "width": 22,
     "height": 21,
     "cx": 0.5,
@@ -298,7 +281,7 @@
   {
     "name": "player_boom_1",
     "x": 129,
-    "y": 185,
+    "y": 306,
     "width": 22,
     "height": 21,
     "cx": 0.5,
@@ -307,7 +290,7 @@
   {
     "name": "player_boom_2",
     "x": 161,
-    "y": 185,
+    "y": 306,
     "width": 22,
     "height": 21,
     "cx": 0.5,
@@ -316,7 +299,7 @@
   {
     "name": "player_boom_3",
     "x": 193,
-    "y": 185,
+    "y": 306,
     "width": 22,
     "height": 21,
     "cx": 0.5,
@@ -325,7 +308,7 @@
   {
     "name": "player_boom_4",
     "x": 225,
-    "y": 185,
+    "y": 306,
     "width": 22,
     "height": 21,
     "cx": 0.5,
@@ -334,7 +317,7 @@
   {
     "name": "player_boom_5",
     "x": 257,
-    "y": 185,
+    "y": 306,
     "width": 22,
     "height": 21,
     "cx": 0.5,
@@ -343,17 +326,16 @@
   {
     "name": "player_boom_6",
     "x": 290,
-    "y": 185,
+    "y": 306,
     "width": 22,
     "height": 21,
     "cx": 0.5,
     "cy": 0.5
   },
-
- {
+  {
     "name": "enemy_boom_0",
     "x": 11,
-    "y": 226,
+    "y": 272,
     "width": 14,
     "height": 14,
     "cx": 0.5,
@@ -362,7 +344,7 @@
   {
     "name": "enemy_boom_1",
     "x": 27,
-    "y": 226,
+    "y": 272,
     "width": 14,
     "height": 14,
     "cx": 0.5,
@@ -371,7 +353,7 @@
   {
     "name": "enemy_boom_2",
     "x": 43,
-    "y": 226,
+    "y": 272,
     "width": 14,
     "height": 14,
     "cx": 0.5,
@@ -380,7 +362,7 @@
   {
     "name": "enemy_boom_3",
     "x": 59,
-    "y": 226,
+    "y": 272,
     "width": 14,
     "height": 14,
     "cx": 0.5,
@@ -389,7 +371,7 @@
   {
     "name": "enemy_boom_4",
     "x": 75,
-    "y": 226,
+    "y": 272,
     "width": 14,
     "height": 14,
     "cx": 0.5,
@@ -398,7 +380,7 @@
   {
     "name": "enemy_boom_5",
     "x": 91,
-    "y": 226,
+    "y": 272,
     "width": 14,
     "height": 14,
     "cx": 0.5,
@@ -407,7 +389,7 @@
   {
     "name": "enemy_boom_6",
     "x": 107,
-    "y": 226,
+    "y": 272,
     "width": 14,
     "height": 14,
     "cx": 0.5,
@@ -416,7 +398,7 @@
   {
     "name": "local_player_0",
     "x": 240,
-    "y": 117,
+    "y": 379,
     "width": 15,
     "height": 16,
     "cx": 0.5,
@@ -425,7 +407,7 @@
   {
     "name": "local_player_1",
     "x": 257,
-    "y": 117,
+    "y": 379,
     "width": 15,
     "height": 16,
     "cx": 0.5,
@@ -434,7 +416,7 @@
   {
     "name": "text_ready",
     "x": 319,
-    "y": 454,
+    "y": 25,
     "width": 174,
     "height": 33,
     "cx": 0.5,
@@ -443,7 +425,7 @@
   {
     "name": "text_no",
     "x": 312,
-    "y": 396,
+    "y": 83,
     "width": 195,
     "height": 33,
     "cx": 0.5,
@@ -452,7 +434,7 @@
   {
     "name": "text_great",
     "x": 340,
-    "y": 274,
+    "y": 146,
     "width": 152,
     "height": 92,
     "cx": 0.5,
@@ -461,10 +443,118 @@
   {
     "name": "target",
     "x": 8,
-    "y": 251,
+    "y": 248,
     "width": 13,
     "height": 13,
     "cx": 0,
     "cy": 0
+  },
+  {
+    "name": "enemy_11_n_a",
+    "x": 3,
+    "y": 133,
+    "width": 13,
+    "height": 10,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_n_b",
+    "x": 20,
+    "y": 133,
+    "width": 9,
+    "height": 10,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_s_a",
+    "x": 37,
+    "y": 133,
+    "width": 13,
+    "height": 10,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_s_b",
+    "x": 54,
+    "y": 133,
+    "width": 9,
+    "height": 10,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_se_a",
+    "x": 72,
+    "y": 133,
+    "width": 10,
+    "height": 10,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_se_b",
+    "x": 90,
+    "y": 134,
+    "width": 9,
+    "height": 9,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_sw_a",
+    "x": 106,
+    "y": 134,
+    "width": 9,
+    "height": 9,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_sw_b",
+    "x": 123,
+    "y": 133,
+    "width": 10,
+    "height": 10,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_nw_a",
+    "x": 140,
+    "y": 133,
+    "width": 9,
+    "height": 9,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_nw_b",
+    "x": 157,
+    "y": 133,
+    "width": 10,
+    "height": 10,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_ne_a",
+    "x": 174,
+    "y": 133,
+    "width": 10,
+    "height": 10,
+    "cx": 0.5,
+    "cy": 0.5
+  },
+  {
+    "name": "enemy_11_ne_b",
+    "x": 192,
+    "y": 133,
+    "width": 9,
+    "height": 9,
+    "cx": 0.5,
+    "cy": 0.5
   }
 ]
