@@ -25,8 +25,6 @@ class App {
         window.addEventListener('keyup', this.keyPress);
         window.addEventListener('keydown', this.keyPress);
      
-        console.log(window);
-
         this.factory = {
             'SelectRoom': SelectRoom,
             'OfflineState': OfflineState,

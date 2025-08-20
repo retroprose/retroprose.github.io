@@ -194,6 +194,18 @@ class BomberIO {
             }
         }         
     
+        let keyX = 32;
+
+        if (this.input['ArrowUp']) this.output.text(keyX+=8, 96, "U");
+        if (this.input['ArrowDown']) this.output.text(keyX+=8, 96, "D");
+        if (this.input['ArrowLeft']) this.output.text(keyX+=8, 96, "L");
+        if (this.input['ArrowRight']) this.output.text(keyX+=8, 96, "R");
+
+        if (this.input[' ']) this.output.text(keyX+=8, 96, "S");
+        if (this.input['c']) this.output.text(keyX+=8, 96, "C");
+        if (this.input['v']) this.output.text(keyX+=8, 96, "V");
+        if (this.input['b']) this.output.text(keyX+=8, 96, "B");
+
         let winner = this.game.winner();
         if (winner != 0) {
             let winner = this.game.winner();
@@ -219,9 +231,8 @@ class BomberIO {
                 break;
         }
 
-        this.game.begin();
-        let done = this.game.next(entity);
-        while (done == false) {
+        entity.begin(this.game);
+        while ( entity.next() ) {
 
             if (entity.type == ObjType.Player) {
                 // walk 
@@ -338,7 +349,6 @@ class BomberIO {
                 
             }
 
-            done = this.game.next(entity);
         }
         
 

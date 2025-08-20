@@ -108,28 +108,42 @@ class Lobby {
         this.output.text(20, 0, message);
 
         for (let j = 0; j < this.connected.length; ++j) {
-            let x = 20;
+            let x = 16 * 8 + 20;
             let y = (8 * 3) + (j * 8);
             let message = '';
-            let keyMsg = '';
+            
             let b = this.playerInput[12 + j * 8 + 4];
 
-            keyMsg += (( b & (1 << 0)) == (1 << 0) ) ? "U" : " ";
-            keyMsg += (( b & (1 << 1)) == (1 << 1) ) ? "D" : " ";
-            keyMsg += (( b & (1 << 2)) == (1 << 2) ) ? "L" : " ";
-            keyMsg += (( b & (1 << 3)) == (1 << 3) ) ? "R" : " ";
-
-            keyMsg += (( b & (1 << 4)) == (1 << 4) ) ? "S" : " ";
-            keyMsg += (( b & (1 << 5)) == (1 << 5) ) ? "C" : " ";
-            keyMsg += (( b & (1 << 6)) == (1 << 6) ) ? "V" : " ";
-            keyMsg += (( b & (1 << 7)) == (1 << 7) ) ? "B" : " ";
-
             if (this.connected[j] == true) {
-                message = "Slot " + j + ": lobby        " + keyMsg;
+                message = "Slot " + j + ": lobby";
+
+                if (( b & (1 << 0)) == (1 << 0)) this.output.text(x+=8, y, "U");
+                if (( b & (1 << 1)) == (1 << 1)) this.output.text(x+=8, y, "D");
+                if (( b & (1 << 2)) == (1 << 2)) this.output.text(x+=8, y, "L");
+                if (( b & (1 << 3)) == (1 << 3)) this.output.text(x+=8, y, "R");
+
+                if (( b & (1 << 4)) == (1 << 4)) this.output.text(x+=8, y, "V");
+                if (( b & (1 << 5)) == (1 << 5)) this.output.text(x+=8, y, "C");
+                if (( b & (1 << 6)) == (1 << 6)) this.output.text(x+=8, y, "S");
+                if (( b & (1 << 7)) == (1 << 7)) this.output.text(x+=8, y, "B");
+
+                if (j == this.local) {
+                    let keyX = 28 * 8 + 20;
+                    if (this.input['ArrowUp']) this.output.text(keyX+=8, y, "U");
+                    if (this.input['ArrowDown']) this.output.text(keyX+=8, y, "D");
+                    if (this.input['ArrowLeft']) this.output.text(keyX+=8, y, "L");
+                    if (this.input['ArrowRight']) this.output.text(keyX+=8, y, "R");
+
+                    if (this.input[' ']) this.output.text(keyX+=8, y, "V");
+                    if (this.input['c']) this.output.text(keyX+=8, y, "C");
+                    if (this.input['v']) this.output.text(keyX+=8, y, "S");
+                    if (this.input['b']) this.output.text(keyX+=8, y, "B");
+                }
+
             } else {
                 message = "Slot " + j + ": open";
             }
-            this.output.text(20, (8 * 3) + (j * 8), message);
+            this.output.text(20, y, message);
         }
 
         this.output.text(20, 316, "Controls: ");
