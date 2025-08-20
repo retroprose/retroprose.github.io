@@ -16,6 +16,7 @@ class App {
 
         // create key map
         this.input = { };
+        this.input._gamepads = { };
 
         // bind functions to this
         this.keyPress = this.keyPress.bind(this);
@@ -25,6 +26,26 @@ class App {
         window.addEventListener('keyup', this.keyPress);
         window.addEventListener('keydown', this.keyPress);
      
+        window.addEventListener("gamepadconnected", (e) => {
+            console.log(
+                "Gamepad connected at index %d: %s. %d buttons, %d axes.",
+                e.gamepad.index,
+                e.gamepad.id,
+                e.gamepad.buttons.length,
+                e.gamepad.axes.length,
+            );
+            this.input._gamepads[e.gamepad.index] = e.gamepad;
+        });
+
+        window.addEventListener("gamepaddisconnected", (e) => {
+            console.log(
+                "Gamepad disconnected from index %d: %s",
+                e.gamepad.index,
+                e.gamepad.id,
+            );
+            delete this.input._gamepads[e.gamepad.index];
+        });
+
         this.factory = {
             'SelectRoom': SelectRoom,
             'OfflineState': OfflineState,

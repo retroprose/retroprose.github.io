@@ -122,6 +122,7 @@ class BomberIO {
     
         this.game = new Module.BindGame();
         this.entity = new Module.BindEntity();
+        this.bindInput = new Module.BindInput();
     }
 
     dispose() {
@@ -134,7 +135,42 @@ class BomberIO {
     }
 
     processInput(buffer) {
-        this.game.getInput(this.input, buffer);
+
+        this.bindInput.up = false;
+        this.bindInput.down = false;
+        this.bindInput.left = false;
+        this.bindInput.right = false;
+        this.bindInput.bomb = false;
+        this.bindInput.punch = false;
+        this.bindInput.kick = false;
+        this.bindInput.detonate = false;
+
+        for (const gamepad of navigator.getGamepads()) {
+            if (!gamepad) continue;
+            if (gamepad.buttons.length < 16) continue;
+
+            if (gamepad.buttons[12].pressed) this.bindInput.up = true;
+            if (gamepad.buttons[13].pressed) this.bindInput.down = true;
+            if (gamepad.buttons[14].pressed) this.bindInput.left = true;
+            if (gamepad.buttons[15].pressed) this.bindInput.right = true;
+
+            if (gamepad.buttons[1].pressed) this.bindInput.bomb = true;
+            if (gamepad.buttons[2].pressed) this.bindInput.punch = true;
+            if (gamepad.buttons[3].pressed) this.bindInput.kick = true;
+            if (gamepad.buttons[0].pressed) this.bindInput.detonate = true;
+        }
+
+        if (this.input["ArrowUp"]) this.bindInput.up = true;
+        if (this.input["ArrowDown"]) this.bindInput.down = true;
+        if (this.input["ArrowLeft"]) this.bindInput.left = true;
+        if (this.input["ArrowRight"]) this.bindInput.right = true;
+
+        if (this.input[" "]) this.bindInput.bomb = true;
+        if (this.input["c"]) this.bindInput.punch = true;
+        if (this.input["v"]) this.bindInput.kick = true;
+        if (this.input["b"]) this.bindInput.detonate = true;
+
+        this.game.getInput(this.bindInput, buffer);
     }
 
     update() {
@@ -196,15 +232,15 @@ class BomberIO {
     
         let keyX = 32;
 
-        if (this.input['ArrowUp']) this.output.text(keyX+=8, 96, "U");
-        if (this.input['ArrowDown']) this.output.text(keyX+=8, 96, "D");
-        if (this.input['ArrowLeft']) this.output.text(keyX+=8, 96, "L");
-        if (this.input['ArrowRight']) this.output.text(keyX+=8, 96, "R");
+        if (this.bindInput.up) this.output.text(keyX+=8, 96, "U");
+        if (this.bindInput.down) this.output.text(keyX+=8, 96, "D");
+        if (this.bindInput.left) this.output.text(keyX+=8, 96, "L");
+        if (this.bindInput.right) this.output.text(keyX+=8, 96, "R");
 
-        if (this.input[' ']) this.output.text(keyX+=8, 96, "S");
-        if (this.input['c']) this.output.text(keyX+=8, 96, "C");
-        if (this.input['v']) this.output.text(keyX+=8, 96, "V");
-        if (this.input['b']) this.output.text(keyX+=8, 96, "B");
+        if (this.bindInput.bomb) this.output.text(keyX+=8, 96, "S");
+        if (this.bindInput.punch) this.output.text(keyX+=8, 96, "C");
+        if (this.bindInput.kick) this.output.text(keyX+=8, 96, "V");
+        if (this.bindInput.detonate) this.output.text(keyX+=8, 96, "B");
 
         let winner = this.game.winner();
         if (winner != 0) {

@@ -2940,18 +2940,6 @@ async function createWasm() {
     };
 
 
-  
-  
-  var emval_get_global = () => globalThis;
-  var __emval_get_global = (name) => {
-      if (name===0) {
-        return Emval.toHandle(emval_get_global());
-      } else {
-        name = getStringOrSymbol(name);
-        return Emval.toHandle(emval_get_global()[name]);
-      }
-    };
-
   var __emval_get_property = (handle, key) => {
       handle = Emval.toValue(handle);
       key = Emval.toValue(key);
@@ -2969,9 +2957,6 @@ async function createWasm() {
   var __emval_invoke = (caller, handle, methodName, destructorsRef, args) => {
       return emval_methodCallers[caller](handle, methodName, destructorsRef, args);
     };
-
-  
-  var __emval_new_cstring = (v) => Emval.toHandle(getStringOrSymbol(v));
 
   
   
@@ -6099,6 +6084,7 @@ if (Module['wasmBinary']) wasmBinary = Module['wasmBinary'];
   'enumReadValueFromPointer',
   'setDelayFunction',
   'count_emval_handles',
+  'emval_get_global',
 ];
 missingLibrarySymbols.forEach(missingLibrarySymbol)
 
@@ -6419,7 +6405,6 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'emval_symbols',
   'getStringOrSymbol',
   'Emval',
-  'emval_get_global',
   'emval_returnValue',
   'emval_lookupTypes',
   'emval_methodCallers',
@@ -6503,15 +6488,11 @@ var wasmImports = {
   /** @export */
   _emval_decref: __emval_decref,
   /** @export */
-  _emval_get_global: __emval_get_global,
-  /** @export */
   _emval_get_property: __emval_get_property,
   /** @export */
   _emval_incref: __emval_incref,
   /** @export */
   _emval_invoke: __emval_invoke,
-  /** @export */
-  _emval_new_cstring: __emval_new_cstring,
   /** @export */
   _emval_run_destructors: __emval_run_destructors,
   /** @export */
