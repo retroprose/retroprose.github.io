@@ -186,7 +186,7 @@ class ConnectedState {
                 this.local = new Uint8Array(event.data)[0];            
             } else {
                 // add to queue of ArrayBuffers
-                console.log(event.data.byteLength);
+                //console.log(event.data.byteLength);
                 this.queue.push(new Uint8Array(event.data));
             }
         }
