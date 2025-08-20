@@ -78,7 +78,7 @@ class Lobby {
         }
 
         // this is checking the space key
-        if ((this.playerInput[12 + host * 8 + 4] & (1 << 4)) == (1 << 4)) {
+        if ((this.playerInput[12 + host * 8 + 4] & (1 << 6)) == (1 << 6)) {
             return true;
         }
 
