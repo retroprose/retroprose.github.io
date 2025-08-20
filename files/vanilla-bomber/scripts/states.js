@@ -5,29 +5,56 @@ class SelectRoom {
         this.output = output;
         this.result = result;
         this.next = undefined;
+        this.selected = 0;
+        
+        this.keyDown = this.keyDown.bind(this);
+        window.addEventListener('keydown', this.keyDown);
+
     }
 
     dispose() {
-        // do nothing
+        window.removeEventListener('keydown', this.keyDown);
+    }
+
+    keyDown(event) {
+        console.log("still here");
+        if (event.key === 'ArrowUp') {
+            if (this.selected > 0) {
+                this.selected--;
+            }
+        } else if (event.key === 'ArrowDown') {
+            if (this.selected < 10) {
+                this.selected++;
+            }            
+        } else if (event.key === 'Enter') {
+             if (this.selected < 10) {
+                this.next = "ConnectedState";
+                this.result = this.selected.toString();
+            } else {
+                this.next = "OfflineState";
+                this.result = '10';
+            }    
+        }
     }
 
     update(delta) {
-        let x = '';
-        for (let i = 0; i < 10; ++i) {
-            if (this.input[i.toString()]) {
-                x = i.toString();
-            }
-        }
-        if (x != '') {
-            this.next = "ConnectedState";
-            this.result = x;
-        }
-        if (this.input['Enter']) {
-            this.next = "OfflineState";
-            this.result = 0;
-        }
+        let xOffset = 276;
+        let yOffset = 132;
+
         this.output.reset();
-        this.output.text(100, 100, delta.toString());
+        this.output.text(xOffset, yOffset, "Use arrow keys to select and enter to accept choice");
+        let y = 32;
+        for (let i = 0; i < 10; ++i) {
+            this.output.text(19 * 8 + xOffset, y + yOffset, "Enter Room " + i.toString());
+            y += 24;
+        }
+        this.output.text(19 * 8 + xOffset, y + yOffset, "Play Offlne");
+        
+        // shows selection
+        y = this.selected * 24 + 32;
+        this.output.text(19 * 8 - 32 + xOffset, y + yOffset, ">>>");
+        this.output.text(32 * 8 + xOffset, y + yOffset, "<<<");        
+
         this.output.complete();
     }
 
@@ -186,7 +213,7 @@ class ConnectedState {
                 this.local = new Uint8Array(event.data)[0];            
             } else {
                 // add to queue of ArrayBuffers
-                //console.log(event.data.byteLength);
+                console.log(event.data.byteLength);
                 this.queue.push(new Uint8Array(event.data));
             }
         }
@@ -264,7 +291,7 @@ class ConnectedState {
             }
 
             this.output.reset();
-            this.output.text(32, 64, "Waiting to connect...");
+            this.output.text(396, 266, "Waiting to connect...");
             this.output.complete();
 
         } else {

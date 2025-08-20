@@ -125,12 +125,25 @@ class Lobby {
             keyMsg += (( b & (1 << 7)) == (1 << 7) ) ? "B" : " ";
 
             if (this.connected[j] == true) {
-                message = "Slot " + j + ": lobby - " + keyMsg;
+                message = "Slot " + j + ": lobby        " + keyMsg;
             } else {
                 message = "Slot " + j + ": open";
             }
             this.output.text(20, (8 * 3) + (j * 8), message);
         }
+
+        this.output.text(20, 316, "Controls: ");
+        
+        let yPos = 316 + 24;
+        
+        this.output.text(20, 0 + yPos, "Up: Up Arrow Key");
+        this.output.text(20, 24 + yPos, "Down: Down Arrow Key");
+        this.output.text(20, 24 * 2 + yPos, "Left: Left Arrow Key");
+        this.output.text(20, 24 * 3 + yPos, "Right: Right Arrow Key");
+        this.output.text(300, 0 + yPos, "Place Bomb: Spacebar");
+        this.output.text(300, 24 + yPos, "Punch Bomb: C Key");
+        this.output.text(300, 24 * 2 + yPos, "Stop Kicked Bomb: V Key");
+        this.output.text(300, 24 * 3 + yPos, "Detonate Bomb: B Key");
 
         this.output.complete();
 
