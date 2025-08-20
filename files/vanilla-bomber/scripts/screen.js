@@ -14,8 +14,8 @@ class Screen {
         this.width = 960;
         this.height = 540;
 
-        this.asciiTexture = await PIXI.Assets.load('/files/vanilla-bomber/images/tilemap-sprite.json');
-        this.bomberTexture = await PIXI.Assets.load('/files/vanilla-bomber/images/bomber-sprite.json');
+        this.asciiTexture = await PIXI.Assets.load('https://retroprose.net/files/vanilla-bomber/images/tilemap-sprite.json');
+        this.bomberTexture = await PIXI.Assets.load('https://retroprose.net/files/vanilla-bomber/images/bomber-sprite.json');
     
         this.ascii = [];
         for (const key in this.asciiTexture.textures) {
