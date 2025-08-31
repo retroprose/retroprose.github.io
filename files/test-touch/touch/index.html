@@ -19,7 +19,9 @@
 		<script src="../scripts/core/pixi.min.js"></script>
 		<script src="../scripts/core/screen.js"></script>
 		<script>
-					
+			
+			window.fullScreenActive = false;
+
 			(async () =>
 			{
 
@@ -63,6 +65,12 @@
 
 				function handleTouchAny(event) {
 					event.preventDefault(); // Prevent default browser behavior like scrolling
+
+					if (window.fullScreenActive == false) {
+						screen.fullScreen();
+						window.fullScreenActive = true;
+					}
+
 					//console.log(event.touches);
 					screen.reset();
 					for (let x in event.touches) {
