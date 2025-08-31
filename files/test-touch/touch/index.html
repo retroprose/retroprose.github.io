@@ -64,12 +64,13 @@
 				window.addEventListener('touchcancel', handleTouchAny);
 
 				function handleTouchAny(event) {
-					event.preventDefault(); // Prevent default browser behavior like scrolling
-
+					
 					if (window.fullScreenActive == false) {
 						screen.fullScreen();
 						window.fullScreenActive = true;
 					}
+
+					event.preventDefault(); // Prevent default browser behavior like scrolling
 
 					//console.log(event.touches);
 					screen.reset();
