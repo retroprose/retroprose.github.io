@@ -4,7 +4,8 @@ class Screen {
         // Create the application helper and add its render target to the page
         let app = new PIXI.Application();
 
-        await app.init({ background: '#000000', width: 960, height: 540 });
+        //await app.init({ background: '#000000', width: 960, height: 540 });
+        await app.init({ background: '#000000', resizeTo: window });
 
         document.body.appendChild(app.canvas);
 
