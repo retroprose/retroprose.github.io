@@ -1,0 +1,99 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="mycontent" />
+		<title>Touch Demo</title>
+		<style>
+			canvas {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				background-color: #000000;
+				/* overflow: hidden; */
+			}
+		</style>
+	</head>
+	<body>
+		<script src="../scripts/core/pixi.min.js"></script>
+		<script src="../scripts/core/screen.js"></script>
+		<script>
+					
+			(async () =>
+			{
+
+				// create screen
+				const screen = new Screen();
+				await screen.init();
+				
+				// Listen for animate update
+				/*screen.app.ticker.add((time) =>
+				{
+					// Just for fun, let's rotate mr rabbit a little.
+					// * Delta is 1 if running at 100% performance *
+					// * Creates frame-independent transformation *
+					bunny.rotation += 0.1 * time.deltaTime;
+				});*/
+
+				window.addEventListener('keydown', (event) => {
+					if (event.key == '`') {
+						screen.fullScreen();
+					}
+				});
+
+				/*window.addEventListener('touchstart', handleTouchStart);
+				window.addEventListener('touchmove', handleTouchMove);
+				window.addEventListener('touchend', handleTouchEnd);
+				window.addEventListener('touchcancel', handleTouchCancel);*/
+
+				window.addEventListener('touchstart', handleTouchAny);
+				window.addEventListener('touchmove', handleTouchAny);
+				window.addEventListener('touchend', handleTouchAny);
+				window.addEventListener('touchcancel', handleTouchAny);
+
+				function handleTouchAny(event) {
+					event.preventDefault(); // Prevent default browser behavior like scrolling
+					screen.begin();
+					for (let x in event.touches) {
+						let t = events.touches[x];
+						let s = screen.next();
+						s.width = t.radius;
+						s.height = t.radius;
+						s.texture = screen.pixelTexture;
+						s.x = t.screenX;
+						s.y = t.screenY;
+					}
+					screen.end();
+				}
+
+				function handleTouchStart(event) {
+					event.preventDefault(); // Prevent default browser behavior like scrolling
+					console.log('Touch started:', event.touches); // Log all active touch points
+					// Add custom logic for touch start
+				}
+
+				function handleTouchMove(event) {
+					event.preventDefault();
+					console.log('Touch moved:', event.changedTouches); // Log touch points that have changed
+					// Add custom logic for touch move (e.g., updating element position)
+				}
+
+				function handleTouchEnd(event) {
+					event.preventDefault();
+					console.log('Touch ended:', event.changedTouches); // Log touch points that ended
+					// Add custom logic for touch end
+				}
+
+				function handleTouchCancel(event) {
+					event.preventDefault();
+					console.log('Touch canceled:', event.changedTouches);
+					// Add custom logic for touch cancel
+				}
+
+
+			})();
+
+		</script>
+	</body>
+</html>
