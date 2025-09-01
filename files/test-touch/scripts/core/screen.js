@@ -22,16 +22,74 @@ class Screen {
         this.bomberTexture = await PIXI.Assets.load('../images/bomber-sprite.json');
         this.pixelTexture = await PIXI.Assets.load('../images/white-pixel.png');
     
+        this.maskShape = new PIXI.Graphics();
+        this.maskShape.beginFill(0xFFFFFF); // The fill color doesn't matter for the mask, only its shape
+        this.maskShape.drawRect(0, 0, 960, 540); // Example: A rectangular clip region
+        // Or maskShape.drawCircle(100, 100, 50); for a circular clip
+        // Or any other complex shape using drawPolygon, drawEllipse, etc.
+        this.maskShape.endFill();
+
+        this.outerContainer = new PIXI.Container();
+        this.innerContainer = new PIXI.Container();
+
+        this.outerContainer.mask = this.maskShape;
+        this.outerContainer.addChild(this.maskShape);
+        this.outerContainer.addChild(this.innerContainer);
+
+        this.stage.addChild(this.outerContainer);
+
+        this.pad = new PIXI.Sprite(this.pixelTexture);
+        this.pad.anchor.set(0.5);
+        this.pad.scale.set(64);
+        this.pad.tint = 0xc8c8c8;
+
+        this.stick = new PIXI.Sprite(this.pixelTexture);
+        this.stick.anchor.set(0.5);
+        this.stick.scale.set(32);
+        this.stick.tint = 0xffffff;
+
+        this.button = new PIXI.Sprite(this.pixelTexture);
+        this.button.anchor.set(0.5);
+        this.button.scale.set(64);
+        this.button.tint = 0xff0000;
+
+        this.stage.addChild(this.button);
+        this.stage.addChild(this.pad);
+        this.stage.addChild(this.stick);
+
         this.ascii = [];
         for (const key in this.asciiTexture.textures) {
             this.ascii[parseInt(key)] = this.asciiTexture.textures[key];
         }
 
-        this.canvas.addEventListener('click', (event) => {
+        window.onresize = this.resize.bind(this);
 
-            console.log('clicked');
+        this.resize();
+    }
 
-        });
+    resize() {
+        // Example: Scale to fit the window while maintaining aspect ratio
+        const desiredWidth = 960; // Your virtual game width
+        const desiredHeight = 540; // Your virtual game height
+
+        const scaleX = window.innerWidth / desiredWidth;
+        const scaleY = window.innerHeight / desiredHeight;
+        const scale = Math.min(scaleX, scaleY);
+
+        this.outerContainer.scale.set(scale);
+       
+        // Center the stage if needed
+        this.outerContainer.x = (window.innerWidth - (desiredWidth * scale)) / 2;
+        this.outerContainer.y = (window.innerHeight - (desiredHeight * scale)) / 2;
+
+        this.pad.x = 16 + (this.pad.width / 2);
+        this.pad.y = window.innerHeight - 16 - (this.pad.height / 2);
+
+        this.stick.x = 32 + (this.stick.width / 2);
+        this.stick.y = window.innerHeight - 32 - (this.stick.height / 2);
+        
+        this.button.x = window.innerWidth - 16 - (this.button.width / 2);
+        this.button.y = window.innerHeight - 16 - (this.button.height / 2);
 
     }
 
@@ -46,10 +104,10 @@ class Screen {
     }
 
     next() {
-        if (this.stage.children.length <= this.index) {
-            this.stage.addChild(new PIXI.Sprite());
+        if (this.innerContainer.children.length <= this.index) {
+            this.innerContainer.addChild(new PIXI.Sprite());
         }
-        let sprite = this.stage.children[this.index++];
+        let sprite = this.innerContainer.children[this.index++];
         sprite.tint = 0xffffff;
         sprite.visible = true;
         return sprite;
@@ -61,8 +119,8 @@ class Screen {
 
     complete() {
         // run though the rest of the unused sprites and set to visible false!
-        for (let i = this.index; i < this.stage.children.length; ++i) {
-            this.stage.children[i].visible = false;
+        for (let i = this.index; i < this.innerContainer.children.length; ++i) {
+            this.innerContainer.children[i].visible = false;
         }
     }
 

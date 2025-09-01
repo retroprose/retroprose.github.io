@@ -65,7 +65,7 @@ class SelectRoom {
 
         this.output.complete();
 
-        console.log(this.output.canvas.getBoundingClientRect());
+        //console.log(this.output.canvas.getBoundingClientRect());
 
     }
 

@@ -8,11 +8,63 @@ class BomberIO {
         this.game = new Module.BindGame();
         this.entity = new Module.BindEntity();
         this.bindInput = new Module.BindInput();
+
+        this.touchX = 0;
+        this.touchY = 0;
+        this.touchDown = 0;
+
+        this.handleTouchAny = this.handleTouchAny.bind(this);
+
+        window.addEventListener('touchstart', this.handleTouchAny);
+        window.addEventListener('touchmove', this.handleTouchAny);
+        window.addEventListener('touchend', this.handleTouchAny);
+        window.addEventListener('touchcancel', this.handleTouchAny);
     }
 
     dispose() {
         this.game.delete();
         this.entity.delete();
+
+        window.removeEventListener('touchstart', this.handleTouchAny);
+        window.removeEventListener('touchmove', this.handleTouchAny);
+        window.removeEventListener('touchend', this.handleTouchAny);
+        window.removeEventListener('touchcancel', this.handleTouchAny);
+    }
+
+    handleTouchAny(event) {
+        event.preventDefault(); // Prevent default browser behavior like scrolling
+
+        this.touchX = 0;
+        this.touchY = 0;
+        this.touchDown = 0;
+
+        this.output.stick.x = this.output.pad.x;
+        this.output.stick.y = this.output.pad.y;
+        this.output.button.tint = 0xff0000;
+    
+        for (let x = 0; x < event.touches.length; ++x) {
+            let t = event.touches[x];            
+
+            let dx = t.clientX - this.output.pad.x;
+            let dy = t.clientY - this.output.pad.y;
+            let d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 64 && d > 0) {
+                this.touchX = dx / d;
+                this.touchY = dy / d;
+                this.output.stick.x = t.clientX;
+                this.output.stick.y = t.clientY;
+            }
+
+            dx = t.clientX - this.output.button.x;
+            dy = t.clientY - this.output.button.y;
+            d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 64 && d > 0) {
+                this.touchDown = 1;
+                this.output.button.tint = 0xc80000;
+            }
+
+        }
+
     }
 
     network(playerInput) {
@@ -37,7 +89,7 @@ class BomberIO {
         //let slope = 1.0 * (32767 - -32768) / (1.0 - -1.0);
         let slope = 1.0 * (32767 - -32767) / (1.0 - -1.0);
 
-        for (const gamepad of navigator.getGamepads()) {
+        /*for (const gamepad of navigator.getGamepads()) {
             if (!gamepad) continue;
             if (gamepad.buttons.length < 16) continue;
 
@@ -53,9 +105,15 @@ class BomberIO {
             if (gamepad.buttons[2].pressed) this.bindInput.punch = true;
             if (gamepad.buttons[3].pressed) this.bindInput.kick = true;
             if (gamepad.buttons[0].pressed) this.bindInput.detonate = true;
-        }
+        }*/
+
+        this.bindInput.x = -32767 + slope * (this.touchX - -1.0);
+        this.bindInput.y = -32767 + slope * (this.touchY - -1.0);
+
+        if (this.touchDown == 1) this.bindInput.bomb = true;
 
         this.game.getInput(this.bindInput, buffer);
+
     }
 
     update() {
@@ -67,6 +125,14 @@ class BomberIO {
 
         let entity = this.entity;
 
+        let q = this.output.next();
+        q.x = 0;
+        q.y = 0;
+        q.texture = this.output.pixelTexture;
+        q.tint = 0x00c800;                
+        q.width = 960;
+        q.height = 540;
+
         this.game.findLocal(this.local);
         entity.begin(this.game);
         while ( entity.next() ) {
@@ -76,8 +142,8 @@ class BomberIO {
             s.texture = this.output.pixelTexture;
             if (entity.handle == this.game.localHandle()) {
                 // center screen to local player, and make different color
-                this.output.stage.x = -entity.position_x + 480;
-                this.output.stage.y = -entity.position_y + 270;
+                this.output.innerContainer.x = -entity.position_x + 480;
+                this.output.innerContainer.y = -entity.position_y + 270;
                 s.tint = 0x000000ff;                
             } else {
                 s.tint = entity.color;

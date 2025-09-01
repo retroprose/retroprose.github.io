@@ -62,6 +62,7 @@ class ConnectedState {
     }
 
     close(event) {
+        console.log("Connection Closed");
         this.socketClosed = true;
     }
 

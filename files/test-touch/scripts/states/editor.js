@@ -70,7 +70,7 @@ class EditorState {
         }
         const x = (event.clientX - newRect.x) * scale;
         const y = (event.clientY - newRect.y) * scale;
-        console.log("x: " + x + " y: " + y);
+        //console.log("x: " + x + " y: " + y);
     }
 
     clearAllSprites() {
