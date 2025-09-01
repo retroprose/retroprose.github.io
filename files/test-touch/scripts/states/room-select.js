@@ -66,6 +66,12 @@ class SelectRoom {
         this.output.complete();
 
         //console.log(this.output.canvas.getBoundingClientRect());
+        
+        // force selection
+        //this.next = "OfflineState";
+        //this.result = '10';
+        this.next = "ConnectedState";
+        this.result = '5';
 
     }
 
