@@ -12,9 +12,45 @@ class Lobby {
             this.connected[i] = false;
         }
 
+        this.touchDown = 0;
+        this.handleTouchAny = this.handleTouchAny.bind(this);
+
+        window.addEventListener('touchstart', this.handleTouchAny);
+        window.addEventListener('touchmove', this.handleTouchAny);
+        window.addEventListener('touchend', this.handleTouchAny);
+        window.addEventListener('touchcancel', this.handleTouchAny);
     }
 
     dispose() {
+        window.removeEventListener('touchstart', this.handleTouchAny);
+        window.removeEventListener('touchmove', this.handleTouchAny);
+        window.removeEventListener('touchend', this.handleTouchAny);
+        window.removeEventListener('touchcancel', this.handleTouchAny);
+    }
+
+    handleTouchAny(event) {
+        event.preventDefault(); // Prevent default browser behavior like scrolling
+
+        console.log('touched');
+
+        this.touchDown = 0;
+
+        this.output.stick.x = this.output.pad.x;
+        this.output.stick.y = this.output.pad.y;
+        this.output.button.tint = 0xff0000;
+    
+        for (let x = 0; x < event.touches.length; ++x) {
+            let t = event.touches[x];            
+
+            let dx = t.clientX - this.output.button.x;
+            let dy = t.clientY - this.output.button.y;
+            let d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 64 && d > 0) {
+                this.touchDown = 1;
+                this.output.button.tint = 0xc80000;
+            }
+
+        }
 
     }
 
@@ -40,15 +76,17 @@ class Lobby {
 
         let b = 0;
 
-        if (this.input['ArrowUp']) b |= (1 << 0);
-        if (this.input['ArrowDown']) b |= (1 << 1);
-        if (this.input['ArrowLeft']) b |= (1 << 2);
-        if (this.input['ArrowRight']) b |= (1 << 3);
+        if (this.touchDown == 1) b |= (1 << 6);
 
-        if (this.input['v']) b |= (1 << 4);
-        if (this.input['c']) b |= (1 << 5);
-        if (this.input[' ']) b |= (1 << 6);
-        if (this.input['b']) b |= (1 << 7);
+        //if (this.input['ArrowUp']) b |= (1 << 0);
+        //if (this.input['ArrowDown']) b |= (1 << 1);
+        //if (this.input['ArrowLeft']) b |= (1 << 2);
+        //if (this.input['ArrowRight']) b |= (1 << 3);
+
+        //if (this.input['v']) b |= (1 << 4);
+        //if (this.input['c']) b |= (1 << 5);
+        //if (this.input[' ']) b |= (1 << 6);
+        //if (this.input['b']) b |= (1 << 7);
 
         for (let i = 0; i < buffer.length; ++i) {
             buffer[i] = 0;
