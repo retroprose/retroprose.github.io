@@ -26,6 +26,9 @@ class App {
         this.thing = new window.factory['SelectState']({next:'SelectState'});
         this.pixi.stage.addChild(this.thing);
 
+        window.addEventListener('touchstart', (e) => e.preventDefault());
+        window.addEventListener('touchend', (e) => e.preventDefault());
+
         window.addEventListener('keydown', (event) => {
             if (event.key == '`') {
                 if (this.pixi.canvas.requestFullscreen) {
@@ -38,9 +41,7 @@ class App {
             }
         });
 
-        window.addEventListener("resize", () => {
-            this.thing.resize();
-        });
+        window.addEventListener("resize", () => this.thing.resize());
         this.thing.resize();
 
         // get the update loop started!

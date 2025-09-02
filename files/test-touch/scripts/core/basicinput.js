@@ -28,11 +28,11 @@ class BasicInput extends PIXI.Container {
     }
 
     keyDown(e) {
-        this.keyState[e.key] = false;
+        this.keyState[e.key] = true;
     }
 
     keyUp(e) {
-        this.keyState[e.key] = true;
+        this.keyState[e.key] = false;
     } 
 
     gamepadConnected(e) {

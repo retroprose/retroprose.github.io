@@ -11,7 +11,7 @@ class BomberIO extends PIXI.Container {
         this.local = local;
 
         this.game = new Module.BindGame();
-        this.entity = new Module.BindEntity();
+        this.entity = new Module.BindRenderable();
         this.bindInput = new Module.BindInput();
 
         this.input = new InputStick();
@@ -92,14 +92,6 @@ class BomberIO extends PIXI.Container {
         this.screen.begin();
 
         let entity = this.entity;
-
-        let q = this.screen.next();
-        q.x = 0;
-        q.y = 0;
-        q.texture = this.pixel;
-        q.tint = 0x00c800;                
-        q.width = 960;
-        q.height = 540;
 
         this.game.findLocal(this.local);
         entity.begin(this.game);
