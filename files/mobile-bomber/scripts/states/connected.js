@@ -169,7 +169,7 @@ class ConnectedState extends PIXI.Container {
                         if (this.bufferQueue > 0) {
                             this.bufferQueue--;
                         }
-                        this.state = new this.factory[this.stateCounter](this.local);
+                        this.state = new this.factory[this.stateCounter](this.local, {});
                         this.state.network(this.playerInput);
                         this.addChild(this.state);
                         this.state.resize();
@@ -200,13 +200,14 @@ class ConnectedState extends PIXI.Container {
                     let ending = this.state.update();
 
                     if (ending == true) {
+                        let returned = this.state.returned;
                         this.removeChild(this.state);
                         this.state.destroy();
                         ++this.stateCounter;
                         if (this.stateCounter >= this.factory.length) {
                             this.stateCounter = 0;
                         }
-                        this.state = new this.factory[this.stateCounter](this.local);
+                        this.state = new this.factory[this.stateCounter](this.local, returned);
                         this.state.network(this.playerInput);
                         this.addChild(this.state);
                         this.state.resize();

@@ -1,8 +1,21 @@
 class Lobby extends PIXI.Container {
 
-    constructor(local) {
+    constructor(local, data) {
         super();
     
+        let returned = {
+            pixel: undefined,
+            bomberTexture: undefined
+        }
+        this.returned = returned;
+
+        PIXI.Assets.load('../images/white-pixel.png').then((texture) => {
+            returned.pixel = texture;
+        });
+        PIXI.Assets.load('../images/bomber-sprite.json').then((texture) => {
+            returned.bomberTexture = texture;
+        });
+
         this.local = local;
 
         // player input

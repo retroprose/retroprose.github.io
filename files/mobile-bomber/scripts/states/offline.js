@@ -15,7 +15,19 @@ class OfflineState extends PIXI.Container {
 
         this.inputBuffer = new Uint8Array(268);
 
-        this.state = new BomberIO(0);
+        let textures = {
+            pixel: undefined,
+            bomberTexture: undefined
+        }
+
+        PIXI.Assets.load('../images/white-pixel.png').then((texture) => {
+            textures.pixel = texture;
+        });
+        PIXI.Assets.load('../images/bomber-sprite.json').then((texture) => {
+            textures.bomberTexture = texture;
+        });
+
+        this.state = new BomberIO(0, textures);
         this.addChild(this.state);
 
         this.endGame = this.endGame.bind(this);

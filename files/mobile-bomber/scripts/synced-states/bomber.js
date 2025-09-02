@@ -111,10 +111,10 @@ const playerAnimations = {
 
 class BomberIO extends PIXI.Container {
 
-    constructor(local) {
+    constructor(local, data) {
         super();
 
-        this.pixel = undefined;
+        /*this.pixel = undefined;
         PIXI.Assets.load('../images/white-pixel.png').then((texture) => {
             this.pixel = texture;
         });
@@ -122,8 +122,11 @@ class BomberIO extends PIXI.Container {
         this.bomberTexture = undefined;
         PIXI.Assets.load('../images/bomber-sprite.json').then((texture) => {
             this.bomberTexture = texture;
-        });
+        });*/
 
+        this.textures = data;
+
+        this.returned = undefined;
         this.local = local;
 
         this.aniCounter1 = 0;
@@ -242,7 +245,7 @@ class BomberIO extends PIXI.Container {
     }
 
     render() {
-        if (!this.pixel || !this.bomberTexture) { return; }        
+        if (!this.textures.pixel || !this.textures.bomberTexture) { return; }        
 
         this.output.begin();
 
@@ -255,7 +258,7 @@ class BomberIO extends PIXI.Container {
         let offsetX = 210;
         let offsetY = -10;
 
-        let sheet = this.bomberTexture;
+        let sheet = this.textures.bomberTexture;
         let entity = this.entity;
 
         let sx = 0;
