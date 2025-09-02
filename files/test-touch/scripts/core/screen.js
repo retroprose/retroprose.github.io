@@ -1,130 +1,75 @@
-class Screen {
+class Screen extends PIXI.Container {
 
-    async init() {
-        // Create the application helper and add its render target to the page
-        let app = new PIXI.Application();
+    constructor(width, height) {
+        super();
 
-        //await app.init({ background: '#000000', width: 960, height: 540 });
-        await app.init({ background: '#000000', resizeTo: window });
+        this.ascii = undefined;
+        PIXI.Assets.load('../images/tilemap-sprite.json').then((texture) => {
+            this.ascii = [];
+            for (const key in texture.textures) {
+                this.ascii[parseInt(key)] = texture.textures[key];
+            }
+        });
 
-        document.body.appendChild(app.canvas);
+        this.desiredWidth = width;
+        this.desiredHeight = height;
 
-        PIXI.TextureStyle.defaultOptions.scaleMode = 'nearest';
-
-        this.app = app;
-        this.canvas = app.canvas;
-        this.index = 0;
-        this.stage = app.stage;
-        this.width = 960;
-        this.height = 540;
-
-        this.asciiTexture = await PIXI.Assets.load('../images/tilemap-sprite.json');
-        this.bomberTexture = await PIXI.Assets.load('../images/bomber-sprite.json');
-        this.pixelTexture = await PIXI.Assets.load('../images/white-pixel.png');
-    
         this.maskShape = new PIXI.Graphics();
-        this.maskShape.beginFill(0xFFFFFF); // The fill color doesn't matter for the mask, only its shape
-        this.maskShape.drawRect(0, 0, 960, 540); // Example: A rectangular clip region
+        this.maskShape.beginFill(0xffffff); // The fill color doesn't matter for the mask, only its shape
+        this.maskShape.drawRect(0, 0, width, height); // Example: A rectangular clip region
         // Or maskShape.drawCircle(100, 100, 50); for a circular clip
         // Or any other complex shape using drawPolygon, drawEllipse, etc.
         this.maskShape.endFill();
 
-        this.outerContainer = new PIXI.Container();
-        this.innerContainer = new PIXI.Container();
+        this.mask = this.maskShape;
+        this.addChild(this.maskShape);
 
-        this.outerContainer.mask = this.maskShape;
-        this.outerContainer.addChild(this.maskShape);
-        this.outerContainer.addChild(this.innerContainer);
+        this.container = new PIXI.Container();
+        this.addChild(this.container);
 
-        this.stage.addChild(this.outerContainer);
 
-        this.pad = new PIXI.Sprite(this.pixelTexture);
-        this.pad.anchor.set(0.5);
-        this.pad.scale.set(64);
-        this.pad.tint = 0xc8c8c8;
-
-        this.stick = new PIXI.Sprite(this.pixelTexture);
-        this.stick.anchor.set(0.5);
-        this.stick.scale.set(32);
-        this.stick.tint = 0xffffff;
-
-        this.button = new PIXI.Sprite(this.pixelTexture);
-        this.button.anchor.set(0.5);
-        this.button.scale.set(64);
-        this.button.tint = 0xff0000;
-
-        this.stage.addChild(this.button);
-        this.stage.addChild(this.pad);
-        this.stage.addChild(this.stick);
-
-        this.ascii = [];
-        for (const key in this.asciiTexture.textures) {
-            this.ascii[parseInt(key)] = this.asciiTexture.textures[key];
-        }
-
-        window.onresize = this.resize.bind(this);
-
-        this.resize();
     }
 
     resize() {
-        // Example: Scale to fit the window while maintaining aspect ratio
-        const desiredWidth = 960; // Your virtual game width
-        const desiredHeight = 540; // Your virtual game height
-
-        const scaleX = window.innerWidth / desiredWidth;
-        const scaleY = window.innerHeight / desiredHeight;
+        const scaleX = window.innerWidth / this.desiredWidth;
+        const scaleY = window.innerHeight / this.desiredHeight;
         const scale = Math.min(scaleX, scaleY);
 
-        this.outerContainer.scale.set(scale);
+        this.scale.set(scale);
        
         // Center the stage if needed
-        this.outerContainer.x = (window.innerWidth - (desiredWidth * scale)) / 2;
-        this.outerContainer.y = (window.innerHeight - (desiredHeight * scale)) / 2;
-
-        this.pad.x = 16 + (this.pad.width / 2);
-        this.pad.y = window.innerHeight - 16 - (this.pad.height / 2);
-
-        this.stick.x = 32 + (this.stick.width / 2);
-        this.stick.y = window.innerHeight - 32 - (this.stick.height / 2);
-        
-        this.button.x = window.innerWidth - 16 - (this.button.width / 2);
-        this.button.y = window.innerHeight - 16 - (this.button.height / 2);
-
+        this.x = (window.innerWidth - (this.desiredWidth * scale)) / 2;
+        this.y = (window.innerHeight - (this.desiredHeight * scale)) / 2;
     }
 
-    fullScreen() {
-        if (this.canvas.requestFullscreen) {
-            this.canvas.requestFullscreen();
-        } else if (this.canvas.webkitRequestFullscreen) { // Safari
-            this.canvas.webkitRequestFullscreen();
-        } else if (this.canvas.msRequestFullscreen) { // IE11
-            this.canvas.msRequestFullscreen();
-        }
+    scroll(x, y) {
+        this.container.x = x;
+        this.container.y = y;
     }
 
     next() {
-        if (this.innerContainer.children.length <= this.index) {
-            this.innerContainer.addChild(new PIXI.Sprite());
+        if (this.container.children.length <= this.index) {
+            this.container.addChild(new PIXI.Sprite());
         }
-        let sprite = this.innerContainer.children[this.index++];
+        let sprite = this.container.children[this.index++];
         sprite.tint = 0xffffff;
         sprite.visible = true;
         return sprite;
     }
 
-    reset() {
+    begin() {
         this.index = 0;
     }
 
-    complete() {
+    end() {
         // run though the rest of the unused sprites and set to visible false!
-        for (let i = this.index; i < this.innerContainer.children.length; ++i) {
-            this.innerContainer.children[i].visible = false;
+        for (let i = this.index; i < this.container.children.length; ++i) {
+            this.container.children[i].visible = false;
         }
     }
 
     text(sx, sy, text, color=15) {
+        if (!this.ascii) return;
         let x = sx;
         let y = sy;
         for (let i = 0; i < text.length; ++i) {

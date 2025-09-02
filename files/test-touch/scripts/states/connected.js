@@ -1,13 +1,11 @@
 
+class ConnectedState extends PIXI.Container {
 
+    constructor(data) {
+        super();
 
-class ConnectedState {
-
-    constructor(input, output, result) {
-        this.input = input;
-        this.output = output;
-        this.result = result;
-        this.next = undefined;
+        this.data = data;
+        this.returned = false;
 
         this.running = false;
         this.socketClosed = false;
@@ -16,13 +14,16 @@ class ConnectedState {
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
         this.message = this.message.bind(this);
+        this.endGame = this.endGame.bind(this);
 
-        this.socket = new WebSocket("wss://go-gin-web-server-32.onrender.com/session/" + this.result);
+        this.socket = new WebSocket("wss://go-gin-web-server-32.onrender.com/session/" + this.data.room);
         this.socket.binaryType = "arraybuffer";
 
         this.socket.addEventListener("open", this.open);
         this.socket.addEventListener("close", this.close);
         this.socket.addEventListener("message", this.message);
+
+        window.addEventListener('keydown', this.endGame);
     
         this.local = -1;
         this.buffer = new Uint8Array(8);
@@ -46,14 +47,42 @@ class ConnectedState {
         this.frameSkip = 0;
         this.firstFrame = true;
 
+        this.text = new PIXI.Text({
+            text: 'Waiting to connect...',
+            style: {
+                fill: '#ffffff',
+                fontSize: 24
+            },
+            anchor: 0.5
+        });
+        this.text.visible = true;
+        this.addChild(this.text);
     }
     
-    dispose() {
+    destroy() {
+        super.destroy();
         // clean up listeners
         this.socket.close();
         this.socket.removeEventListener("open", this.open);
         this.socket.removeEventListener("close", this.close);
         this.socket.removeEventListener("message", this.message);
+        window.removeEventListener("keydown", this.endGame);
+    }
+
+    resize() {
+        this.text.x = window.innerWidth / 2;
+        this.text.y = window.innerHeight / 2;
+        if (this.state) {
+            this.state.resize();
+        }
+    }
+
+    endGame(event) {
+        if (event.key == 'Delete') {
+            this.returned = {
+                next: 'SelectState'
+            };
+        }
     }
 
     open(event) {
@@ -64,6 +93,9 @@ class ConnectedState {
     close(event) {
         console.log("Connection Closed");
         this.socketClosed = true;
+        this.returned = {
+            next: 'SelectState'
+        };
     }
 
     message(event) {
@@ -123,13 +155,6 @@ class ConnectedState {
         let delta = deltaQ - this.lastTicks;
         this.lastTicks = deltaQ;
 
-        // if explicit quit or socket closes for any reason
-        if (this.input['Delete'] || this.socketClosed) {
-            this.next = "SelectRoom";
-            this.result = "Error";
-            return;
-        }
-
         if (this.state) {
             this.state.processInput(this.buffer);
         }
@@ -144,18 +169,19 @@ class ConnectedState {
                         if (this.bufferQueue > 0) {
                             this.bufferQueue--;
                         }
-                        this.state = new this.factory[this.stateCounter](this.input, this.output, this.local);
+                        this.state = new this.factory[this.stateCounter](this.local);
                         this.state.network(this.playerInput);
+                        this.addChild(this.state);
+                        this.state.resize();
                         this.running = true;
                     }
                 }
             }
-
-            this.output.reset();
-            this.output.text(396, 266, "Waiting to connect...");
-            this.output.complete();
+            this.text.visible = true;
 
         } else {
+            this.text.visible = false;
+
             this.sendInput(delta);
             while (this.queue.length > 0) {
                 this.pop_input();   
@@ -174,13 +200,16 @@ class ConnectedState {
                     let ending = this.state.update();
 
                     if (ending == true) {
-                        this.state.dispose();
+                        this.removeChild(this.state);
+                        this.state.destroy();
                         ++this.stateCounter;
                         if (this.stateCounter >= this.factory.length) {
                             this.stateCounter = 0;
                         }
-                        this.state = new this.factory[this.stateCounter](this.input, this.output, this.local);
+                        this.state = new this.factory[this.stateCounter](this.local);
                         this.state.network(this.playerInput);
+                        this.addChild(this.state);
+                        this.state.resize();
                     }
                 }
             }

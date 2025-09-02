@@ -1,70 +1,36 @@
-class BomberIO {
+class BomberIO extends PIXI.Container {
 
-    constructor(input, output, local) {
-        this.input = input;
-        this.output = output;
+    constructor(local) {
+        super();
+
+        this.pixel = undefined;
+        PIXI.Assets.load('../images/white-pixel.png').then((texture) => {
+            this.pixel = texture;
+        });
+
         this.local = local;
-    
+
         this.game = new Module.BindGame();
         this.entity = new Module.BindEntity();
         this.bindInput = new Module.BindInput();
 
-        this.touchX = 0;
-        this.touchY = 0;
-        this.touchDown = 0;
+        this.input = new InputStick();
+        this.screen = new Screen(960, 540);
 
-        this.handleTouchAny = this.handleTouchAny.bind(this);
-
-        window.addEventListener('touchstart', this.handleTouchAny);
-        window.addEventListener('touchmove', this.handleTouchAny);
-        window.addEventListener('touchend', this.handleTouchAny);
-        window.addEventListener('touchcancel', this.handleTouchAny);
+        this.addChild(this.screen);
+        this.addChild(this.input);
     }
 
-    dispose() {
+    destroy() {
+        super.destroy();
         this.game.delete();
         this.entity.delete();
-
-        window.removeEventListener('touchstart', this.handleTouchAny);
-        window.removeEventListener('touchmove', this.handleTouchAny);
-        window.removeEventListener('touchend', this.handleTouchAny);
-        window.removeEventListener('touchcancel', this.handleTouchAny);
+        this.bindInput.delete();
     }
 
-    handleTouchAny(event) {
-        event.preventDefault(); // Prevent default browser behavior like scrolling
-
-        this.touchX = 0;
-        this.touchY = 0;
-        this.touchDown = 0;
-
-        this.output.stick.x = this.output.pad.x;
-        this.output.stick.y = this.output.pad.y;
-        this.output.button.tint = 0xff0000;
-    
-        for (let x = 0; x < event.touches.length; ++x) {
-            let t = event.touches[x];            
-
-            let dx = t.clientX - this.output.pad.x;
-            let dy = t.clientY - this.output.pad.y;
-            let d = Math.sqrt(dx * dx + dy * dy);
-            if (d < 64 && d > 0) {
-                this.touchX = dx / d;
-                this.touchY = dy / d;
-                this.output.stick.x = t.clientX;
-                this.output.stick.y = t.clientY;
-            }
-
-            dx = t.clientX - this.output.button.x;
-            dy = t.clientY - this.output.button.y;
-            d = Math.sqrt(dx * dx + dy * dy);
-            if (d < 64 && d > 0) {
-                this.touchDown = 1;
-                this.output.button.tint = 0xc80000;
-            }
-
-        }
-
+    resize() {
+        this.input.resize();
+        this.screen.resize();
     }
 
     network(playerInput) {
@@ -107,10 +73,10 @@ class BomberIO {
             if (gamepad.buttons[0].pressed) this.bindInput.detonate = true;
         }*/
 
-        this.bindInput.x = -32767 + slope * (this.touchX - -1.0);
-        this.bindInput.y = -32767 + slope * (this.touchY - -1.0);
+        this.bindInput.x = -32767 + slope * (this.input.stickStateX - -1.0);
+        this.bindInput.y = -32767 + slope * (this.input.stickStateY - -1.0);
 
-        if (this.touchDown == 1) this.bindInput.bomb = true;
+        if (this.buttonState == 1) this.bindInput.bomb = true;
 
         this.game.getInput(this.bindInput, buffer);
 
@@ -121,14 +87,16 @@ class BomberIO {
     }
 
     render() {
-        this.output.reset();
+        if (!this.pixel) { return; }
+
+        this.screen.begin();
 
         let entity = this.entity;
 
-        let q = this.output.next();
+        let q = this.screen.next();
         q.x = 0;
         q.y = 0;
-        q.texture = this.output.pixelTexture;
+        q.texture = this.pixel;
         q.tint = 0x00c800;                
         q.width = 960;
         q.height = 540;
@@ -136,14 +104,13 @@ class BomberIO {
         this.game.findLocal(this.local);
         entity.begin(this.game);
         while ( entity.next() ) {
-            let s = this.output.next();
+            let s = this.screen.next();
             s.x = entity.position_x;
             s.y = entity.position_y;
-            s.texture = this.output.pixelTexture;
+            s.texture = this.pixel;
             if (entity.handle == this.game.localHandle()) {
                 // center screen to local player, and make different color
-                this.output.innerContainer.x = -entity.position_x + 480;
-                this.output.innerContainer.y = -entity.position_y + 270;
+                this.screen.scroll(-entity.position_x + 480, -entity.position_y + 270);
                 s.tint = 0x000000ff;                
             } else {
                 s.tint = entity.color;
@@ -152,7 +119,7 @@ class BomberIO {
             s.height = entity.size_y;
         }
         
-        this.output.complete();
+        this.screen.end();
     }
 
 

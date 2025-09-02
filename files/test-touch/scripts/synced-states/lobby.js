@@ -1,8 +1,8 @@
-class Lobby {
+class Lobby extends PIXI.Container {
 
-    constructor(input, output, local) {
-        this.input = input;
-        this.output = output;
+    constructor(local) {
+        super();
+    
         this.local = local;
 
         // player input
@@ -12,46 +12,26 @@ class Lobby {
             this.connected[i] = false;
         }
 
-        this.touchDown = 0;
-        this.handleTouchAny = this.handleTouchAny.bind(this);
+        this.output = new Screen(960, 540);
+        this.addChild(this.output);
 
-        window.addEventListener('touchstart', this.handleTouchAny);
-        window.addEventListener('touchmove', this.handleTouchAny);
-        window.addEventListener('touchend', this.handleTouchAny);
-        window.addEventListener('touchcancel', this.handleTouchAny);
+        this.pressed = false;
+        const circle = new PIXI.GraphicsContext().circle(0, 0, 50).fill(0x00ffff);
+        this.button = new PIXI.Graphics(circle);
+        this.button.visible = false;
+        this.button.eventMode = 'static';
+        this.button.on('pointertap', () => { this.pressed = true; });
+        this.addChild(this.button);
     }
 
-    dispose() {
-        window.removeEventListener('touchstart', this.handleTouchAny);
-        window.removeEventListener('touchmove', this.handleTouchAny);
-        window.removeEventListener('touchend', this.handleTouchAny);
-        window.removeEventListener('touchcancel', this.handleTouchAny);
+    destroy() {
+        super.destroy();
     }
 
-    handleTouchAny(event) {
-        event.preventDefault(); // Prevent default browser behavior like scrolling
-
-        console.log('touched');
-
-        this.touchDown = 0;
-
-        this.output.stick.x = this.output.pad.x;
-        this.output.stick.y = this.output.pad.y;
-        this.output.button.tint = 0xff0000;
-    
-        for (let x = 0; x < event.touches.length; ++x) {
-            let t = event.touches[x];            
-
-            let dx = t.clientX - this.output.button.x;
-            let dy = t.clientY - this.output.button.y;
-            let d = Math.sqrt(dx * dx + dy * dy);
-            if (d < 64 && d > 0) {
-                this.touchDown = 1;
-                this.output.button.tint = 0xc80000;
-            }
-
-        }
-
+    resize() {
+        this.output.resize();
+        this.button.x = window.innerWidth - this.button.width - 32;
+        this.button.y = window.innerHeight - this.button.height - 32;
     }
 
     network(playerInput) {
@@ -76,7 +56,7 @@ class Lobby {
 
         let b = 0;
 
-        if (this.touchDown == 1) b |= (1 << 6);
+        if (this.pressed == true) b |= (1 << 6);
 
         //if (this.input['ArrowUp']) b |= (1 << 0);
         //if (this.input['ArrowDown']) b |= (1 << 1);
@@ -115,6 +95,12 @@ class Lobby {
             ++i;
         }
 
+        if (host == this.local) {
+            this.button.visible = true;
+        } else {
+            this.button.visible = false;
+        }
+
         // this is checking the space key
         if ((this.playerInput[12 + host * 8 + 4] & (1 << 6)) == (1 << 6)) {
             return true;
@@ -125,7 +111,7 @@ class Lobby {
 
     render() {
 
-        this.output.reset();
+        this.output.begin();
 
         let host = 255;
         let i = 0;
@@ -155,29 +141,6 @@ class Lobby {
             if (this.connected[j] == true) {
                 message = "Slot " + j + ": lobby";
 
-                if (( b & (1 << 0)) == (1 << 0)) this.output.text(x+=8, y, "U");
-                if (( b & (1 << 1)) == (1 << 1)) this.output.text(x+=8, y, "D");
-                if (( b & (1 << 2)) == (1 << 2)) this.output.text(x+=8, y, "L");
-                if (( b & (1 << 3)) == (1 << 3)) this.output.text(x+=8, y, "R");
-
-                if (( b & (1 << 4)) == (1 << 4)) this.output.text(x+=8, y, "V");
-                if (( b & (1 << 5)) == (1 << 5)) this.output.text(x+=8, y, "C");
-                if (( b & (1 << 6)) == (1 << 6)) this.output.text(x+=8, y, "S");
-                if (( b & (1 << 7)) == (1 << 7)) this.output.text(x+=8, y, "B");
-
-                if (j == this.local) {
-                    let keyX = 28 * 8 + 20;
-                    if (this.input['ArrowUp']) this.output.text(keyX+=8, y, "U");
-                    if (this.input['ArrowDown']) this.output.text(keyX+=8, y, "D");
-                    if (this.input['ArrowLeft']) this.output.text(keyX+=8, y, "L");
-                    if (this.input['ArrowRight']) this.output.text(keyX+=8, y, "R");
-
-                    if (this.input[' ']) this.output.text(keyX+=8, y, "V");
-                    if (this.input['c']) this.output.text(keyX+=8, y, "C");
-                    if (this.input['v']) this.output.text(keyX+=8, y, "S");
-                    if (this.input['b']) this.output.text(keyX+=8, y, "B");
-                }
-
             } else {
                 message = "Slot " + j + ": open";
             }
@@ -197,7 +160,7 @@ class Lobby {
         this.output.text(300, 24 * 2 + yPos, "Stop Kicked Bomb: V Key");
         this.output.text(300, 24 * 3 + yPos, "Detonate Bomb: B Key");
 
-        this.output.complete();
+        this.output.end();
 
     }
 

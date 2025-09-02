@@ -1,14 +1,10 @@
+class OfflineState extends PIXI.Container {
 
-
-
-
-class OfflineState {
-
-    constructor(input, output, result) {
-        this.input = input;
-        this.output = output;
-        this.result = result;
-        this.next = undefined;
+    constructor(data) {
+        super();
+        
+        this.data = data;
+        this.returned = false;
 
         this.tickCounter = 0;
         this.lastTicks = 0;
@@ -19,11 +15,28 @@ class OfflineState {
 
         this.inputBuffer = new Uint8Array(268);
 
-        this.state = new BomberIO(this.input, this.output, 0);
+        this.state = new BomberIO(0);
+        this.addChild(this.state);
+
+        this.endGame = this.endGame.bind(this);
+        window.addEventListener("keydown", this.endGame);
     }
 
-    dispose() {
-        this.state.dispose();
+    destroy() {
+        super.destroy();
+        window.removeEventListener("keydown", this.endGame);
+    }
+
+    resize() {
+        this.state.resize();
+    }
+
+    endGame(event) {
+        if (event.key == 'Delete') {
+            this.returned = {
+                next: 'SelectState'
+            };
+        }
     }
 
     update(deltaQ) {
@@ -33,11 +46,11 @@ class OfflineState {
         }
 
         // if explicit quit
-        if (this.input['Delete']) {
-            this.next = "SelectRoom";
-            this.result = "Error";
-            return;
-        }
+        //if (this.input['Delete']) {
+        //    this.next = "SelectRoom";
+        //    this.result = "Error";
+        //    return;
+        //}
 
         let delta = deltaQ - this.lastTicks;
         this.lastTicks = deltaQ;
@@ -71,8 +84,9 @@ class OfflineState {
 
             if (ending) {
                 // Do ending restart logic here!
-                this.next = 'SelectRoom';
-                this.result = 'Done';
+                this.returned = {
+                    next: 'SelectState'
+                };
             }
 
             this.state.render();

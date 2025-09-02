@@ -1,3 +1,9 @@
+window.factory = {
+    'SelectState': SelectState,
+    'OfflineState': OfflineState,
+    'ConnectedState': ConnectedState
+};
+
 class App {
 
     async init() {
@@ -10,78 +16,50 @@ class App {
             });    
         })();
 
-        // create screen
-        this.output = new Screen();
-        await this.output.init();
+        // initialize pixi.js
+        this.pixi = new PIXI.Application();
+        await this.pixi.init({ background: '#000000', resizeTo: window });
+        document.body.appendChild(this.pixi.canvas);
+        PIXI.TextureStyle.defaultOptions.scaleMode = 'nearest';
 
-        // create key map
-        this.input = { };
-        this.input._gamepads = { };
+        // create first object
+        this.thing = new window.factory['SelectState']({next:'SelectState'});
+        this.pixi.stage.addChild(this.thing);
 
-        // bind functions to this
-        this.keyPress = this.keyPress.bind(this);
-        this.updateLoop = this.updateLoop.bind(this);
-
-        // add keypress listeners
-        window.addEventListener('keyup', this.keyPress);
-        window.addEventListener('keydown', this.keyPress);
-     
-        window.addEventListener("gamepadconnected", (e) => {
-            console.log(
-                "Gamepad connected at index %d: %s. %d buttons, %d axes.",
-                e.gamepad.index,
-                e.gamepad.id,
-                e.gamepad.buttons.length,
-                e.gamepad.axes.length,
-            );
-            this.input._gamepads[e.gamepad.index] = e.gamepad;
+        window.addEventListener('keydown', (event) => {
+            if (event.key == '`') {
+                if (this.pixi.canvas.requestFullscreen) {
+                    this.pixi.canvas.requestFullscreen();
+                } else if (this.pixi.canvas.webkitRequestFullscreen) { // Safari
+                    this.pixi.canvas.webkitRequestFullscreen();
+                } else if (this.pixi.canvas.msRequestFullscreen) { // IE11
+                    this.pixi.canvas.msRequestFullscreen();
+                }
+            }
         });
 
-        window.addEventListener("gamepaddisconnected", (e) => {
-            console.log(
-                "Gamepad disconnected from index %d: %s",
-                e.gamepad.index,
-                e.gamepad.id,
-            );
-            delete this.input._gamepads[e.gamepad.index];
+        window.addEventListener("resize", () => {
+            this.thing.resize();
         });
-
-        this.factory = {
-            //'ExperimentState': ExperimentState,
-            'SelectRoom': SelectRoom,
-            'OfflineState': OfflineState,
-            'ConnectedState': ConnectedState,
-            //'EditorState': EditorState
-        };
-
-        // current state
-        this.state = new this.factory['SelectRoom'](this.input, this.output);
-        //this.state = new this.factory['ExperimentState'](this.input, this.output);
+        this.thing.resize();
 
         // get the update loop started!
-        requestAnimationFrame(this.updateLoop);
+        requestAnimationFrame(this.update.bind(this));
     }
-
-    updateLoop(delta) {
-        if (this.input['`']) {
-            this.output.fullScreen();
-        }
-        this.update(delta);
-        requestAnimationFrame(this.updateLoop);
-    }
-
-    keyPress(event) {
-        this.input[event.key] = (event.type == 'keydown') ? true : false;
-    }
-
+    
     update(delta) {
-        this.state.update(delta);
-        if (this.state.next) {
-            let next = this.state.next;
-            let result = this.state.result;
-            this.state.dispose();
-            this.state = new this.factory[next](this.input, this.output, result);
+        this.thing.update(delta);
+        if (this.thing.returned) {
+            console.log(this.thing.returned);
+            this.pixi.stage.removeChild(this.thing);
+            let n = new window.factory[this.thing.returned.next](this.thing.returned);
+            this.thing.destroy();
+            this.thing = n;
+            this.pixi.stage.addChild(this.thing);
+            this.thing.resize();
         }
+        requestAnimationFrame(this.update.bind(this));
     }
+
 
 }
