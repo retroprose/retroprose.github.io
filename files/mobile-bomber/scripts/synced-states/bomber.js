@@ -136,12 +136,16 @@ class BomberIO extends PIXI.Container {
         this.input = new InputStick();
         this.output = new Screen(960, 540);
 
+        this.toggleControl = this.toggleControl.bind(this);
+        window.addEventListener('keydown', this.toggleControl);
+
         this.addChild(this.output);
         this.addChild(this.input);
     }
 
     destroy() {
         super.destroy();
+        window.removeEventListener('keydown', this.toggleControl);
         this.game.delete();
         this.entity.delete();
         this.bindInput.delete();
@@ -150,6 +154,12 @@ class BomberIO extends PIXI.Container {
     resize() {
         this.input.resize();
         this.output.resize();
+    }
+
+    toggleControl(event) {
+        if (event.key == '1') {
+            this.input.visible = !this.input.visible;
+        }
     }
 
     network(playerInput) {

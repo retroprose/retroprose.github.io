@@ -69,9 +69,9 @@ class OfflineState extends PIXI.Container {
                 this.inputBuffer[2] = Math.floor(Math.random() * 256);
                 this.inputBuffer[3] = Math.floor(Math.random() * 256);
                 // set slot 0 to connected
-                //this.inputBuffer[4] = 1;
-                this.inputBuffer[4] = 0xff;
-                this.inputBuffer[5] = 0xff;
+                this.inputBuffer[4] = 1;
+                //this.inputBuffer[4] = 0xff;
+                //this.inputBuffer[5] = 0xff;
                 // set input to the buffer
                 for (let i = 0; i < 8; ++i) {
                     this.inputBuffer[12 + i] = this.buffer[i];
