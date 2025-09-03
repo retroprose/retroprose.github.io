@@ -51,6 +51,15 @@ const TileType = {
     Count: 16
 };
 
+// exploded-power-{f}   [0,1,2,2,3,3,4,4,4,4,5,5,5,5,5,6,6,6,6,6,6]
+// exploted-wall-{f}    [0,1,1,2,2,2,3,3,3,3,4,4,4,4,4,5,5,5,5,5,5]
+// bomb-{f}             [0,0,1,1,2,2,1,1,0,0,1,1,2,2,1]
+// 'c' is center, 'se' is horizontal, 'sw' is vertical
+// boom-{d}-{f}         [0,1,2,2,3,3,4,4,4,3,3,2,2,1,0]
+// player-{t}-{d}-{f}   [0,0,0,0,0,0,0,1,1,1,1,1,2,2,2,2,2,2,2,1,1,1,1,1,1]
+// 'ne' is player death animation
+// player-{t}-death-{f} [0,1,2,3,4,5,6]
+
 const tileAnimations = {
     0: ["floor", "floor-shadow"],
     3: ["power-bomb-0", "power-bomb-1"],
@@ -208,7 +217,7 @@ class BomberIO extends PIXI.Container {
         const dx = this.input.stickStateX;
         const dy = this.input.stickStateY;
         const d = Math.sqrt(dx * dx + dy * dy);
-        if (d > 0.1) {
+        if (d > 0.5) {
             let at = Math.atan2(dy, dx);
             at += 0.3926991;
             if (at >= 0 && at <= Math.PI / 4) {
