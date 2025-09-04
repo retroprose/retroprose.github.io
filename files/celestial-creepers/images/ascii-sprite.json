@@ -1,0 +1,5645 @@
+{
+    "frames": {
+        "ascii0": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii1": {
+            "frame": {
+                "x": 8,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii2": {
+            "frame": {
+                "x": 16,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii3": {
+            "frame": {
+                "x": 24,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii4": {
+            "frame": {
+                "x": 32,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii5": {
+            "frame": {
+                "x": 40,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii6": {
+            "frame": {
+                "x": 48,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii7": {
+            "frame": {
+                "x": 56,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii8": {
+            "frame": {
+                "x": 64,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii9": {
+            "frame": {
+                "x": 72,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii10": {
+            "frame": {
+                "x": 80,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii11": {
+            "frame": {
+                "x": 88,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii12": {
+            "frame": {
+                "x": 96,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii13": {
+            "frame": {
+                "x": 104,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii14": {
+            "frame": {
+                "x": 112,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii15": {
+            "frame": {
+                "x": 120,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii16": {
+            "frame": {
+                "x": 128,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii17": {
+            "frame": {
+                "x": 136,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii18": {
+            "frame": {
+                "x": 144,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii19": {
+            "frame": {
+                "x": 152,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii20": {
+            "frame": {
+                "x": 160,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii21": {
+            "frame": {
+                "x": 168,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii22": {
+            "frame": {
+                "x": 176,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii23": {
+            "frame": {
+                "x": 184,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii24": {
+            "frame": {
+                "x": 192,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii25": {
+            "frame": {
+                "x": 200,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii26": {
+            "frame": {
+                "x": 208,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii27": {
+            "frame": {
+                "x": 216,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii28": {
+            "frame": {
+                "x": 224,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii29": {
+            "frame": {
+                "x": 232,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii30": {
+            "frame": {
+                "x": 240,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii31": {
+            "frame": {
+                "x": 248,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii32": {
+            "frame": {
+                "x": 0,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii33": {
+            "frame": {
+                "x": 8,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii34": {
+            "frame": {
+                "x": 16,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii35": {
+            "frame": {
+                "x": 24,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii36": {
+            "frame": {
+                "x": 32,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii37": {
+            "frame": {
+                "x": 40,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii38": {
+            "frame": {
+                "x": 48,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii39": {
+            "frame": {
+                "x": 56,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii40": {
+            "frame": {
+                "x": 64,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii41": {
+            "frame": {
+                "x": 72,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii42": {
+            "frame": {
+                "x": 80,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii43": {
+            "frame": {
+                "x": 88,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii44": {
+            "frame": {
+                "x": 96,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii45": {
+            "frame": {
+                "x": 104,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii46": {
+            "frame": {
+                "x": 112,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii47": {
+            "frame": {
+                "x": 120,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii48": {
+            "frame": {
+                "x": 128,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii49": {
+            "frame": {
+                "x": 136,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii50": {
+            "frame": {
+                "x": 144,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii51": {
+            "frame": {
+                "x": 152,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii52": {
+            "frame": {
+                "x": 160,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii53": {
+            "frame": {
+                "x": 168,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii54": {
+            "frame": {
+                "x": 176,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii55": {
+            "frame": {
+                "x": 184,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii56": {
+            "frame": {
+                "x": 192,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii57": {
+            "frame": {
+                "x": 200,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii58": {
+            "frame": {
+                "x": 208,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii59": {
+            "frame": {
+                "x": 216,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii60": {
+            "frame": {
+                "x": 224,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii61": {
+            "frame": {
+                "x": 232,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii62": {
+            "frame": {
+                "x": 240,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii63": {
+            "frame": {
+                "x": 248,
+                "y": 16,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii64": {
+            "frame": {
+                "x": 0,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii65": {
+            "frame": {
+                "x": 8,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii66": {
+            "frame": {
+                "x": 16,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii67": {
+            "frame": {
+                "x": 24,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii68": {
+            "frame": {
+                "x": 32,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii69": {
+            "frame": {
+                "x": 40,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii70": {
+            "frame": {
+                "x": 48,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii71": {
+            "frame": {
+                "x": 56,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii72": {
+            "frame": {
+                "x": 64,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii73": {
+            "frame": {
+                "x": 72,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii74": {
+            "frame": {
+                "x": 80,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii75": {
+            "frame": {
+                "x": 88,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii76": {
+            "frame": {
+                "x": 96,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii77": {
+            "frame": {
+                "x": 104,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii78": {
+            "frame": {
+                "x": 112,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii79": {
+            "frame": {
+                "x": 120,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii80": {
+            "frame": {
+                "x": 128,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii81": {
+            "frame": {
+                "x": 136,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii82": {
+            "frame": {
+                "x": 144,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii83": {
+            "frame": {
+                "x": 152,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii84": {
+            "frame": {
+                "x": 160,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii85": {
+            "frame": {
+                "x": 168,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii86": {
+            "frame": {
+                "x": 176,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii87": {
+            "frame": {
+                "x": 184,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii88": {
+            "frame": {
+                "x": 192,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii89": {
+            "frame": {
+                "x": 200,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii90": {
+            "frame": {
+                "x": 208,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii91": {
+            "frame": {
+                "x": 216,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii92": {
+            "frame": {
+                "x": 224,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii93": {
+            "frame": {
+                "x": 232,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii94": {
+            "frame": {
+                "x": 240,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii95": {
+            "frame": {
+                "x": 248,
+                "y": 32,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii96": {
+            "frame": {
+                "x": 0,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii97": {
+            "frame": {
+                "x": 8,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii98": {
+            "frame": {
+                "x": 16,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii99": {
+            "frame": {
+                "x": 24,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii100": {
+            "frame": {
+                "x": 32,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii101": {
+            "frame": {
+                "x": 40,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii102": {
+            "frame": {
+                "x": 48,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii103": {
+            "frame": {
+                "x": 56,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii104": {
+            "frame": {
+                "x": 64,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii105": {
+            "frame": {
+                "x": 72,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii106": {
+            "frame": {
+                "x": 80,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii107": {
+            "frame": {
+                "x": 88,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii108": {
+            "frame": {
+                "x": 96,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii109": {
+            "frame": {
+                "x": 104,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii110": {
+            "frame": {
+                "x": 112,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii111": {
+            "frame": {
+                "x": 120,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii112": {
+            "frame": {
+                "x": 128,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii113": {
+            "frame": {
+                "x": 136,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii114": {
+            "frame": {
+                "x": 144,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii115": {
+            "frame": {
+                "x": 152,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii116": {
+            "frame": {
+                "x": 160,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii117": {
+            "frame": {
+                "x": 168,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii118": {
+            "frame": {
+                "x": 176,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii119": {
+            "frame": {
+                "x": 184,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii120": {
+            "frame": {
+                "x": 192,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii121": {
+            "frame": {
+                "x": 200,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii122": {
+            "frame": {
+                "x": 208,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii123": {
+            "frame": {
+                "x": 216,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii124": {
+            "frame": {
+                "x": 224,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii125": {
+            "frame": {
+                "x": 232,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii126": {
+            "frame": {
+                "x": 240,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii127": {
+            "frame": {
+                "x": 248,
+                "y": 48,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii128": {
+            "frame": {
+                "x": 0,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii129": {
+            "frame": {
+                "x": 8,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii130": {
+            "frame": {
+                "x": 16,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii131": {
+            "frame": {
+                "x": 24,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii132": {
+            "frame": {
+                "x": 32,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii133": {
+            "frame": {
+                "x": 40,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii134": {
+            "frame": {
+                "x": 48,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii135": {
+            "frame": {
+                "x": 56,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii136": {
+            "frame": {
+                "x": 64,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii137": {
+            "frame": {
+                "x": 72,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii138": {
+            "frame": {
+                "x": 80,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii139": {
+            "frame": {
+                "x": 88,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii140": {
+            "frame": {
+                "x": 96,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii141": {
+            "frame": {
+                "x": 104,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii142": {
+            "frame": {
+                "x": 112,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii143": {
+            "frame": {
+                "x": 120,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii144": {
+            "frame": {
+                "x": 128,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii145": {
+            "frame": {
+                "x": 136,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii146": {
+            "frame": {
+                "x": 144,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii147": {
+            "frame": {
+                "x": 152,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii148": {
+            "frame": {
+                "x": 160,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii149": {
+            "frame": {
+                "x": 168,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii150": {
+            "frame": {
+                "x": 176,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii151": {
+            "frame": {
+                "x": 184,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii152": {
+            "frame": {
+                "x": 192,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii153": {
+            "frame": {
+                "x": 200,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii154": {
+            "frame": {
+                "x": 208,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii155": {
+            "frame": {
+                "x": 216,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii156": {
+            "frame": {
+                "x": 224,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii157": {
+            "frame": {
+                "x": 232,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii158": {
+            "frame": {
+                "x": 240,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii159": {
+            "frame": {
+                "x": 248,
+                "y": 64,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii160": {
+            "frame": {
+                "x": 0,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii161": {
+            "frame": {
+                "x": 8,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii162": {
+            "frame": {
+                "x": 16,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii163": {
+            "frame": {
+                "x": 24,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii164": {
+            "frame": {
+                "x": 32,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii165": {
+            "frame": {
+                "x": 40,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii166": {
+            "frame": {
+                "x": 48,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii167": {
+            "frame": {
+                "x": 56,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii168": {
+            "frame": {
+                "x": 64,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii169": {
+            "frame": {
+                "x": 72,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii170": {
+            "frame": {
+                "x": 80,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii171": {
+            "frame": {
+                "x": 88,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii172": {
+            "frame": {
+                "x": 96,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii173": {
+            "frame": {
+                "x": 104,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii174": {
+            "frame": {
+                "x": 112,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii175": {
+            "frame": {
+                "x": 120,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii176": {
+            "frame": {
+                "x": 128,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii177": {
+            "frame": {
+                "x": 136,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii178": {
+            "frame": {
+                "x": 144,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii179": {
+            "frame": {
+                "x": 152,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii180": {
+            "frame": {
+                "x": 160,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii181": {
+            "frame": {
+                "x": 168,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii182": {
+            "frame": {
+                "x": 176,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii183": {
+            "frame": {
+                "x": 184,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii184": {
+            "frame": {
+                "x": 192,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii185": {
+            "frame": {
+                "x": 200,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii186": {
+            "frame": {
+                "x": 208,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii187": {
+            "frame": {
+                "x": 216,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii188": {
+            "frame": {
+                "x": 224,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii189": {
+            "frame": {
+                "x": 232,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii190": {
+            "frame": {
+                "x": 240,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii191": {
+            "frame": {
+                "x": 248,
+                "y": 80,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii192": {
+            "frame": {
+                "x": 0,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii193": {
+            "frame": {
+                "x": 8,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii194": {
+            "frame": {
+                "x": 16,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii195": {
+            "frame": {
+                "x": 24,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii196": {
+            "frame": {
+                "x": 32,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii197": {
+            "frame": {
+                "x": 40,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii198": {
+            "frame": {
+                "x": 48,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii199": {
+            "frame": {
+                "x": 56,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii200": {
+            "frame": {
+                "x": 64,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii201": {
+            "frame": {
+                "x": 72,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii202": {
+            "frame": {
+                "x": 80,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii203": {
+            "frame": {
+                "x": 88,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii204": {
+            "frame": {
+                "x": 96,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii205": {
+            "frame": {
+                "x": 104,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii206": {
+            "frame": {
+                "x": 112,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii207": {
+            "frame": {
+                "x": 120,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii208": {
+            "frame": {
+                "x": 128,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii209": {
+            "frame": {
+                "x": 136,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii210": {
+            "frame": {
+                "x": 144,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii211": {
+            "frame": {
+                "x": 152,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii212": {
+            "frame": {
+                "x": 160,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii213": {
+            "frame": {
+                "x": 168,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii214": {
+            "frame": {
+                "x": 176,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii215": {
+            "frame": {
+                "x": 184,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii216": {
+            "frame": {
+                "x": 192,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii217": {
+            "frame": {
+                "x": 200,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii218": {
+            "frame": {
+                "x": 208,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii219": {
+            "frame": {
+                "x": 216,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii220": {
+            "frame": {
+                "x": 224,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii221": {
+            "frame": {
+                "x": 232,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii222": {
+            "frame": {
+                "x": 240,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii223": {
+            "frame": {
+                "x": 248,
+                "y": 96,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii224": {
+            "frame": {
+                "x": 0,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii225": {
+            "frame": {
+                "x": 8,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii226": {
+            "frame": {
+                "x": 16,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii227": {
+            "frame": {
+                "x": 24,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii228": {
+            "frame": {
+                "x": 32,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii229": {
+            "frame": {
+                "x": 40,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii230": {
+            "frame": {
+                "x": 48,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii231": {
+            "frame": {
+                "x": 56,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii232": {
+            "frame": {
+                "x": 64,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii233": {
+            "frame": {
+                "x": 72,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii234": {
+            "frame": {
+                "x": 80,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii235": {
+            "frame": {
+                "x": 88,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii236": {
+            "frame": {
+                "x": 96,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii237": {
+            "frame": {
+                "x": 104,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii238": {
+            "frame": {
+                "x": 112,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii239": {
+            "frame": {
+                "x": 120,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii240": {
+            "frame": {
+                "x": 128,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii241": {
+            "frame": {
+                "x": 136,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii242": {
+            "frame": {
+                "x": 144,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii243": {
+            "frame": {
+                "x": 152,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii244": {
+            "frame": {
+                "x": 160,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii245": {
+            "frame": {
+                "x": 168,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii246": {
+            "frame": {
+                "x": 176,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii247": {
+            "frame": {
+                "x": 184,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii248": {
+            "frame": {
+                "x": 192,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii249": {
+            "frame": {
+                "x": 200,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii250": {
+            "frame": {
+                "x": 208,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii251": {
+            "frame": {
+                "x": 216,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii252": {
+            "frame": {
+                "x": 224,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii253": {
+            "frame": {
+                "x": 232,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii254": {
+            "frame": {
+                "x": 240,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "ascii255": {
+            "frame": {
+                "x": 248,
+                "y": 112,
+                "w": 8,
+                "h": 16
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    },
+    "meta": {
+        "image": "ascii8x16.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 256,
+            "h": 128
+        },
+        "scale": "1"
+    }
+}
