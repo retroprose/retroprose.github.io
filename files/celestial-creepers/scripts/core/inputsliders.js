@@ -8,22 +8,32 @@ class InputSliders extends BasicInput {
         this.tapLeft = 0.0;
         this.tapRight = 0.0;
 
-        this.sidePadding = 100;
-        this.sliderHeight = 800;
+        this.sidePadding = 50;
+        this.sliderHeight = 0;
 
-        this.padWidth = 100;
-        this.padHeight = 50;
+        this.padWidth = 50;
+        this.padHeight = 25;
 
-        this.slider = new PIXI.GraphicsContext().rect(-10, 0, 20, this.sliderHeight).fill(0xc8c8c8);
-        this.bar = new PIXI.GraphicsContext().rect(-this.padWidth / 2, -this.padHeight / 2, this.padWidth, this.padHeight).fill(0xa0a0a0);
+        this.pixel = new PIXI.GraphicsContext().rect(-1, -1, 2, 2).fill(0xffffff);
 
-        this.leftSlider = new PIXI.Graphics(this.slider);
-        this.rightSlider = new PIXI.Graphics(this.slider);
+        this.leftSlider = new PIXI.Graphics(this.pixel);
+        this.leftSlider.scale.x = 10;
+        this.leftSlider.tint = 0xc8c8c8;
 
-        this.leftBar = new PIXI.Graphics(this.bar);
-        this.rightBar = new PIXI.Graphics(this.bar);
+        this.rightSlider = new PIXI.Graphics(this.pixel);
+        this.rightSlider.scale.x = 10;
+        this.rightSlider.tint = 0xc8c8c8;
 
+        this.leftBar = new PIXI.Graphics(this.pixel);
+        this.leftBar.scale.x = this.padWidth;
+        this.leftBar.scale.y = this.padHeight;
+        this.leftBar.tint = 0xa0a0a0;
         this.leftBar.eventMode = 'static';
+
+        this.rightBar = new PIXI.Graphics(this.pixel);
+        this.rightBar.scale.x = this.padWidth;
+        this.rightBar.scale.y = this.padHeight;
+        this.rightBar.tint = 0xa0a0a0;
         this.rightBar.eventMode = 'static';
 
         this.leftId = -1;
@@ -44,17 +54,18 @@ class InputSliders extends BasicInput {
             if (this.leftId == e.pointerId) {
                 // set bar to where finger is
                 this.leftBar.y = e.client.y;
-                if (this.leftBar.y < this.leftSlider.y) {
-                    this.leftBar.y = this.leftSlider.y;
+                if (this.leftBar.y < this.leftSlider.y - this.sliderHeight) {
+                    this.leftBar.y = this.leftSlider.y - this.sliderHeight;
                 }
-                if (this.leftBar.y > this.sliderHeight + this.leftSlider.y) {
-                    this.leftBar.y = this.sliderHeight + this.leftSlider.y;
+                if (this.leftBar.y > this.leftSlider.y + this.sliderHeight) {
+                    this.leftBar.y = this.leftSlider.y + this.sliderHeight;
                 }
 
                 const dy = this.leftBar.y - this.leftSlider.y;
-                const slope = 32767.0 / this.sliderHeight;
-                this.left = 32767.0 - slope * dy;
-                
+                const slope = 32767 / (this.sliderHeight * 2);
+                this.left = 32767 - (slope * (dy + this.sliderHeight));
+
+
                 console.log('left ', this.left);
 
             }
@@ -72,21 +83,22 @@ class InputSliders extends BasicInput {
             this.rightId = -1;
         });
         this.rightBar.on('globalpointermove', (e) => {
-            if (this.rightId == e.pointerId) {
+          if (this.rightId == e.pointerId) {
                 // set bar to where finger is
                 this.rightBar.y = e.client.y;
-                if (this.rightBar.y < this.rightSlider.y) {
-                    this.rightBar.y = this.rightSlider.y;
+                if (this.rightBar.y < this.rightSlider.y - this.sliderHeight) {
+                    this.rightBar.y = this.rightSlider.y - this.sliderHeight;
                 }
-                if (this.rightBar.y > this.sliderHeight + this.rightSlider.y) {
-                    this.rightBar.y = this.sliderHeight + this.rightSlider.y;
+                if (this.rightBar.y > this.rightSlider.y + this.sliderHeight) {
+                    this.rightBar.y = this.rightSlider.y + this.sliderHeight;
                 }
 
                 const dy = this.rightBar.y - this.rightSlider.y;
-                const slope = 32767.0 / this.sliderHeight;
-                this.right = 32767.0 - slope * dy;
-                
-                console.log('right', this.right);
+                const slope = 32767 / (this.sliderHeight * 2);
+                this.right = 32767 - (slope * (dy + this.sliderHeight));
+
+
+                console.log('right ', this.right);
 
             }
         });
@@ -102,10 +114,13 @@ class InputSliders extends BasicInput {
     }
 
     resize() {
-        const padding = (window.innerHeight - this.sliderHeight) / 2;
+        this.sliderHeight = (window.innerHeight - 60) / 2;
+        
+        this.leftSlider.y = window.innerHeight / 2;
+        this.rightSlider.y = window.innerHeight / 2;
 
-        this.leftSlider.y = padding;
-        this.rightSlider.y = padding;
+        this.leftSlider.scale.y = this.sliderHeight;
+        this.rightSlider.scale.y = this.sliderHeight;
 
         this.leftSlider.x = this.sidePadding;
         this.rightSlider.x = window.innerWidth - this.sidePadding - this.rightSlider.width;
@@ -113,8 +128,8 @@ class InputSliders extends BasicInput {
         this.leftBar.x = this.leftSlider.x;
         this.rightBar.x = this.rightSlider.x;
 
-        this.leftBar.y = this.leftSlider.y + this.sliderHeight;
-        this.rightBar.y = this.rightSlider.y + this.sliderHeight;
+        this.leftBar.y = this.leftSlider.y;
+        this.rightBar.y = this.rightSlider.y;
 
     }
 
