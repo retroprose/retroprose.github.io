@@ -139,7 +139,7 @@ class BomberIO extends PIXI.Container {
             s.x = entity.position_x;
             s.y = entity.position_y;
             s.texture = this.pixel;
-            if (entity.handle == this.game.localHandleLeft() || entity.handle == this.game.localHandleRight()) {
+            if (entity.handle == this.game.localHandleLeft() /*|| entity.handle == this.game.localHandleRight()*/) {
                 // center screen to local player, and make different color
                 this.screen.scroll(-entity.position_x + 480, -entity.position_y + 270);
                 s.tint = 0x000000ff;                
