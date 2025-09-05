@@ -53,7 +53,7 @@ class BomberIO extends PIXI.Container {
         // round: return floor(d + 0.5);
         // output = output_start + round(slope * (input - input_start));
         //let slope = 1.0 * (32767 - -32768) / (1.0 - -1.0);
-        let slope = 1.0 * (32767 - -32767) / (32767);
+        //let slope = 1.0 * (32767 - -32767) / (32767);
 
         /*for (const gamepad of navigator.getGamepads()) {
             if (!gamepad) continue;
@@ -81,8 +81,11 @@ class BomberIO extends PIXI.Container {
         if (this.input.keyState['a']) this.bindInput.x = -32767;
         if (this.input.keyState['d']) this.bindInput.x = 32767;*/
 
-        this.bindInput.x = -32767 + slope * (this.input.left);
-        this.bindInput.y = -32767 + slope * (this.input.right);
+        //this.bindInput.x = -32767 + slope * (this.input.left);
+        //this.bindInput.y = -32767 + slope * (this.input.right);
+
+        this.bindInput.x = this.input.left;
+        this.bindInput.y = this.input.right;
 
         if (this.buttonState == 1) this.bindInput.bomb = true;
 
@@ -136,7 +139,7 @@ class BomberIO extends PIXI.Container {
             s.x = entity.position_x;
             s.y = entity.position_y;
             s.texture = this.pixel;
-            if (entity.handle == this.game.localHandle()) {
+            if (entity.handle == this.game.localHandleLeft() || entity.handle == this.game.localHandleRight()) {
                 // center screen to local player, and make different color
                 this.screen.scroll(-entity.position_x + 480, -entity.position_y + 270);
                 s.tint = 0x000000ff;                
