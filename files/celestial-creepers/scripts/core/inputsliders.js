@@ -66,7 +66,7 @@ class InputSliders extends BasicInput {
                 this.left = 32767 - (slope * (dy + this.sliderHeight));
                 if (this.left < 0) this.left = 0;
 
-                console.log('left ', this.left);
+                //console.log('left ', this.left);
 
             }
         });
@@ -98,7 +98,7 @@ class InputSliders extends BasicInput {
                 this.right = 32767 - (slope * (dy + this.sliderHeight));
                 if (this.right < 0) this.right = 0;
 
-                console.log('right ', this.right);
+                //console.log('right ', this.right);
 
             }
         });
