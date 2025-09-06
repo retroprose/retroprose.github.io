@@ -8,6 +8,11 @@ class BomberIO extends PIXI.Container {
             this.pixel = texture;
         });
 
+        this.ship = undefined;
+        PIXI.Assets.load('../images/ship.png').then((texture) => {
+            this.ship = texture;
+        });
+
         this.local = local;
 
         this.game = new Module.BindGame();
@@ -122,6 +127,8 @@ class BomberIO extends PIXI.Container {
                 const t = this.game.getTile(col, row);
                 if (t == 1) {
                     let s = this.screen.next();
+                    s.anchor.set(0.5);
+                    s.rotation = 0;
                     s.x = col * 16;
                     s.y = row * 16;
                     s.texture = this.pixel;
@@ -132,24 +139,52 @@ class BomberIO extends PIXI.Container {
             }
         }
 
+        let leftX = 0;
+        let leftY = 0;
+        let rightX = 0;
+        let rightY = 0;
+
         this.game.findLocal(this.local);
         entity.begin(this.game);
         while ( entity.next() ) {
             let s = this.screen.next();
+            s.anchor.set(0.5);
             s.x = entity.position_x;
             s.y = entity.position_y;
             s.texture = this.pixel;
+            
+            // get orientation of ship
+            if (entity.handle == this.game.localHandleLeft()) {
+                leftX = entity.position_x;
+                leftY = entity.position_y;
+            } else if (entity.handle == this.game.localHandleRight()) {
+                rightX = entity.position_x;
+                rightY = entity.position_y;
+            }
+            
             if (entity.handle == this.game.localHandleLeft() /*|| entity.handle == this.game.localHandleRight()*/) {
                 // center screen to local player, and make different color
                 this.screen.scroll(-entity.position_x + 480, -entity.position_y + 270);
-                s.tint = 0x000000ff;                
+                s.tint = 0x0000ff;                
             } else {
                 s.tint = entity.color;
             }
             s.width = entity.size_x;
             s.height = entity.size_y;
+            s.rotation = 0;
         }
         
+        let s = this.screen.next();
+        // 46, 34  -  188, 80  -   46 / 188, 34 / 80
+        s.anchor.x = 60 / 188;
+        s.anchor.y = 40 / 80;
+        s.x = leftX;
+        s.y = leftY;
+        s.texture = this.ship;
+        s.tint = 0xffffff;    
+        s.scale.set(0.25);
+        s.rotation = Math.atan2( rightY - leftY, rightX - leftX );
+
         this.screen.end();
     }
 
