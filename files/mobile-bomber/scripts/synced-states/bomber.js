@@ -217,7 +217,7 @@ class BomberIO extends PIXI.Container {
         const dx = this.input.stickStateX;
         const dy = this.input.stickStateY;
         const d = Math.sqrt(dx * dx + dy * dy);
-        if (d > 0.5) {
+        if (d > 0.25) {
             let at = Math.atan2(dy, dx);
             at += 0.3926991;
             if (at >= 0 && at <= Math.PI / 4) {
