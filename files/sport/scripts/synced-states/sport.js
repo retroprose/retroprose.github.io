@@ -76,9 +76,12 @@ class SportIO extends PIXI.Container {
         //this.bindInput.x = -32767 + slope * (this.input.stickStateX - -1.0);
         //this.bindInput.y = -32767 + slope * (this.input.stickStateY - -1.0);
 
+        this.bindInput.x = Math.floor(this.input.xPos);
+        this.bindInput.y = Math.floor(this.input.yPos);
+
         //console.log("x: " + this.input.xPos + ", " + "y: " + this.input.yPos);
 
-        if (this.input.buttonState == 1) this.bindInput.bomb = true;
+        if (this.input.touchDown == true) this.bindInput.bomb = true;
 
         this.game.getInput(this.bindInput, buffer);
 
@@ -98,9 +101,22 @@ class SportIO extends PIXI.Container {
         this.screen.scroll(-this.game.getCameraX() + 480, -this.game.getCameraY() + 270);
 
         this.game.begin();
+
+        let s = this.screen.next();
+        s.anchor.set(0.5);
+        s.alpha = 1.0;
+        s.texture = this.pixel;
+        s.tint = 0x00ff00;
+        s.x = this.game.getCameraX();
+        s.y = this.game.getCameraY();
+        s.width = 960.0;
+        s.height = 540.0;
+        s.rotation = 0.0;
+
         while ( this.game.next() ) {
             let s = this.screen.next();
             s.anchor.set(0.5);
+            s.alpha = 1.0;
             s.texture = this.pixel;
             s.tint = this.game.color;
             s.x = this.game.position_x;

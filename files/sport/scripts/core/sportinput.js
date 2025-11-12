@@ -7,6 +7,7 @@ class SportInput extends BasicInput {
     setContainer(c) {
 
         this.container = c;
+        this.container.eventMode = 'dynamic';
 
         this.touchDown = false;
         this.xPos = 0.0;
@@ -14,8 +15,11 @@ class SportInput extends BasicInput {
 
         this.container.on('pointerdown', (e) => {
             this.touchDown = true;
-            this.xPos = e.client.x;
-            this.yPos = e.client.y;
+            let local = this.container.toLocal(e.global);
+            this.xPos = local.x;
+            this.yPos = local.y;
+            //this.xPos = e.client.x;
+            //this.yPos = e.client.y;
         });
         this.container.on('pointerup', (e) => {
             this.touchDown = false;
@@ -29,8 +33,11 @@ class SportInput extends BasicInput {
         });
         this.container.on('globalpointermove', (e) => {
             if (this.touchDown == true) {
-                this.xPos = e.client.x;
-                this.yPos = e.client.y;
+                let local = this.container.toLocal(e.global);
+                this.xPos = local.x;
+                this.yPos = local.y;
+                //this.xPos = e.client.x;
+                //this.yPos = e.client.y;
             }
         });
 
