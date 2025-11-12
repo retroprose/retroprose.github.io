@@ -14,7 +14,7 @@ class SportIO extends PIXI.Container {
         this.local = local;
         this.game.setLocal(this.local);
 
-        this.screen = new Screen(960, 540);
+        this.screen = new Screen(540, 960);
         this.input = new SportInput();
         this.input.setContainer(this.screen.container);
 
@@ -98,7 +98,8 @@ class SportIO extends PIXI.Container {
         this.screen.begin();
 
         // scroll screen to camera position
-        this.screen.scroll(-this.game.getCameraX() + 480, -this.game.getCameraY() + 270);
+        //this.screen.scroll(-this.game.getCameraX() + 270, -this.game.getCameraY() + 480);
+        this.screen.scroll(-this.game.getCameraX() + 270, -this.game.getCameraY() + 480 + 240);
 
         this.game.begin();
 
@@ -108,9 +109,9 @@ class SportIO extends PIXI.Container {
         s.texture = this.pixel;
         s.tint = 0x00ff00;
         s.x = this.game.getCameraX();
-        s.y = this.game.getCameraY();
-        s.width = 960.0;
-        s.height = 540.0;
+        s.y = this.game.getCameraY() - 240;
+        s.width = 540.0;
+        s.height = 960.0;
         s.rotation = 0.0;
 
         while ( this.game.next() ) {
