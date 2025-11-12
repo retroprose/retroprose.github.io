@@ -121,7 +121,7 @@ class SportIO extends PIXI.Container {
         s.anchor.set(0.5);
         s.alpha = 1.0;
         s.texture = this.pixel;
-        s.tint = 0x00ff00;
+        s.tint = 0x00c800;
         s.x = this.game.getCameraX() - this.xOffset + 270;
         s.y = this.game.getCameraY() - this.yOffset + 480;
         s.width = 540.0;
