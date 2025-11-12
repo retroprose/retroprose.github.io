@@ -9,6 +9,8 @@ class SportInput extends BasicInput {
         this.container = c;
         this.container.eventMode = 'dynamic';
 
+        this.pressedThisFrame = false;
+        this.lastTouchDown = false;
         this.touchDown = false;
         this.xPos = 0.0;
         this.yPos = 0.0;
@@ -48,7 +50,8 @@ class SportInput extends BasicInput {
     }
 
     update(delta) {
-        
+        this.pressedThisFrame = (this.touchDown == true && this.lastTouchDown == false);
+        this.lastTouchDown = this.touchDown;
     }
     
 }
