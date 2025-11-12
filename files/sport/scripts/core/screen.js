@@ -36,6 +36,7 @@ class Screen extends PIXI.Container {
         const scale = Math.min(scaleX, scaleY);
 
         this.scale.set(scale);
+        //this.scale.set(1.0);
        
         // Center the stage if needed
         this.x = (window.innerWidth - (this.desiredWidth * scale)) / 2;
