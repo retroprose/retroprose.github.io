@@ -16,11 +16,10 @@ class SportIO extends PIXI.Container {
 
         this.screen = new Screen(540, 960);
         this.input = new SportInput();
-        this.input.setContainer(this.screen.container);
 
-        this.xOffset = 0.0;
-        this.yOffset = 0.0;
-        
+        this.targetX = 0.0;
+        this.targetY = 0.0;
+
         this.addChild(this.screen);
         this.addChild(this.input);
     }
@@ -79,32 +78,22 @@ class SportIO extends PIXI.Container {
         //this.bindInput.x = -32767 + slope * (this.input.stickStateX - -1.0);
         //this.bindInput.y = -32767 + slope * (this.input.stickStateY - -1.0);
 
-        this.bindInput.x = Math.floor(this.input.xPos);
-        this.bindInput.y = Math.floor(this.input.yPos);
+        this.targetX = ((this.input.xPos - this.screen.x) / this.screen.finalScale) + this.game.getCameraX();
+        this.targetY = ((this.input.yPos - this.screen.y) / this.screen.finalScale) + this.game.getCameraY();
+
+        this.bindInput.x = Math.floor(this.targetX);
+        this.bindInput.y = Math.floor(this.targetY);
 
         //console.log("x: " + this.input.xPos + ", " + "y: " + this.input.yPos);
 
         if (this.input.touchDown == true) this.bindInput.bomb = true;
-        if (this.input.pressedThisFrame == true) this.bindInput.kick = true;
-
+       
         this.game.getInput(this.bindInput, buffer);
     }
 
     update() {
-        this.input.update();
-        if (this.input.pressedThisFrame == true) {
-            //this.xOffset = this.game.getCameraX() - this.input.xPos;
-            //this.yOffset = this.game.getCameraY() - this.input.yPos;
-            this.xOffset = this.input.xPos - (this.game.getCameraX() - this.xOffset);
-            this.yOffset = this.input.yPos - (this.game.getCameraY() - this.yOffset);
-        
-            //this.xOffset = 270.0;
-            //this.yOffset = 480.0;
-        
-        }
         return this.game.update();    
     }
-
 
     render() {
         if (!this.pixel) { return; }
@@ -113,20 +102,9 @@ class SportIO extends PIXI.Container {
 
         // scroll screen to camera position
         //this.screen.scroll(-this.game.getCameraX() + 270, -this.game.getCameraY() + 480);
-        this.screen.scroll(-this.game.getCameraX() + this.xOffset, -this.game.getCameraY() + this.yOffset);
+        this.screen.scroll(-this.game.getCameraX(), -this.game.getCameraY());
 
         this.game.begin();
-
-        let s = this.screen.next();
-        s.anchor.set(0.5);
-        s.alpha = 1.0;
-        s.texture = this.pixel;
-        s.tint = 0x00c800;
-        s.x = this.game.getCameraX() - this.xOffset + 270;
-        s.y = this.game.getCameraY() - this.yOffset + 480;
-        s.width = 540.0;
-        s.height = 960.0;
-        s.rotation = 0.0;
 
         while ( this.game.next() ) {
             let s = this.screen.next();
@@ -141,7 +119,9 @@ class SportIO extends PIXI.Container {
             s.rotation = this.game.rotation;
         }
 
-        this.screen.text(this.game.getCameraX(), this.game.getCameraY(), "" + this.xOffset + ", " + this.yOffset);
+        //this.screen.text(this.game.getCameraX(), this.game.getCameraY(), "" + this.xOffset + ", " + this.yOffset);
+        //this.screen.text(this.game.getCameraX(), this.game.getCameraY(), "" + this.input.testX + ", " + this.input.testY);
+        //this.screen.text(this.game.getCameraX(), this.game.getCameraY(), "" + this.targetX + ", " + this.targetY);
 
         this.screen.end();
     }

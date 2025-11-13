@@ -11,6 +11,7 @@ class Screen extends PIXI.Container {
             }
         });
 
+        this.finalScale = 1.0;
         this.desiredWidth = width;
         this.desiredHeight = height;
 
@@ -33,14 +34,14 @@ class Screen extends PIXI.Container {
     resize() {
         const scaleX = window.innerWidth / this.desiredWidth;
         const scaleY = window.innerHeight / this.desiredHeight;
-        const scale = Math.min(scaleX, scaleY);
+        this.finalScale = Math.min(scaleX, scaleY);
 
-        this.scale.set(scale);
+        this.scale.set(this.finalScale);
         //this.scale.set(1.0);
        
         // Center the stage if needed
-        this.x = (window.innerWidth - (this.desiredWidth * scale)) / 2;
-        this.y = (window.innerHeight - (this.desiredHeight * scale)) / 2;
+        this.x = (window.innerWidth - (this.desiredWidth * this.finalScale)) / 2;
+        this.y = (window.innerHeight - (this.desiredHeight * this.finalScale)) / 2;
     }
 
     scroll(x, y) {
