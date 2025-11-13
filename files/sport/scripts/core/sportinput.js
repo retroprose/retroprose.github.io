@@ -9,6 +9,8 @@ class SportInput extends BasicInput {
 
         window.onpointerdown = (e) => {
             this.touchDown = true;
+            this.xPos = e.clientX;
+            this.yPos = e.clientY;
         };
         window.onpointerup = (e) => {
             this.touchDown = false;
