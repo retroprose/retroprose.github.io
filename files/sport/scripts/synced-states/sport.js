@@ -97,6 +97,8 @@ class SportIO extends PIXI.Container {
         //this.screen.text(this.game.getCameraX(), this.game.getCameraY(), "" + this.input.testX + ", " + this.input.testY);
         //this.screen.text(this.game.getCameraX(), this.game.getCameraY(), "" + this.targetX + ", " + this.targetY);
 
+        //this.screen.text(this.game.getCameraX(), this.game.getCameraY(), "" + this.game.normal_x + ", " + this.game.normal_y + " - " + this.game.distance);
+
         this.screen.end();
     }
 
