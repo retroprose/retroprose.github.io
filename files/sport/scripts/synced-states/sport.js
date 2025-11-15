@@ -8,6 +8,8 @@ class SportIO extends PIXI.Container {
             this.pixel = texture;
         });
 
+        this.circles = {};
+
         this.game = new Module.BindGame();
         this.bindInput = new Module.BindInput();
 
@@ -79,17 +81,40 @@ class SportIO extends PIXI.Container {
 
         this.game.begin();
 
+        console.log(PIXI.renderer);
+
         while ( this.game.next() ) {
             let s = this.screen.next();
-            s.anchor.set(0.5);
-            s.alpha = 1.0;
-            s.texture = this.pixel;
-            s.tint = this.game.color;
-            s.x = this.game.position_x;
-            s.y = this.game.position_y;
-            s.width = this.game.size_x;
-            s.height = this.game.size_y;
-            s.rotation = this.game.rotation;
+            if (this.game.size_y == -1) {
+                // circle
+                let radius = Math.floor(this.game.size_x);
+                if (!(radius in this.circles)) {
+                    let graphics = new PIXI.Graphics().circle(0, 0, radius).fill(0xffffff);
+                    this.circles[radius] = window.__PIXI_APP__.renderer.generateTexture(graphics);
+                    graphics.destroy();
+                }
+                s.anchor.set(0.5);
+                s.texture = this.circles[radius];
+                s.alpha = 1.0;
+                s.tint = this.game.color;
+                s.x = this.game.position_x;
+                s.y = this.game.position_y;
+                s.width = this.game.size_x + this.game.size_x;
+                s.height = this.game.size_x + this.game.size_x;
+                s.rotation = this.game.rotation;
+            } else {
+                // square
+                s.texture = this.pixel;
+                s.anchor.set(0.5);
+                s.alpha = 1.0;
+                s.tint = this.game.color;
+                s.x = this.game.position_x;
+                s.y = this.game.position_y;
+                s.width = this.game.size_x + this.game.size_x;
+                s.height = this.game.size_y + this.game.size_y;
+                s.rotation = this.game.rotation;
+            }
+
         }
 
         // for debugging

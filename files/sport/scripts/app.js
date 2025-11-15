@@ -13,6 +13,8 @@ class App {
         document.body.appendChild(this.pixi.canvas);
         PIXI.TextureStyle.defaultOptions.scaleMode = 'nearest';
 
+        window.__PIXI_APP__ = this.pixi;
+
         // create first object
         this.thing = new window.factory['SelectState']({next:'SelectState'});
         this.pixi.stage.addChild(this.thing);
@@ -42,7 +44,7 @@ class App {
     update(delta) {
         this.thing.update(delta);
         if (this.thing.returned) {
-            console.log(this.thing.returned);
+            //console.log(this.thing.returned);
             this.pixi.stage.removeChild(this.thing);
             let n = new window.factory[this.thing.returned.next](this.thing.returned);
             this.thing.destroy();
