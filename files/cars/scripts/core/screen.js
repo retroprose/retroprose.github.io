@@ -54,7 +54,8 @@ class Screen extends PIXI.Container {
     }
 
     zoom(s) {
-        this.container.scale.set(s, -s);
+        // this.container.scale.set(s, -s);
+        this.container.scale.set(s);
     }
 
     next() {
