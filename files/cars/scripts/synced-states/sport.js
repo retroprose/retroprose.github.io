@@ -17,14 +17,19 @@ class SportIO extends PIXI.Container {
         this.game.setLocal(this.local);
 
         this.screen = new Screen(540, 960);
-        this.input = new SportInput();
+        this.input = new CarInput();
 
         this.lastDown = false;
         this.targetX = 0.0;
         this.targetY = 0.0;
 
+        this.background = new PIXI.Graphics();
+      
+        this.addChild(this.background);
+
         this.addChild(this.screen);
-        this.addChild(this.input);
+        this.screen.addChild(this.input);
+        //this.addChild(this.input);
     }
 
     destroy() {
@@ -34,6 +39,10 @@ class SportIO extends PIXI.Container {
     }
 
     resize() {
+        this.background.clear(); 
+        this.background.beginFill(0x4c4c4c); 
+        this.background.drawRect(0, 0, window.innerWidth, window.innerHeight); 
+        this.background.endFill();
         this.input.resize();
         this.screen.resize();
     }
