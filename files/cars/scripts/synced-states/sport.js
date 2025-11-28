@@ -53,6 +53,8 @@ class SportIO extends PIXI.Container {
 
     processInput(buffer) {
 
+        this.input.update(0);
+
         // clear out all the booleans
         this.bindInput.up = false;
         this.bindInput.down = false;
@@ -77,14 +79,16 @@ class SportIO extends PIXI.Container {
 
         if (this.input.keyState[' ']) this.bindInput.bomb = true;
        
+       // this.bindInput.x = this.input.wheelRadians;
+       // this.bindInput.y = this.input.gasPetal;
         
         if (this.input.touchDown == true && this.lastDown == false) {
             this.targetX = this.input.xPos;
             this.targetY = this.input.yPos;
         }
         if (this.input.touchDown) {
-            let dx = (this.input.xPos - this.targetX) / 100;
-            let dy = (this.input.yPos - this.targetY) / 100;
+            let dx = (this.input.xPos - this.targetX) / this.input.radius;
+            let dy = (this.input.yPos - this.targetY) / this.input.radius;
 
             let len = Math.sqrt(dx * dx + dy * dy);
 
@@ -93,6 +97,8 @@ class SportIO extends PIXI.Container {
                 dy = dy / len;
                 len = 1.0;
             }
+
+            dy = -dy;  // input has positive y down :(
 
             this.outputX = dx;
             this.outputY = dy;
@@ -131,11 +137,13 @@ class SportIO extends PIXI.Container {
         let rX = cX * cCos - cY * cSin;
         let rY = cX * cSin + cY * cCos;
 
+        
+        this.screen.scroll(270, 480);
         // scroll screen to camera position
         //this.screen.scroll(-rX + 270, -rY + 480 + 240);
         //this.screen.scroll(-rX * 20, -rY * 20);
         let zoom = 20;
-        this.screen.scroll(-rX * zoom + 270, -rY * zoom + 480 + 240);
+        this.screen.scroll(-rX * zoom + 270, -rY * zoom + 480 + 240 + 120);
         this.screen.rotate(-cA);
         this.screen.zoom(zoom);
 
