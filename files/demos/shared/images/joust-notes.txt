@@ -1,0 +1,45 @@
+/*
+
+  // create players
+for (size_t i = 0; i < PlayerCount; ++i) {
+    Input& input = inputs[i];
+    Slot& slot = slots[i];
+    if (input.connected == true) {
+        // make thing
+        auto r = db.create();
+        
+        r.flags = Flag::Active | Flag::Body | Flag::Renderable;
+
+        r.body.position = Vector2(0, 0);
+        r.body.size = Vector2(8, 8);
+        r.body.invMass = 1;
+        r.body.velocity = Vector2(0, 0);
+
+        r.renderable.color = Color(state.rand.next() % 256, state.rand.next() % 256, state.rand.next() % 256);
+        r.renderable.size = r.body.size;
+        r.renderable.rotation = Scaler(0);
+
+        slot.control = r.handle();
+
+    }
+}
+
+for (size_t i = 0; i < PlayerCount; ++i) {
+    Input& input = inputs[i];
+    Slot& slot = slots[i];
+    slot.camera = Vector2(0, 0);
+    slot.cameraAngle = 0;
+
+    if (input.connected && db.valid(slot.control)) {
+
+        auto r = db.reference(slot.control);
+
+        if (input.up && slot.lastDown==false) {r.body.velocity.y+=Fx.flapImpulse;}
+        if (input.down) { }
+        if (input.left) {r.body.velocity.x+=-Fx.walkImpulse;}
+        if (input.right) {r.body.velocity.x+=Fx.walkImpulse;}
+
+        slot.lastDown = input.up;
+    }
+}
+*/
