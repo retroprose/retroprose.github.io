@@ -1,0 +1,1269 @@
+[
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 0
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 22478848,
+                    "y": 2162688
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 1
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 20119552,
+                    "y": 6094848
+                },
+                "mass": 655360,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 2
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 22085632,
+                    "y": 7471104
+                },
+                "mass": 655360,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 3
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 20447232,
+                    "y": 1245184
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 4
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 15073280,
+                    "y": 1769472
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 5
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 19988480,
+                    "y": 8323072
+                },
+                "mass": 655360,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 6
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 20971520,
+                    "y": 3276800
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 7
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 28573696,
+                    "y": 4587520
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 8
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 35586048,
+                    "y": 6619136
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 9
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 32243712,
+                    "y": 7536640
+                },
+                "mass": 655360,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 10
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 37224448,
+                    "y": 7667712
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 11
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 32768000,
+                    "y": 5505024
+                },
+                "mass": 655360,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 12
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 28049408,
+                    "y": 2818048
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 13
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 30408704,
+                    "y": 5832704
+                },
+                "mass": 655360,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 14
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 37355520,
+                    "y": 5963776
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 15
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 26345472,
+                    "y": 3866624
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 16
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 17301504,
+                    "y": 2555904
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 17
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 15663104,
+                    "y": 4194304
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 18
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 34603008,
+                    "y": 9895936
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 19
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 36634624,
+                    "y": 10158080
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 20
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 35454976,
+                    "y": 11599872
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 21
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 25427968,
+                    "y": 5636096
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 22
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 27394048,
+                    "y": 6946816
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 23
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 24444928,
+                    "y": 7536640
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 24
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 35979264,
+                    "y": 1441792
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 25
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 33685504,
+                    "y": 2818048
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "nodes",
+            "generation": 0,
+            "index": 26
+        },
+        "components": {
+            "node": {
+                "pos": {
+                    "x": 36044800,
+                    "y": 3538944
+                },
+                "mass": 65536,
+                "node_type": 1,
+                "rad": 262144
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 0
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 8
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 14
+                },
+                "d": 1886936,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 1
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 10
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 14
+                },
+                "d": 1708970,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 2
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 8
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 10
+                },
+                "d": 1945216,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 3
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 11
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 13
+                },
+                "d": 2381943,
+                "k": 6554
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 4
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 13
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 9
+                },
+                "d": 2504127,
+                "k": 6554
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 5
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 9
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 11
+                },
+                "d": 2098176,
+                "k": 6554
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 6
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 7
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 15
+                },
+                "d": 2341938,
+                "k": 6554
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 7
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 15
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 12
+                },
+                "d": 2000727,
+                "k": 6554
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 8
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 12
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 7
+                },
+                "d": 1845511,
+                "k": 6554
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 9
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 0
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 6
+                },
+                "d": 1874375,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 10
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 6
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 3
+                },
+                "d": 2098176,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 11
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 3
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 0
+                },
+                "d": 2229188,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 12
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 1
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 5
+                },
+                "d": 2232076,
+                "k": 65536
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 13
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 5
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 2
+                },
+                "d": 2263602,
+                "k": 65536
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 14
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 2
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 1
+                },
+                "d": 2399906,
+                "k": 65536
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 15
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 17
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 4
+                },
+                "d": 2495537,
+                "k": 65536
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 16
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 16
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 4
+                },
+                "d": 2362934,
+                "k": 65536
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 17
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 16
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 17
+                },
+                "d": 2317048,
+                "k": 65536
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 18
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 19
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 18
+                },
+                "d": 2048459,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 19
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 18
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 20
+                },
+                "d": 1905058,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 20
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 19
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 20
+                },
+                "d": 1862883,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 21
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 21
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 23
+                },
+                "d": 2139728,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 22
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 23
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 22
+                },
+                "d": 3007524,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 23
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 22
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 21
+                },
+                "d": 2362934,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 24
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 25
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 24
+                },
+                "d": 2674961,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 25
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 24
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 26
+                },
+                "d": 2098176,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "springs",
+            "generation": 0,
+            "index": 26
+        },
+        "components": {
+            "spring": {
+                "n1": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 26
+                },
+                "n2": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 25
+                },
+                "d": 2466976,
+                "k": 32768
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "boxes",
+            "generation": 0,
+            "index": 0
+        },
+        "components": {
+            "box": {
+                "pos": {
+                    "x": 14811136,
+                    "y": 6815744
+                },
+                "size": {
+                    "x": 5439488,
+                    "y": 983040
+                },
+                "angle": 51472
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "boxes",
+            "generation": 0,
+            "index": 1
+        },
+        "components": {
+            "box": {
+                "pos": {
+                    "x": 22806528,
+                    "y": 13107200
+                },
+                "size": {
+                    "x": 5701632,
+                    "y": 851968
+                },
+                "angle": -51473
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "boxes",
+            "generation": 0,
+            "index": 2
+        },
+        "components": {
+            "box": {
+                "pos": {
+                    "x": 14942208,
+                    "y": 19791872
+                },
+                "size": {
+                    "x": 5636096,
+                    "y": 917504
+                },
+                "angle": 51472
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "boxes",
+            "generation": 0,
+            "index": 3
+        },
+        "components": {
+            "box": {
+                "pos": {
+                    "x": 23265280,
+                    "y": 25886720
+                },
+                "size": {
+                    "x": 5963776,
+                    "y": 917504
+                },
+                "angle": -51473
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "boxes",
+            "generation": 0,
+            "index": 4
+        },
+        "components": {
+            "box": {
+                "pos": {
+                    "x": 14090240,
+                    "y": 32833536
+                },
+                "size": {
+                    "x": 6553600,
+                    "y": 851968
+                },
+                "angle": 51472
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "boxes",
+            "generation": 0,
+            "index": 5
+        },
+        "components": {
+            "box": {
+                "pos": {
+                    "x": 29949952,
+                    "y": 13565952
+                },
+                "size": {
+                    "x": 6225920,
+                    "y": 917504
+                },
+                "angle": 51472
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "boxes",
+            "generation": 0,
+            "index": 6
+        },
+        "components": {
+            "box": {
+                "pos": {
+                    "x": 38338560,
+                    "y": 21626880
+                },
+                "size": {
+                    "x": 5963776,
+                    "y": 917504
+                },
+                "angle": -51473
+            }
+        }
+    },
+    {
+        "handle": {
+            "type": "boxes",
+            "generation": 0,
+            "index": 7
+        },
+        "components": {
+            "box": {
+                "pos": {
+                    "x": 30015488,
+                    "y": 30605312
+                },
+                "size": {
+                    "x": 5570560,
+                    "y": 851968
+                },
+                "angle": 51472
+            }
+        }
+    }
+]

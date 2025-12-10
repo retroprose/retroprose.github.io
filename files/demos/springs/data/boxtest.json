@@ -1,0 +1,245 @@
+{
+    "database": {
+        "type": "Components",
+        "types": {
+            "input": "InputData", 
+            "slotData": "SlotData", 
+            "node": "Node", 
+            "spring": "Spring", 
+            "box": "Box"
+        },
+        "architypes": {
+            "inputSlot": ["input", "slotData"],
+            "nodes": ["node"],
+            "springs":  ["spring"],
+            "boxes":  ["box"]
+        },
+        "data": [
+            {
+                "handle": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 0
+                },
+                "components": {
+                    "node": {
+                        "pos": {
+                            "x": 6553600,
+                            "y": 6553600
+                        },
+                        "mass": 65536,
+                        "node_type": 1,
+                        "rad": 262144
+                    }
+                }
+            },
+            {
+                "handle": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 1
+                },
+                "components": {
+                    "node": {
+                        "pos": {
+                            "x": 13107200,
+                            "y": 6553600
+                        },
+                        "mass": 65536,
+                        "node_type": 1,
+                        "rad": 262144
+                    }
+                }
+            },
+            {
+                "handle": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 2
+                },
+                "components": {
+                    "node": {
+                        "pos": {
+                            "x": 6553600,
+                            "y": 13107200
+                        },
+                        "mass": 65536,
+                        "node_type": 1,
+                        "rad": 262144
+                    }
+                }
+            },
+            {
+                "handle": {
+                    "type": "nodes",
+                    "generation": 0,
+                    "index": 3
+                },
+                "components": {
+                    "node": {
+                        "pos": {
+                            "x": 13107200,
+                            "y": 13107200
+                        },
+                        "mass": 65536,
+                        "node_type": 1,
+                        "rad": 262144
+                    }
+                }
+            },
+            {
+                "handle": {
+                    "type": "springs",
+                    "generation": 0,
+                    "index": 0
+                },
+                "components": {
+                    "spring": {
+                        "n1": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 0
+                        },
+                        "n2": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 1
+                        },
+                        "d": 6553600,
+                        "k": 49152
+                    }
+                }
+            },
+            {
+                "handle": {
+                    "type": "springs",
+                    "generation": 0,
+                    "index": 1
+                },
+                "components": {
+                    "spring": {
+                        "n1": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 1
+                        },
+                        "n2": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 3
+                        },
+                        "d": 6553600,
+                        "k": 49152
+                    }
+                }
+            },
+            {
+                "handle": {
+                    "type": "springs",
+                    "generation": 0,
+                    "index": 2
+                },
+                "components": {
+                    "spring": {
+                        "n1": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 3
+                        },
+                        "n2": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 2
+                        },
+                        "d": 6553600,
+                        "k": 49152
+                    }
+                }
+            },
+            {
+                "handle": {
+                    "type": "springs",
+                    "generation": 0,
+                    "index": 3
+                },
+                "components": {
+                    "spring": {
+                        "n1": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 2
+                        },
+                        "n2": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 0
+                        },
+                        "d": 6553600,
+                        "k": 49152
+                    }
+                }
+            },
+            {
+                "handle": {
+                    "type": "springs",
+                    "generation": 0,
+                    "index": 4
+                },
+                "components": {
+                    "spring": {
+                        "n1": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 0
+                        },
+                        "n2": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 3
+                        },
+                        "d": 9240576,
+                        "k": 49152
+                    }
+                }
+            },
+            {
+                "handle": {
+                    "type": "springs",
+                    "generation": 0,
+                    "index": 5
+                },
+                "components": {
+                    "spring": {
+                        "n1": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 1
+                        },
+                        "n2": {
+                            "type": "nodes",
+                            "generation": 0,
+                            "index": 2
+                        },
+                        "d": 9240576,
+                        "k": 49152
+                    }
+                }
+            }
+        ]
+    },
+    "event": {
+        "type": "SystemEvent",
+        "inputSlotFilter": ["input", "slotData"]
+    },
+    "update": {
+        "type": "SystemUpdate",
+        "event": "event",
+        "renderable": "renderable"
+    },
+    "renderable": {
+        "type": "SystemRenderable",
+        "node": ["node"],
+        "spring": ["spring"],
+        "box": ["box"]
+    }
+}

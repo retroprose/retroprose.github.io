@@ -13,8 +13,6 @@ class GalacticMaraudersIO extends PIXI.Container {
             this.texture = texture;
         });
 
-        this.backslashLastPress = false;
-
         this.game = new Module.BindGame();
         this.bindInput = new Module.BindInput();
 
@@ -44,11 +42,6 @@ class GalacticMaraudersIO extends PIXI.Container {
     }
 
     processInput(buffer) {
-
-        if (this.input.keyState['\\'] && this.backslashLastPress == false) {
-            this.input.visible = !this.input.visible;
-        }
-        this.backslashLastPress = this.input.keyState['\\'];
 
         this.bindInput.left = false;
         this.bindInput.right = false;

@@ -1,4 +1,4 @@
-class BasicInput extends PIXI.Container {
+class BasicMouseInput extends PIXI.Container {
 
     constructor() {
         super();
@@ -66,9 +66,6 @@ class BasicInput extends PIXI.Container {
     }
 
     keyDown(e) {
-        if (e.key == "\\") {
-            this.visible = !this.visible;
-        }
         this.keyState[e.key] = true;
     }
 
