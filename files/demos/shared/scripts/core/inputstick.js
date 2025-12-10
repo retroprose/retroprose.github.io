@@ -33,10 +33,10 @@ class InputStick extends BasicInput {
         this.pad.eventMode = 'static';
         this.pad.tint = 0xc8c8c8;
 
-        this.pad.pressedIt = false;
+        this.pad.pressedId = -1;
 
         this.pad.on('pointerdown', (e) => {
-            this.pad.pressedIt = true;
+            this.pad.pressedId = e.pointerId;
             this.stick.x = e.client.x;
             this.stick.y = e.client.y;
             // clip distance to pad
@@ -56,14 +56,14 @@ class InputStick extends BasicInput {
             this.stickStateY = (this.stick.y - this.pad.y) / this.stickSize;
         });
         this.pad.on('pointerup', (e) => {
-            this.pad.pressedIt = false;
+            this.pad.pressedId = -1;
             this.stick.x = this.pad.x;
             this.stick.y = this.pad.y;
             this.stickStateX = 0;
             this.stickStateY = 0;
         });
         this.pad.on('pointerupoutside', (e) => {
-            this.pad.pressedIt = false;
+            this.pad.pressedId = -1;
             this.stick.x = this.pad.x;
             this.stick.y = this.pad.y;
             this.stickStateX = 0;
@@ -71,7 +71,8 @@ class InputStick extends BasicInput {
         });
 
         this.pad.on('globalpointermove', (e) => {
-            if (this.pad.pressedIt == true) {
+            if (this.pad.pressedId == e.pointerId) {
+                console.log(e);
                 this.stick.x = e.client.x;
                 this.stick.y = e.client.y;
                 // clip distance to pad

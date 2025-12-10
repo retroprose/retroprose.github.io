@@ -1,0 +1,24 @@
+{
+    "systems": {
+        "filters": {
+            "_type": "SystemFilters"
+        },
+        "event": {
+            "_type": "SystemEvent"
+        },
+        "move": {
+            "_type": "SystemMove"
+        },
+        "scripter": {
+            "_type": "SystemScript"
+        },
+        "update": {
+            "_type": "SystemUpdate"
+        },
+        "input": {
+            "players": 16,
+            "_type": "SystemInput"
+        }
+    },
+    "database": []
+}

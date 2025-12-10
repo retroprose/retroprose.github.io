@@ -29,6 +29,7 @@ class RacingIO extends PIXI.Container {
         this.addChild(this.screen);
         this.screen.addChild(this.input);
         //this.addChild(this.input);
+        this.input.visible = false;
     }
 
     destroy() {
