@@ -72,7 +72,7 @@ class InputStick extends BasicInput {
 
         this.pad.on('globalpointermove', (e) => {
             if (this.pad.pressedId == e.pointerId) {
-                console.log(e);
+                //console.log(e);
                 this.stick.x = e.client.x;
                 this.stick.y = e.client.y;
                 // clip distance to pad

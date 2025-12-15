@@ -64,13 +64,15 @@ class RunnerIO extends PIXI.Container {
         if (this.input.keyState['ArrowUp'])    {this.bindInput.up = true;}
         if (this.input.keyState['ArrowDown'])   {this.bindInput.down = true;}
 
-        if (this.input.keyState[' '])       {this.bindInput.x = true;}
+        if (this.input.keyState['x'])       {this.bindInput.x = true;}
+        if (this.input.keyState['z'])       {this.bindInput.y = true;}
+        if (this.input.keyState[' '])       {this.bindInput.a = true;}
 
         //console.log(this.input.mouseX + ", " + this.input.mouseY + " - " + this.input.mouseButton);
 
         this.bindInput.axisX = this.input.mouseX;
         this.bindInput.axisY = this.input.mouseY;
-        if (this.input.mouseButton) {this.bindInput.y = true;}
+        if (this.input.mouseButton) {this.bindInput.b = true;}
         
         if (window.loadjson !== undefined) {
             // Example usage:

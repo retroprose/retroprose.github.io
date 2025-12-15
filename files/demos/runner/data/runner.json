@@ -9,6 +9,12 @@
         "update": {
             "_type": "SystemUpdate"
         },
+        "collision": {
+            "_type": "SystemCollision",
+            "body": ["body"],
+            "velocity": ["velocity"],
+            "bodyVelocity": [ "body", "velocity" ]
+        },
         "renderable": {
             "_type": "SystemRenderable"
         },
