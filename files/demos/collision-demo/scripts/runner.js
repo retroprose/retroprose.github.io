@@ -10,13 +10,7 @@ class RunnerIO extends PIXI.Container {
 
         this.runner = undefined;
         PIXI.Assets.load('./images/runner-sprite.json').then((texture) => {
-            this.runnerTest = texture.textures;
-            this.runner = [];
-            let i = 0
-            for (var k in texture.textures) {
-                this.runner[i] = texture.textures[k];
-                ++i;
-            }
+            this.runner = texture.textures;
         });
         
         this.circles = {};
@@ -27,11 +21,8 @@ class RunnerIO extends PIXI.Container {
         this.game = new Module.BindGame();
         this.game.testLoadNode(window.load_default);
 
-        this.background = new PIXI.Graphics();
-        this.addChild(this.background);
-
-        this.input = new RunnerInput();
-        this.screen = new Screen(960, 540);
+        this.input = new BasicInput();
+        this.screen = new Screen(800, 600);
         
         this.input.screen = this.screen;
 
@@ -46,10 +37,6 @@ class RunnerIO extends PIXI.Container {
     }
 
     resize() {
-        this.background.clear(); 
-        this.background.beginFill(0x4c4c4c); 
-        this.background.drawRect(0, 0, window.innerWidth, window.innerHeight); 
-        this.background.endFill();
         this.input.resize();
         this.screen.resize();
     }
@@ -81,9 +68,33 @@ class RunnerIO extends PIXI.Container {
         if (this.input.keyState['z'])       {this.bindInput.y = true;}
         if (this.input.keyState[' '])       {this.bindInput.a = true;}
 
-        // touch jump
-        if (this.input.touchDown)           {this.bindInput.up = true;}
-                
+        //console.log(this.input.mouseX + ", " + this.input.mouseY + " - " + this.input.mouseButton);
+
+        this.bindInput.axisX = this.input.mouseX;
+        this.bindInput.axisY = this.input.mouseY;
+        if (this.input.mouseButton) {this.bindInput.b = true;}
+        
+        if (window.loadjson !== undefined) {
+            // Example usage:
+            fetch('../data/' + window.loadjson + '.json', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(response => this.game.testLoadNode(response));
+
+            window.loadjson = undefined;
+        }
+        
+        if (window.savejson !== undefined) {
+            let saveObject = this.game.testSaveNode();
+            console.log(saveObject);
+            
+            window.savejson = undefined;
+        }
+        
         this.game.getInput(this.bindInput, buffer);
     }
 
@@ -100,7 +111,7 @@ class RunnerIO extends PIXI.Container {
         //this.screen.rotate(-cA);
         //this.screen.zoom(20);
 
-        this.screen.scroll(-this.game.getCameraX(), -this.game.getCameraY());
+        this.screen.scroll(0, 0);
         this.screen.rotate(0);
         this.screen.zoom(1);
 
@@ -109,44 +120,28 @@ class RunnerIO extends PIXI.Container {
         this.game.begin();
         while ( this.game.next() ) {
             let s = this.screen.next();
-
             s.anchor.set(0.5);
-            s.texture = this.runner[this.game.image];
-            s.alpha = this.game.alpha;
+            s.alpha = 1.0;
             s.tint = this.game.color;
             s.x = this.game.position_x;
             s.y = this.game.position_y;
+            s.width = this.game.size_x + this.game.size_x;
             s.rotation = this.game.rotation;
-            s.scale.set(1.0);
-
-            /*s.anchor.set(0.5);
-            s.alpha = this.game.alpha;
-            s.tint = this.game.color;
-            s.x = this.game.position_x;
-            s.y = this.game.position_y;
-            s.rotation = this.game.rotation;
-            if (this.game.image == 0) {
-                if (this.game.size_y == -1) {
-                    // circle
-                    let radius = Math.floor(this.game.size_x);
-                    if (!(radius in this.circles)) {
-                        let graphics = new PIXI.Graphics().circle(0, 0, radius).fill(0xffffff);
-                        this.circles[radius] = window.__PIXI_APP__.renderer.generateTexture(graphics);
-                        graphics.destroy();
-                    }
-                    s.texture = this.circles[radius];
-                    s.width = this.game.size_x + this.game.size_x;
-                    s.height = s.width;
-                } else {
-                    // square
-                    s.texture = this.pixel;
-                    s.width = this.game.size_x + this.game.size_x;
-                    s.height = this.game.size_y + this.game.size_y;
+            if (this.game.size_y == -1) {
+                // circle
+                let radius = Math.floor(this.game.size_x);
+                if (!(radius in this.circles)) {
+                    let graphics = new PIXI.Graphics().circle(0, 0, radius).fill(0xffffff);
+                    this.circles[radius] = window.__PIXI_APP__.renderer.generateTexture(graphics);
+                    graphics.destroy();
                 }
+                s.texture = this.circles[radius];
+                s.height = s.width;
             } else {
-                s.texture = this.runner[6];
-                s.scale.set(1.0);
-            }*/
+                // square
+                s.texture = this.pixel;
+                s.height = this.game.size_y + this.game.size_y;
+            }
         }
 
         this.screen.end();
