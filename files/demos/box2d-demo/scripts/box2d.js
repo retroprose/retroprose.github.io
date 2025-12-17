@@ -18,6 +18,9 @@ class Box2dIO extends PIXI.Container {
         this.screen = new Screen(800, 600);
         this.input = new BasicInput();
 
+        this.camX = 16;
+        this.camY = 32;
+
         this.lastDown = false;
         this.targetX = 0.0;
         this.targetY = 0.0;
@@ -72,6 +75,11 @@ class Box2dIO extends PIXI.Container {
         if (this.input.keyState['ArrowDown']) this.bindInput.down = true;
         if (this.input.keyState['ArrowLeft']) this.bindInput.left = true;
         if (this.input.keyState['ArrowRight']) this.bindInput.right = true;
+
+        if (this.input.keyState['i']) this.camY += 1;
+        if (this.input.keyState['k']) this.camY -= 1;
+        if (this.input.keyState['j']) this.camX -= 1;
+        if (this.input.keyState['l']) this.camX += 1;
 
         if (this.input.keyState['z']) this.bindInput.x = true;
         if (this.input.keyState['x']) this.bindInput.y = true;
@@ -168,15 +176,18 @@ class Box2dIO extends PIXI.Container {
         let zoom = this.game.getCameraScale();
         this.screen.scroll(-rX * zoom + 270, -rY * zoom + 480 + 240 + 120);
         this.screen.rotate(-cA);
-        this.screen.zoom(zoom);
+        //this.screen.zoom(zoom);
+        this.screen.container.scale.set(zoom, -zoom);
 
         //this.screen.scroll(8.0 * 20, 72.0 / 2 * 20);
         //this.screen.zoom(20);
 
         let newZoom = 20;
-        this.screen.scroll(16 * newZoom, 0 * newZoom);
+        //this.screen.scroll(16 * newZoom, 32 * newZoom);
+        this.screen.scroll(this.camX * newZoom, this.camY * newZoom);
         this.screen.rotate(0);
-        this.screen.zoom(newZoom);
+        //this.screen.zoom(newZoom);
+        this.screen.container.scale.set(newZoom, -newZoom);
 
         this.game.begin();
 

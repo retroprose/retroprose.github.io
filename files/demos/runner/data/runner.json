@@ -13,8 +13,8 @@
             "_type": "SystemCollision",
             "body": ["body"],
             "velocity": ["velocity"],
-            "man": ["man"],
-            "bodyVelocity": [ "body", "velocity", "man" ]
+            "entity": ["entity"],
+            "bodyVelocity": [ "body", "velocity", "entity" ]
         },
         "input": {
             "players": 32,
