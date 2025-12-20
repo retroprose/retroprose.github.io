@@ -25,6 +25,7 @@ class RunnerIO extends PIXI.Container {
 
         this.bindInput = new Module.BindInput();
         this.game = new Module.BindGame();
+        this.game.setLocal(this.local);
         this.game.testLoadNode(window.load_default);
 
         this.background = new PIXI.Graphics();
