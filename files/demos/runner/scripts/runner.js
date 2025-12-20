@@ -100,9 +100,9 @@ class RunnerIO extends PIXI.Container {
         //this.screen.rotate(-cA);
         //this.screen.zoom(20);
 
-        this.screen.scroll(-this.game.getCameraX(), -this.game.getCameraY());
+        this.screen.scroll(-this.game.getCameraX() * this.game.getCameraScale() + 480, -this.game.getCameraY() * this.game.getCameraScale() + 270);
         this.screen.rotate(0);
-        this.screen.zoom(1);
+        this.screen.zoom(this.game.getCameraScale());
 
         //s.texture = this.runner['astro_0_0'];
 
