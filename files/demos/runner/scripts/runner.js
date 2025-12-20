@@ -109,44 +109,51 @@ class RunnerIO extends PIXI.Container {
         this.game.begin();
         while ( this.game.next() ) {
             let s = this.screen.next();
-
-            s.anchor.set(0.5);
-            s.texture = this.runner[this.game.image];
-            s.alpha = this.game.alpha;
-            s.tint = this.game.color;
-            s.x = this.game.position_x;
-            s.y = this.game.position_y;
-            s.rotation = this.game.rotation;
-            s.scale.set(1.0);
-
-            /*s.anchor.set(0.5);
-            s.alpha = this.game.alpha;
-            s.tint = this.game.color;
-            s.x = this.game.position_x;
-            s.y = this.game.position_y;
-            s.rotation = this.game.rotation;
-            if (this.game.image == 0) {
-                if (this.game.size_y == -1) {
-                    // circle
-                    let radius = Math.floor(this.game.size_x);
-                    if (!(radius in this.circles)) {
-                        let graphics = new PIXI.Graphics().circle(0, 0, radius).fill(0xffffff);
-                        this.circles[radius] = window.__PIXI_APP__.renderer.generateTexture(graphics);
-                        graphics.destroy();
-                    }
-                    s.texture = this.circles[radius];
-                    s.width = this.game.size_x + this.game.size_x;
-                    s.height = s.width;
-                } else {
-                    // square
-                    s.texture = this.pixel;
-                    s.width = this.game.size_x + this.game.size_x;
-                    s.height = this.game.size_y + this.game.size_y;
-                }
-            } else {
-                s.texture = this.runner[6];
+            if (this.game.image != 309) {
+                s.anchor.set(0.5);
+                s.texture = this.runner[this.game.image];
+                s.alpha = this.game.alpha;
+                s.tint = this.game.color;
+                s.x = this.game.position_x;
+                s.y = this.game.position_y;
+                s.rotation = this.game.rotation;
                 s.scale.set(1.0);
-            }*/
+            } else {
+         
+                s.anchor.set(0.5);
+                s.alpha = this.game.alpha;
+                s.tint = this.game.color;
+                s.x = this.game.position_x;
+                s.y = this.game.position_y;
+                s.rotation = this.game.rotation;
+                if (this.game.image == 309) {
+                    if (this.game.size_y == -1) {
+                        // circle
+                        let radius = Math.floor(this.game.size_x);
+                        if (!(radius in this.circles)) {
+                            let graphics = new PIXI.Graphics().circle(0, 0, radius).fill(0xffffff);
+                            this.circles[radius] = window.__PIXI_APP__.renderer.generateTexture(graphics);
+                            graphics.destroy();
+                        }
+                        s.texture = this.circles[radius];
+                        s.width = this.game.size_x + this.game.size_x;
+                        s.height = s.width;
+                    } else {
+                        // square
+                        s.texture = this.pixel;
+                        s.width = this.game.size_x + this.game.size_x;
+                        s.height = this.game.size_y + this.game.size_y;
+                    }
+                } else {
+                    s.texture = this.runner[6];
+                    s.scale.set(1.0);
+                }
+
+            }
+            
+           
+
+           
         }
 
         this.screen.end();

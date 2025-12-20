@@ -1,24 +1,10 @@
 {
     "systems": {
-        "filters": {
-            "_type": "SystemFilters"
-        },
-        "event": {
-            "_type": "SystemEvent"
-        },
-        "update": {
-            "_type": "SystemUpdate"
-        },
         "collision": {
-            "_type": "SystemCollision",
-            "body": ["body"],
-            "velocity": ["velocity"],
-            "entity": ["entity"],
-            "bodyVelocity": [ "body", "velocity", "entity" ]
+            
         },
         "input": {
-            "players": 32,
-            "_type": "SystemInput"
+            "players": 32
         }
     },
     "database": []
