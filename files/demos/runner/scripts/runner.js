@@ -8,6 +8,11 @@ class RunnerIO extends PIXI.Container {
             this.pixel = texture;
         });
 
+        this.backgroundTex = undefined;
+        PIXI.Assets.load('./images/background.png').then((texture) => {
+            this.backgroundTex = texture;
+        });
+
         this.runner = undefined;
         PIXI.Assets.load('./images/runner-sprite.json').then((texture) => {
             this.runnerTest = texture.textures;
@@ -28,9 +33,6 @@ class RunnerIO extends PIXI.Container {
         this.game.setLocal(this.local);
         this.game.testLoadNode(window.load_default);
 
-        this.background = new PIXI.Graphics();
-        this.addChild(this.background);
-
         this.input = new RunnerInput();
         this.screen = new Screen(960, 540);
         
@@ -47,10 +49,6 @@ class RunnerIO extends PIXI.Container {
     }
 
     resize() {
-        this.background.clear(); 
-        this.background.beginFill(0x4c4c4c); 
-        this.background.drawRect(0, 0, window.innerWidth, window.innerHeight); 
-        this.background.endFill();
         this.input.resize();
         this.screen.resize();
     }
@@ -80,7 +78,9 @@ class RunnerIO extends PIXI.Container {
 
         if (this.input.keyState['x'])       {this.bindInput.x = true;}
         if (this.input.keyState['z'])       {this.bindInput.y = true;}
-        if (this.input.keyState[' '])       {this.bindInput.a = true;}
+        //if (this.input.keyState[' '])       {this.bindInput.a = true;}
+
+        if (this.input.keyState[' '])       {this.bindInput.up = true;}
 
         // touch jump
         if (this.input.touchDown)           {this.bindInput.up = true;}
@@ -93,7 +93,7 @@ class RunnerIO extends PIXI.Container {
     }
 
     render() {
-        if (!this.pixel || !this.runner) { return; }
+        if (!this.pixel || !this.runner || !this.backgroundTex) { return; }
 
         this.screen.begin();
 
@@ -104,6 +104,21 @@ class RunnerIO extends PIXI.Container {
         this.screen.scroll(-this.game.getCameraX() * this.game.getCameraScale() + 480, -this.game.getCameraY() * this.game.getCameraScale() + 270);
         this.screen.rotate(0);
         this.screen.zoom(this.game.getCameraScale());
+
+        // do background image!
+        let modcam = Math.floor(this.game.getCameraX() / 2);
+        modcam = modcam % 512;     
+        for (let i = 0; i < 3; ++i) {
+            let s = this.screen.next();
+            s.anchor.set(0.0);
+            s.texture = this.backgroundTex;
+            s.alpha = 1.0;
+            s.tint = 0x00ffffff;
+            s.x = (-480 + i * 512) + this.game.getCameraX() - modcam;
+            s.y = (-270) + this.game.getCameraY();
+            s.rotation = 0.0;
+            s.scale.set(1.0);
+        }
 
         //s.texture = this.runner['astro_0_0'];
 
