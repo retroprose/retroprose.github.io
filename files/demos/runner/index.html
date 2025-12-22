@@ -68,7 +68,7 @@
 						};
 					});
 				})();
-				const response = await fetch('./data/runner.json');
+				const response = await fetch('./data/runner-fixed.json');
 				window.load_default = await response.json();
 				window.factory = [ Lobby, RunnerIO ];
 				await new App().init();
