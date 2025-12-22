@@ -172,6 +172,22 @@ class RunnerIO extends PIXI.Container {
            
         }
 
+        if (this.game.getLocalDead()) {
+            for (let i = 0; i < this.game.getPlayerCount(); ++i) {
+                let pre = "       Slot ";
+                if (i == this.local) {
+                    pre = "YOU -> Slot ";
+                }
+                this.screen.text(this.game.getCameraX(), i * 16, pre + i + ": " + this.game.getGems(i));
+            }
+        } else {
+            this.screen.text(this.game.getCameraX(), 0, "Gems: " + this.game.getGems(this.local));
+        }
+
+        //this.screen.text(this.game.getCameraX() + 960 - 8, 0, "Gems: " + this.game.getLocalGems());
+
+
+
         this.screen.end();
     }
 
