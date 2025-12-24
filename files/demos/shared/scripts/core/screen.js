@@ -69,6 +69,9 @@ class Screen extends PIXI.Container {
         let sprite = this.container.children[this.index++];
         sprite.tint = 0xffffff;
         sprite.visible = true;
+        sprite.alpha = 1.0;
+        sprite.rotation = 0.0;
+        sprite.anchor.set(0.0);
         return sprite;
     }
 
@@ -95,6 +98,7 @@ class Screen extends PIXI.Container {
                 s.x = x;
                 s.y = y;
                 s.texture = this.ascii[text.charCodeAt(i) + color * 256];
+                s.scale.set(1.0);
                 x += 8;
             }
         }

@@ -23,9 +23,19 @@ class RectEdit {
                 'f': window.c.delete,
                 ' ': window.c.select
             })
-            c.cursor(4,132)
+            c.clear()
+            c.cursor(0,288)
+            c.grid(16,16,32,12,0,0,'tile')
+            c.cursor(4,132)            
             c.grid(24,24,10,2,8,8,'astro')
+            c.cursor(389, 229)
+            c.grid(6,6,1,1,0,0,'hook')
+            c.cursor(0, 0)
+            c.grid(120,120,4,1,8,0,'drill')
+            c.cursor(320, 224)
+            c.grid(16,16,1,1,0,0,'gem')
             c.pixidump()
+
         */
 
         // astronaut 24x24
@@ -33,7 +43,7 @@ class RectEdit {
         // c.grid(24,24,10,2,8,8,'astro')
         // c.pixidump()
         this.image_name = 'runner-sprite.png';
-        this.texture = await PIXI.Assets.load('../../runner/images/' + this.image_name);
+        this.texture = await PIXI.Assets.load('../../../runner/images/' + this.image_name);
 
         //console.log(this.texture);
 
@@ -167,7 +177,7 @@ class RectEdit {
             cursor: (x, y) => {
                 self.cursor.x = Math.floor(x);
                 self.cursor.y = Math.floor(y);
-                console.log("cursor: " + self.cursor.x + ", " + self.cursor.y);
+                console.log("c.cursor(" + self.cursor.x + ", " + self.cursor.y + ")");
             },
             select: () => {
                 const localx = self.cursor.x;
@@ -186,7 +196,15 @@ class RectEdit {
                 }
                 if (s != -1) {
                     self.selected = s;
-                    console.log(`selected: ${self.rects[self.selected].name}`);
+                    console.log(`selected ${s}: ${self.rects[self.selected].name} { ${self.rects[self.selected].width}, ${self.rects[self.selected].height} }`);
+
+                    /*let name = self.rects[self.selected].name;
+                    let split = name.split("_");
+                    let xc = parseInt(split[1]);
+                    let yc = parseInt(split[2]);
+                    let index = yc * 32 + xc;
+                    console.log(`index: ${index}`);*/
+
                 }
             },
             name: (n) => {
@@ -217,7 +235,7 @@ class RectEdit {
             const local = this.container.toLocal(e.global);
             this.cursor.x = Math.floor(local.x);
             this.cursor.y = Math.floor(local.y);
-            console.log("cursor: " + this.cursor.x + ", " + this.cursor.y);
+            console.log("c.cursor(" + this.cursor.x + ", " + this.cursor.y + ")");
         }
     }
 
