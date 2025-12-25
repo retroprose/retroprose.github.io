@@ -7,7 +7,7 @@
 		<meta name="apple-mobile-wep-app-status-bar-style" content="#000000">
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 		<meta name="generator" content="mycontent" />
-		<title>Demo</title>
+		<title>Screen Dimensions</title>
 		<style>
 			html, body {
 				margin: 0 !important;
@@ -44,8 +44,37 @@
 		</style>
 	</head>
 	<body>
-		<script src="../scripts/core/pixi.min.js"></script>
-		<script src="../scripts/editor/rects.js"></script>
-		<script>new RectEdit().init()</script>
+		<script src="../../scripts/core/pixi.min.js"></script>
+		<script src="../../scripts/editor/screen.js"></script>
+		<script>
+			class ScreenDimensions {
+				async init() {
+					this.pixi = new PIXI.Application();
+					await this.pixi.init({ background: '#000000', resizeTo: window });
+					document.body.appendChild(this.pixi.canvas);
+					this.screen = new ScreenEditor();
+					this.pixi.stage.addChild(this.screen);
+					window.addEventListener('keydown', (event) => {
+						if (event.key == '`') {
+							if (this.pixi.canvas.requestFullscreen) {
+								this.pixi.canvas.requestFullscreen();
+							} else if (this.pixi.canvas.webkitRequestFullscreen) { // Safari
+								this.pixi.canvas.webkitRequestFullscreen();
+							} else if (this.pixi.canvas.msRequestFullscreen) { // IE11
+								this.pixi.canvas.msRequestFullscreen();
+							}
+						}
+					});
+					requestAnimationFrame(this.update.bind(this));
+				}
+				update(delta) {
+					this.screen.begin();
+					this.screen.text(0, 0, `Screen Dimensions: ${window.innerWidth}, ${window.innerHeight}`);
+					this.screen.end();
+					requestAnimationFrame(this.update.bind(this));
+				}
+			}
+			new ScreenDimensions().init()
+		</script>
 	</body>
 </html>
