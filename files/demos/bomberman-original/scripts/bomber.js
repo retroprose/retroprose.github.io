@@ -151,6 +151,8 @@ class BomberIO extends PIXI.Container {
 
         this.addChild(this.output);
         this.addChild(this.input);
+
+        this.resetInput();
     }
 
     destroy() {
@@ -174,10 +176,10 @@ class BomberIO extends PIXI.Container {
 
     network(playerInput) {
         this.game.setInput(playerInput);
+        this.resetInput();
     }
 
-    processInput(buffer) {
-
+    resetInput() {
         this.bindInput.up = false;
         this.bindInput.down = false;
         this.bindInput.left = false;
@@ -186,7 +188,17 @@ class BomberIO extends PIXI.Container {
         this.bindInput.punch = false;
         this.bindInput.kick = false;
         this.bindInput.detonate = false;
+    }
 
+    processInput(buffer) {
+        this.game.getInput(this.bindInput, buffer);
+        this.resetInput();
+    }
+
+    updateDelta(delta) {
+
+        this.input.update(delta);
+        
         for (const gamepad of navigator.getGamepads()) {
             if (!gamepad) continue;
             if (gamepad.buttons.length < 16) continue;
@@ -242,9 +254,6 @@ class BomberIO extends PIXI.Container {
         }
 
         if (this.input.buttonState) this.bindInput.bomb = true;
-
-        this.game.getInput(this.bindInput, buffer);
-
     }
 
     update() {

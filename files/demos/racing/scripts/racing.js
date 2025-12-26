@@ -30,6 +30,8 @@ class RacingIO extends PIXI.Container {
         this.screen.addChild(this.input);
         //this.addChild(this.input);
         this.input.visible = false;
+
+        this.resetInput();
     }
 
     destroy() {
@@ -52,9 +54,11 @@ class RacingIO extends PIXI.Container {
     }
 
     processInput(buffer) {
+        this.game.getInput(this.bindInput, buffer);
+        this.resetInput();
+    }
 
-        this.input.update(0);
-
+    resetInput() {
         // clear out all the booleans
         this.bindInput.up = false;
         this.bindInput.down = false;
@@ -68,6 +72,10 @@ class RacingIO extends PIXI.Container {
         // set the network input to that target coordinate
         this.bindInput.axisX = 0;
         this.bindInput.axisY = 0;
+    }
+
+    updateDelta(delta) {
+        this.input.update(delta);
 
         if (this.input.keyState['ArrowUp']) this.bindInput.up = true;
         if (this.input.keyState['ArrowDown']) this.bindInput.down = true;
@@ -116,8 +124,6 @@ class RacingIO extends PIXI.Container {
         //if (this.input.touchDown == true) this.bindInput.bomb = true;
        
         //console.log(this.bindInput.axisX + ", " + this.bindInput.axisY);
-
-        this.game.getInput(this.bindInput, buffer);
     }
 
     update() {

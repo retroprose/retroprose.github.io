@@ -107,6 +107,8 @@ class BombermanIO extends PIXI.Container {
 
         this.addChild(this.screen);
         this.addChild(this.input);
+
+        this.resetInput();
     }
 
     destroy() {
@@ -125,9 +127,8 @@ class BombermanIO extends PIXI.Container {
         this.game.setInput(playerInput);
     }
 
-    processInput(buffer) {
-
-   this.bindInput.up = false;
+    resetInput() {
+        this.bindInput.up = false;
         this.bindInput.down = false;
         this.bindInput.left = false;
         this.bindInput.right = false;
@@ -135,8 +136,15 @@ class BombermanIO extends PIXI.Container {
         this.bindInput.punch = false;
         this.bindInput.kick = false;
         this.bindInput.detonate = false;
+    }
 
-        for (const gamepad of navigator.getGamepads()) {
+    processInput(buffer) {
+        this.game.getInput(this.bindInput, buffer);
+        this.resetInput();
+    }
+
+    updateDelta(delta) {
+          for (const gamepad of navigator.getGamepads()) {
             if (!gamepad) continue;
             if (gamepad.buttons.length < 16) continue;
 
@@ -191,8 +199,6 @@ class BombermanIO extends PIXI.Container {
         }
 
         if (this.input.buttonState) this.bindInput.bomb = true;
-
-        this.game.getInput(this.bindInput, buffer);
     }
 
     update() {

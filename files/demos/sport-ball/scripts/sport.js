@@ -24,6 +24,8 @@ class SportIO extends PIXI.Container {
 
         this.addChild(this.screen);
         this.addChild(this.input);
+    
+        this.resetInput();
     }
 
     destroy() {
@@ -41,8 +43,7 @@ class SportIO extends PIXI.Container {
         this.game.setInput(playerInput);
     }
 
-    processInput(buffer) {
-
+    resetInput() {
         // clear out all the booleans
         this.bindInput.up = false;
         this.bindInput.down = false;
@@ -52,7 +53,14 @@ class SportIO extends PIXI.Container {
         this.bindInput.punch = false;
         this.bindInput.kick = false;
         this.bindInput.detonate = false;
+    }
 
+    processInput(buffer) {
+        this.game.getInput(this.bindInput, buffer);
+        this.resetInput();
+    }
+
+    updateDelta(delta) {
         // find the global target coordinate with respect to the whole play field
         this.targetX = ((this.input.xPos - this.screen.x) / this.screen.finalScale) + this.game.getCameraX();
         this.targetY = ((this.input.yPos - this.screen.y) / this.screen.finalScale) + this.game.getCameraY();
@@ -63,8 +71,6 @@ class SportIO extends PIXI.Container {
 
         // I'm using the bomb boolean for if the player has a finger down
         if (this.input.touchDown == true) this.bindInput.bomb = true;
-       
-        this.game.getInput(this.bindInput, buffer);
     }
 
     update() {

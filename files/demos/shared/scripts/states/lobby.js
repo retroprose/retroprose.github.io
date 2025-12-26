@@ -75,6 +75,10 @@ class Lobby extends PIXI.Container {
 
     }
 
+    updateDelta(delta) {
+        // no need to do anything
+    }
+
     update() {
 
         let active = 0;

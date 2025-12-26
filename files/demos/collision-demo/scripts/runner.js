@@ -28,6 +28,8 @@ class RunnerIO extends PIXI.Container {
 
         this.addChild(this.screen);
         this.addChild(this.input);
+
+        this.resetInput();
     }
 
     destroy() {
@@ -45,8 +47,7 @@ class RunnerIO extends PIXI.Container {
         this.game.setInput(playerInput);
     }
 
-    processInput(buffer) {
-
+    resetInput() {
         this.bindInput.up = false;
         this.bindInput.down = false;
         this.bindInput.left = false;
@@ -58,7 +59,14 @@ class RunnerIO extends PIXI.Container {
 
         this.bindInput.x = 0;
         this.bindInput.y = 0;
+    }
 
+    processInput(buffer) {
+        this.game.getInput(this.bindInput, buffer);
+        this.resetInput();
+    }
+
+    updateDelta(delta) {
         if (this.input.keyState['ArrowLeft'])    {this.bindInput.left = true;}
         if (this.input.keyState['ArrowRight'])   {this.bindInput.right = true;}
         if (this.input.keyState['ArrowUp'])    {this.bindInput.up = true;}
@@ -94,10 +102,8 @@ class RunnerIO extends PIXI.Container {
             
             window.savejson = undefined;
         }
-        
-        this.game.getInput(this.bindInput, buffer);
     }
-
+ 
     update() {
         return this.game.update();
     }

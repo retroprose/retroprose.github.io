@@ -58,7 +58,7 @@ class OfflineState extends PIXI.Container {
 
         this.tickCounter += delta;
 
-        this.state.processInput(this.buffer);
+        this.state.updateDelta(deltaQ);
 
         while (this.tickCounter >= 17) {
             this.tickCounter -= 17;
@@ -78,6 +78,7 @@ class OfflineState extends PIXI.Container {
                 //this.inputBuffer[7] = 0xff;
                 
                 // set input to the buffer
+                this.state.processInput(this.buffer);
                 for (let i = 0; i < 8; ++i) {
                     this.inputBuffer[12 + i] = this.buffer[i];
                 }

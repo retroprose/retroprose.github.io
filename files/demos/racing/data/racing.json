@@ -1,17 +1,5 @@
 {
     "systems": {
-        "filters": {
-            "_type": "SystemFilters"
-        },
-        "event": {
-            "_type": "SystemEvent"
-        },
-        "update": {
-            "_type": "SystemUpdate"
-        },
-        "renderable": {
-            "_type": "SystemRenderable"
-        },
         "world": {
             "body": ["body"],
             "joint": ["joint"],
@@ -19,12 +7,10 @@
                 "x": 0,
                 "y": 0
             },
-            "iterations": 10,
-            "_type": "SystemWorld"
+            "iterations": 10
         },
         "input": {
-            "players": 32,
-            "_type": "SystemInput"
+            "players": 32
         }
     },
     "database": []

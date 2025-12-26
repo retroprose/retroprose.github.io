@@ -32,6 +32,10 @@ class DebugIO extends PIXI.Container {
 
     }
 
+    updateDelta(delta) {
+        
+    }
+
     update() {
         return false;
     }

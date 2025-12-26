@@ -24,6 +24,8 @@ class GalacticMaraudersIO extends PIXI.Container {
 
         this.addChild(this.screen);
         this.addChild(this.input);
+
+        this.resetInput();
     }
 
     destroy() {
@@ -42,11 +44,17 @@ class GalacticMaraudersIO extends PIXI.Container {
     }
 
     processInput(buffer) {
+        this.game.getInput(this.bindInput, buffer);
+        this.resetInput();
+    }  
 
+    resetInput() {
         this.bindInput.left = false;
         this.bindInput.right = false;
         this.bindInput.primary = false;
+    }
 
+    updateDelta(delta) {
         /*for (const gamepad of navigator.getGamepads()) {
             if (!gamepad) continue;
             if (gamepad.buttons.length < 16) continue;
@@ -72,9 +80,6 @@ class GalacticMaraudersIO extends PIXI.Container {
         if (this.input.stickStateX > 0.0) this.bindInput.right = true;
         if (this.input.stickStateX < 0.0) this.bindInput.left = true;
         if (this.input.buttonState == 1) this.bindInput.primary = true;
-
-        this.game.getInput(this.bindInput, buffer);
-
     }
 
     update() {

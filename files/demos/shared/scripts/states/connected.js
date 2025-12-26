@@ -123,6 +123,9 @@ class ConnectedState extends PIXI.Container {
                 } else {
                     if (this.bufferQueue < this.MAX_FORWARD) {
                         // send it!
+                        if (this.state) {
+                            this.state.processInput(this.buffer);
+                        }
                         this.socket.send(this.buffer);                        
                         this.bufferQueue++;
                     }
@@ -157,7 +160,7 @@ class ConnectedState extends PIXI.Container {
         this.lastTicks = deltaQ;
 
         if (this.state) {
-            this.state.processInput(this.buffer);
+            this.state.updateDelta(deltaQ);
         }
 
         if (!this.running) {

@@ -24,6 +24,8 @@ class BomberIO extends PIXI.Container {
 
         this.addChild(this.screen);
         this.addChild(this.input);
+
+        this.resetInput();
     }
 
     destroy() {
@@ -43,7 +45,11 @@ class BomberIO extends PIXI.Container {
     }
 
     processInput(buffer) {
+        this.game.getInput(this.bindInput, buffer);
+        this.resetInput();
+    }
 
+    resetInput() {
         this.bindInput.up = false;
         this.bindInput.down = false;
         this.bindInput.left = false;
@@ -81,6 +87,9 @@ class BomberIO extends PIXI.Container {
         this.bindInput.x = 0;
         this.bindInput.y = 0;
 
+    }
+
+    updateDelta(delta) {
         /*if (this.input.keyState['w']) this.bindInput.y = -32767;
         if (this.input.keyState['s']) this.bindInput.y = 32767;
         if (this.input.keyState['a']) this.bindInput.x = -32767;
@@ -93,11 +102,8 @@ class BomberIO extends PIXI.Container {
         this.bindInput.y = this.input.right;
 
         if (this.buttonState == 1) this.bindInput.bomb = true;
-
-        this.game.getInput(this.bindInput, buffer);
-
     }
-
+    
     update() {
         return this.game.update();
     }

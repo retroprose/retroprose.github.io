@@ -32,6 +32,8 @@ class Box2dIO extends PIXI.Container {
         this.addChild(this.screen);
         this.screen.addChild(this.input);
         //this.addChild(this.input);
+
+        this.resetInput();
     }
 
     destroy() {
@@ -53,10 +55,7 @@ class Box2dIO extends PIXI.Container {
         this.game.setInput(playerInput);
     }
 
-    processInput(buffer) {
-
-        this.input.update(0);
-
+    resetInput() {
         // clear out all the booleans
         this.bindInput.up = false;
         this.bindInput.down = false;
@@ -70,6 +69,15 @@ class Box2dIO extends PIXI.Container {
         // set the network input to that target coordinate
         this.bindInput.axisX = 0;
         this.bindInput.axisY = 0;
+    }
+
+    processInput(buffer) {
+        this.game.getInput(this.bindInput, buffer);
+        this.resetInput();
+    }
+
+    updateDelta(delta) {
+        this.input.update(delta);
 
         if (this.input.keyState['ArrowUp']) this.bindInput.up = true;
         if (this.input.keyState['ArrowDown']) this.bindInput.down = true;
@@ -143,8 +151,6 @@ class Box2dIO extends PIXI.Container {
         //if (this.input.touchDown == true) this.bindInput.bomb = true;
        
         //console.log(this.bindInput.axisX + ", " + this.bindInput.axisY);
-
-        this.game.getInput(this.bindInput, buffer);
     }
 
     update() {
