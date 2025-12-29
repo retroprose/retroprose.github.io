@@ -60,6 +60,7 @@ class RunnerIO extends PIXI.Container {
     }
 
     processInput(buffer) {
+        window.__debug_data__['send_calls']++;
         this.game.getInput(this.bindInput, buffer);
         this.resetInput();
     }
@@ -79,6 +80,9 @@ class RunnerIO extends PIXI.Container {
     }
 
     updateDelta(delta) {
+
+        window.__debug_data__['input_calls']++;
+
         this.input.update(delta);
 
         if (this.input.keyState['ArrowLeft'])    {this.bindInput.left = true;}
@@ -97,6 +101,7 @@ class RunnerIO extends PIXI.Container {
     }
 
     update() {
+        window.__debug_data__['update_calls']++;
         return this.game.update();
     }
 
@@ -192,9 +197,9 @@ class RunnerIO extends PIXI.Container {
             this.screen.text(this.game.getCameraX(), 0, "Gems: " + this.game.getGems(this.local));
         }
 
+        this.screen.text(this.game.getCameraX(), 16, JSON.stringify(window.__debug_data__, null, 4));
+
         //this.screen.text(this.game.getCameraX() + 960 - 8, 0, "Gems: " + this.game.getLocalGems());
-
-
 
         this.screen.end();
     }

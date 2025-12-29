@@ -7,6 +7,12 @@ class App {
         document.body.appendChild(this.pixi.canvas);
         PIXI.TextureStyle.defaultOptions.scaleMode = 'nearest';
 
+        window.__debug_data__ = {
+            'send_calls': 0,
+            'input_calls': 0,
+            'update_calls': 0
+        };
+
         window.__PIXI_APP__ = this.pixi;
         this.factory = {
             'SelectState': SelectState,

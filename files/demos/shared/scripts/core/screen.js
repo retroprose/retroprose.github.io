@@ -92,6 +92,7 @@ class Screen extends PIXI.Container {
         let y = sy;
         for (let i = 0; i < text.length; ++i) {
             if (text.charAt(i) == '\n') {
+                x = sx;
                 y += 8;
             } else {
                 let s = this.next();
