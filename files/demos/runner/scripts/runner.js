@@ -74,8 +74,8 @@ class RunnerIO extends PIXI.Container {
         this.bindInput.x = false;
         this.bindInput.y = false;
 
-        this.bindInput.x = 0;
-        this.bindInput.y = 0;
+        this.bindInput.axisX = 0;
+        this.bindInput.axisY = 0;
     }
 
     updateDelta(delta) {
