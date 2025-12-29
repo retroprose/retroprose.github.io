@@ -197,7 +197,7 @@ class RunnerIO extends PIXI.Container {
             this.screen.text(this.game.getCameraX(), 0, "Gems: " + this.game.getGems(this.local));
         }
 
-        this.screen.text(this.game.getCameraX(), 16, JSON.stringify(window.__debug_data__, null, 4));
+        //this.screen.text(this.game.getCameraX(), 16, JSON.stringify(window.__debug_data__, null, 4));
 
         //this.screen.text(this.game.getCameraX() + 960 - 8, 0, "Gems: " + this.game.getLocalGems());
 
