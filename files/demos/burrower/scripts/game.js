@@ -250,7 +250,9 @@ class GameIO extends PIXI.Container {
         //this.screenTransform(this.screenTransformData);
         this.game.render(this);
 
-
+    
+        this.text("stuff: " + this.input.left.id + ", " + this.input.right.id);
+        
 
         this.screen.end();
     }
