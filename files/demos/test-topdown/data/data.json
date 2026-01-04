@@ -1,0 +1,23 @@
+{
+    "systems": {
+        "collision": {
+            "drillSpeed": 3.5,
+            "manGravity": 0.1,
+            "hookGravity": 0.1,
+            "manRunImpulse": 0.4,
+            "manJumpImpulse": 4.0,
+            "hookImpulse": 0.2,
+            "hookThrowForce": 6.0,
+            "hookLength": 50.0,
+            "hookThrowLength": 100.0,
+            "hookAngle": {
+                "x": 1.0,
+                "y": -1.0
+            }
+        },
+        "input": {
+            "players": 32
+        }
+    },
+    "database": []
+}
