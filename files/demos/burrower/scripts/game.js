@@ -94,15 +94,6 @@ class GameIO extends PIXI.Container {
     updateDelta(delta) {
         this.input.update(delta);
 
-        if (this.input.keyState['ArrowLeft'])    {this.bindInput.left = true;}
-        if (this.input.keyState['ArrowRight'])   {this.bindInput.right = true;}
-        if (this.input.keyState['ArrowUp'])    {this.bindInput.up = true;}
-        if (this.input.keyState['ArrowDown'])   {this.bindInput.down = true;}
-
-        if (this.input.keyState['x'])       {this.bindInput.x = true;}
-        if (this.input.keyState['z'])       {this.bindInput.y = true;}
-        if (this.input.keyState[' '])       {this.bindInput.a = true;}
-
         if (this.input.keyState['w'])       {this.screenTransformData.y -= 1;}
         if (this.input.keyState['s'])       {this.screenTransformData.y += 1;}
         if (this.input.keyState['a'])       {this.screenTransformData.x -= 1;}
@@ -110,8 +101,24 @@ class GameIO extends PIXI.Container {
         if (this.input.keyState['q'])       {this.screenTransformData.z = this.screenTransformData.z * 1.1;}
         if (this.input.keyState['e'])       {this.screenTransformData.z = this.screenTransformData.z / 1.1;}
 
+
+        if (this.input.left.id != -1) {
+            let slope = 1.0 * (32767 - -32767) / (1.0 - -1.0);
+            this.bindInput.axisX = -32767 + slope * (this.input.list[this.input.left.id].dx - -1.0);
+            this.bindInput.axisY = -32767 + slope * (this.input.list[this.input.left.id].dy - -1.0);
+        }
+
+        //if (this.input.keyState['ArrowLeft'])    {this.bindInput.left = true;}
+        //if (this.input.keyState['ArrowRight'])   {this.bindInput.right = true;}
+        //if (this.input.keyState['ArrowUp'])    {this.bindInput.up = true;}
+        //if (this.input.keyState['ArrowDown'])   {this.bindInput.down = true;}
+
+        //if (this.input.keyState['x'])       {this.bindInput.x = true;}
+        //if (this.input.keyState['z'])       {this.bindInput.y = true;}
+        //if (this.input.keyState[' '])       {this.bindInput.a = true;}
+
         // touch jump
-        if (this.input.touchDown)           {this.bindInput.b = true;}
+        //if (this.input.touchDown)           {this.bindInput.b = true;}
     }
 
     update() {
@@ -240,7 +247,7 @@ class GameIO extends PIXI.Container {
         s.scale.set(1.0);
 
         
-        this.screenTransform(this.screenTransformData);
+        //this.screenTransform(this.screenTransformData);
         this.game.render(this);
 
 
