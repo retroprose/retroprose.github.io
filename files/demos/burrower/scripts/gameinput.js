@@ -3,6 +3,8 @@ class GameInput extends BasicInput {
     constructor() {
         super();
 
+        this.lastId = undefined;
+
         const lineColor = 0xc8c8c8;
         const lineWidth = 5;
         const analogRadius = 100;
@@ -40,6 +42,9 @@ class GameInput extends BasicInput {
         };
 
         window.onpointerdown = (e) => {
+
+            this.lastId = e.pointerId;
+
             const id = e.pointerId;
             if (id < listLength) {
                 this.list[id].down = true;

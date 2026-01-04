@@ -251,7 +251,7 @@ class GameIO extends PIXI.Container {
         this.game.render(this);
 
     
-        this.text("stuff: " + this.input.left.id + ", " + this.input.right.id);
+        this.text("last id: " + this.input.lastId);
         
 
         this.screen.end();
