@@ -3,7 +3,14 @@ class GameIO extends PIXI.Container {
     constructor(local) {
         super();
 
-        /*this.imageBuffer = new Uint8Array(960*540*4);
+        /*
+        
+        snes mario paint
+        8 x 56
+        256 x 224
+        248 x 168
+        
+        this.imageBuffer = new Uint8Array(960*540*4);
         for (let i = 0; i < 960*540; ++i) {
             let stride = i * 4;
             this.imageBuffer[stride+0] = Math.random() * 256;
@@ -248,7 +255,7 @@ class GameIO extends PIXI.Container {
         s.texture = this.imageTexture;
         s.x = this.screenTransformData.x - 480;
         s.y = this.screenTransformData.y - 270;
-        s.scale.set(1.0);
+        s.scale.set(2.0);
 
         
         //this.screenTransform(this.screenTransformData);
