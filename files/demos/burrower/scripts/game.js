@@ -101,11 +101,11 @@ class GameIO extends PIXI.Container {
         if (this.input.keyState['q'])       {this.screenTransformData.z = this.screenTransformData.z * 1.1;}
         if (this.input.keyState['e'])       {this.screenTransformData.z = this.screenTransformData.z / 1.1;}
 
-
-        if (this.input.left.id != -1) {
+        const id = this.input.left.pointerId;
+        if (id != undefined) {
             let slope = 1.0 * (32767 - -32767) / (1.0 - -1.0);
-            this.bindInput.axisX = -32767 + slope * (this.input.list[this.input.left.id].dx - -1.0);
-            this.bindInput.axisY = -32767 + slope * (this.input.list[this.input.left.id].dy - -1.0);
+            this.bindInput.axisX = -32767 + slope * (this.input.list[id].dx - -1.0);
+            this.bindInput.axisY = -32767 + slope * (this.input.list[id].dy - -1.0);
         }
 
         //if (this.input.keyState['ArrowLeft'])    {this.bindInput.left = true;}
@@ -250,8 +250,6 @@ class GameIO extends PIXI.Container {
         //this.screenTransform(this.screenTransformData);
         this.game.render(this);
 
-    
-        this.text("last id: " + this.input.lastId);
         
 
         this.screen.end();
