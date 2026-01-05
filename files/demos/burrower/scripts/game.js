@@ -3,19 +3,20 @@ class GameIO extends PIXI.Container {
     constructor(local) {
         super();
 
-        this.imageBuffer = new Uint8Array(960*540*4);
+        /*this.imageBuffer = new Uint8Array(960*540*4);
         for (let i = 0; i < 960*540; ++i) {
             let stride = i * 4;
             this.imageBuffer[stride+0] = Math.random() * 256;
             this.imageBuffer[stride+1] = Math.random() * 256;
             this.imageBuffer[stride+2] = Math.random() * 256;
-            this.imageBuffer[stride+3] = 255;
+            //this.imageBuffer[stride+3] = 255;
         }
         this.imageTexture = PIXI.Texture.from({
             resource: this.imageBuffer,
             width: 960,
             height: 540,
-        });
+            format: 'rgb8unorm'
+        });*/
 
 
         this.pixel = undefined;
@@ -31,12 +32,14 @@ class GameIO extends PIXI.Container {
         this.game = new Module.BindGame();
         this.game.setLocal(this.local);
         this.game.load(window.load_default);
+        this.imageBuffer = this.game.getBuffer();
+        console.log(this.imageBuffer);
 
         this.background = new PIXI.Graphics();
         this.addChild(this.background);
 
         this.input = new GameInput();
-        this.screen = new Screen(960, 540);
+        this.screen = new GameScreen(960 / 2, 540 / 2);
         
         this.input.screen = this.screen;
 
@@ -236,8 +239,9 @@ class GameIO extends PIXI.Container {
         this.imageTexture = PIXI.Texture.from({
             resource: this.imageBuffer,
             width: 960,
-            height: 540,
+            height: 540
         });
+
 
         let s = this.screen.next();
         s.anchor.set(0.0);
