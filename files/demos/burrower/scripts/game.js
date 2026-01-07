@@ -4,27 +4,21 @@ class GameIO extends PIXI.Container {
         super();
 
         /*
-        
         snes mario paint
         8 x 56
         256 x 224
         248 x 168
-        
-        this.imageBuffer = new Uint8Array(960*540*4);
-        for (let i = 0; i < 960*540; ++i) {
-            let stride = i * 4;
-            this.imageBuffer[stride+0] = Math.random() * 256;
-            this.imageBuffer[stride+1] = Math.random() * 256;
-            this.imageBuffer[stride+2] = Math.random() * 256;
-            //this.imageBuffer[stride+3] = 255;
-        }
-        this.imageTexture = PIXI.Texture.from({
-            resource: this.imageBuffer,
-            width: 960,
-            height: 540,
-            format: 'rgb8unorm'
-        });*/
+        */
 
+        /*this.spriteMap = undefined;
+        PIXI.Assets.load('./images/runner-sprite.json').then((texture) => {
+            this.spriteMap = [];
+            let i = 0
+            for (var k in texture.textures) {
+                this.spriteMap[i] = texture.textures[k];
+                ++i;
+            }
+        });*/
 
         this.pixel = undefined;
         PIXI.Assets.load('../shared/images/white-pixel.png').then((texture) => {
@@ -148,6 +142,36 @@ class GameIO extends PIXI.Container {
         s.height = o.sy;
     }
 
+    sprite(o) {
+        let s = this.screen.next();
+        s.anchor.set(0.5);
+        s.texture = this.spriteMap[o.i];
+        s.alpha = o.a;
+        s.tint = o.c;
+        s.x = o.px;
+        s.y = o.py;
+        s.rotation = o.r;
+        s.scale.set(1.0);
+    }
+
+    pixels(x, y) {
+        if (this.imageTexture != undefined) {
+            this.imageTexture.destroy(true);
+            this.imageTexture = undefined;
+        }
+        this.imageTexture = PIXI.Texture.from({
+            resource: this.game.getBuffer(),
+            width: 1920,
+            height: 1080
+        });
+        let s = this.screen.next();
+        s.anchor.set(0.0);
+        s.texture = this.imageTexture;
+        s.x = x;
+        s.y = y;
+        s.scale.set(2.0);        
+    }
+
     circle(x, y, r, c=0xffffff) {
         let s = this.screen.next();
         s.anchor.set(0.5);
@@ -188,7 +212,7 @@ class GameIO extends PIXI.Container {
     sbox(x, y, w, h, r, c=0xffffff) {
         let s = this.screen.next();
         s.anchor.set(0.5);
-        s.alpha = 1.0;
+        s.alpha = 0.5;
         s.tint = c;
         s.x = x;
         s.y = y;
@@ -235,34 +259,10 @@ class GameIO extends PIXI.Container {
     }
 
     render() {
-        if (!this.pixel) { return; }
+        if (!this.pixel /*|| !this.spriteMap*/) { return; }
         this.screen.begin();
-        
-        
-        if (this.imageTexture != undefined) {
-            this.imageTexture.destroy(true);
-            this.imageTexture = undefined;
-        }
-        this.imageTexture = PIXI.Texture.from({
-            resource: this.imageBuffer,
-            width: 960,
-            height: 540
-        });
-
-
-        let s = this.screen.next();
-        s.anchor.set(0.0);
-        s.texture = this.imageTexture;
-        s.x = this.screenTransformData.x - 480;
-        s.y = this.screenTransformData.y - 270;
-        s.scale.set(2.0);
-
-        
-        //this.screenTransform(this.screenTransformData);
         this.game.render(this);
-
-        
-
+        //this.screenTransform(this.screenTransformData);
         this.screen.end();
     }
 
