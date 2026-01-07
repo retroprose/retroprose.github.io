@@ -40,6 +40,9 @@ class GameScreen extends PIXI.Container {
         const scaleY = window.innerHeight / this.desiredHeight;
         this.finalScale = Math.min(scaleX, scaleY);
         this.finalScale = Math.floor(this.finalScale);
+        if (this.finalScale < 1.0) {
+            this.finalScale = 1.0;
+        }
 
         this.scale.set(this.finalScale);
         
