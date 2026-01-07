@@ -40,7 +40,8 @@ class GameIO extends PIXI.Container {
         this.addChild(this.background);
 
         this.input = new GameInput();
-        this.screen = new GameScreen(960 / 2, 540 / 2);
+        //this.screen = new GameScreen(960 / 2, 540 / 2);
+        this.screen = new GameScreen(400, 400);
         
         this.input.screen = this.screen;
 
