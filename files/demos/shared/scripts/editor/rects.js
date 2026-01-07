@@ -16,6 +16,71 @@ class RectEdit {
         this.index = 0;
 
         /*
+[
+    {
+        "name": "particle",
+        "x": 9,
+        "y": 431,
+        "width": 2,
+        "height": 2
+    },
+    {
+        "name": "shot",
+        "x": 135,
+        "y": 430,
+        "width": 4,
+        "height": 2
+    },
+    {
+        "name": "turret",
+        "x": 108,
+        "y": 430,
+        "width": 8,
+        "height": 2
+    },
+    {
+        "name": "blue_tank",
+        "x": 55,
+        "y": 427,
+        "width": 12,
+        "height": 10
+    },
+    {
+        "name": "blue_local",
+        "x": 55,
+        "y": 451,
+        "width": 12,
+        "height": 10
+    },
+    {
+        "name": "greeen_local",
+        "x": 84,
+        "y": 451,
+        "width": 12,
+        "height": 10
+    },
+    {
+        "name": "green_tank",
+        "x": 84,
+        "y": 427,
+        "width": 12,
+        "height": 10
+    }
+]
+
+            c.folder('burrower/images/')
+            c.bmp('sprite.png')
+            c.bindmap({
+                'n': window.c.rect,
+                'o': window.c.shift,
+                'p': window.c.expand,
+                'f': window.c.delete,
+                ' ': window.c.select
+            })
+            c.clear()
+
+            c.folder('runner/images/')
+            c.bmp('runner-sprite.png')
             c.bindmap({
                 'n': window.c.rect,
                 'o': window.c.shift,
@@ -42,8 +107,14 @@ class RectEdit {
         // c.cursor(4,132)
         // c.grid(24,24,10,2,8,8,'astro')
         // c.pixidump()
-        this.image_name = 'runner-sprite.png';
-        this.texture = await PIXI.Assets.load('../../../runner/images/' + this.image_name);
+        
+        this.image_name = '';
+        this.folder_name = '';
+
+        //this.image_name = 'runner-sprite.png';
+        //this.texture = await PIXI.Assets.load('../../../runner/images/' + this.image_name);
+
+        this.texture = undefined;
 
         //console.log(this.texture);
 
@@ -72,6 +143,20 @@ class RectEdit {
 
         const self = this;
         window.c = {
+            folder: (n) => {
+                self.folder_name = n;
+            },
+            bmp: (n) => {
+                self.image_name = n;
+                if (self.texture) {
+                    self.texture.destroy(true);
+                    self.texture = undefined;
+                }
+                PIXI.Assets.load('../../../' + self.folder_name + n).then((texture) => {
+                    self.texture = texture;
+                    self.sprite.texture = texture;
+                });
+            },
             dumpmap: () => {
                 const pixelArray = self.pixi.renderer.extract.pixels(self.texture);
                 const easyarray = [];

@@ -10,15 +10,15 @@ class GameIO extends PIXI.Container {
         248 x 168
         */
 
-        /*this.spriteMap = undefined;
-        PIXI.Assets.load('./images/runner-sprite.json').then((texture) => {
+        this.spriteMap = undefined;
+        PIXI.Assets.load('./images/sprite.json').then((texture) => {
             this.spriteMap = [];
             let i = 0
             for (var k in texture.textures) {
                 this.spriteMap[i] = texture.textures[k];
                 ++i;
             }
-        });*/
+        });
 
         this.pixel = undefined;
         PIXI.Assets.load('../shared/images/white-pixel.png').then((texture) => {
@@ -92,6 +92,7 @@ class GameIO extends PIXI.Container {
         this.bindInput.x = false;
         this.bindInput.y = false;
 
+        this.bindInput.angle = 0;
         this.bindInput.axisX = 0;
         this.bindInput.axisY = 0;
     }
@@ -111,6 +112,18 @@ class GameIO extends PIXI.Container {
             let slope = 1.0 * (32767 - -32767) / (1.0 - -1.0);
             this.bindInput.axisX = -32767 + slope * (this.input.list[id].dx - -1.0);
             this.bindInput.axisY = -32767 + slope * (this.input.list[id].dy - -1.0);
+            this.bindInput.a = true;
+        }
+
+        const rid = this.input.right.pointerId;
+        if (rid != undefined) {
+            let slope = 1.0 * (32767 - -32767) / (Math.PI - -Math.PI);
+            let angle = 0;
+            if (!(this.input.list[rid].dx == 0 && this.input.list[rid].dy == 0)) {
+                angle = Math.atan2(this.input.list[rid].dy, this.input.list[rid].dx);
+            }
+            this.bindInput.angle = -32767 + slope * (angle - -Math.PI);
+            this.bindInput.b = true;
         }
 
         //if (this.input.keyState['ArrowLeft'])    {this.bindInput.left = true;}
@@ -145,7 +158,7 @@ class GameIO extends PIXI.Container {
 
     sprite(o) {
         let s = this.screen.next();
-        s.anchor.set(0.5);
+        s.anchor.set(o.ax, o.ay);
         s.texture = this.spriteMap[o.i];
         s.alpha = o.a;
         s.tint = o.c;
@@ -260,10 +273,16 @@ class GameIO extends PIXI.Container {
     }
 
     render() {
-        if (!this.pixel /*|| !this.spriteMap*/) { return; }
+        if (!this.pixel || !this.spriteMap) { return; }
         this.screen.begin();
         this.game.render(this);
         //this.screenTransform(this.screenTransformData);
+
+        //let dx = this.input.mouseX - 200;
+        //let dy = this.input.mouseY - 200;
+        //let r = this.game.testatan2(dy, dx);
+        //this.text("pos: " + dx + ", " + dy + " <> " + r);
+
         this.screen.end();
     }
 

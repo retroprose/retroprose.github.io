@@ -1,0 +1,167 @@
+{
+    "frames": {
+        "particle": {
+            "frame": {
+                "x": 9,
+                "y": 431,
+                "w": 2,
+                "h": 2
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 2,
+                "h": 2
+            },
+            "sourceSize": {
+                "w": 2,
+                "h": 2
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "shot": {
+            "frame": {
+                "x": 135,
+                "y": 430,
+                "w": 4,
+                "h": 2
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 4,
+                "h": 2
+            },
+            "sourceSize": {
+                "w": 4,
+                "h": 2
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "turret": {
+            "frame": {
+                "x": 108,
+                "y": 430,
+                "w": 8,
+                "h": 2
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 2
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 2
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "blue_tank": {
+            "frame": {
+                "x": 55,
+                "y": 427,
+                "w": 12,
+                "h": 10
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 12,
+                "h": 10
+            },
+            "sourceSize": {
+                "w": 12,
+                "h": 10
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "blue_local": {
+            "frame": {
+                "x": 55,
+                "y": 451,
+                "w": 12,
+                "h": 10
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 12,
+                "h": 10
+            },
+            "sourceSize": {
+                "w": 12,
+                "h": 10
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "greeen_local": {
+            "frame": {
+                "x": 84,
+                "y": 451,
+                "w": 12,
+                "h": 10
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 12,
+                "h": 10
+            },
+            "sourceSize": {
+                "w": 12,
+                "h": 10
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "green_tank": {
+            "frame": {
+                "x": 84,
+                "y": 427,
+                "w": 12,
+                "h": 10
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 12,
+                "h": 10
+            },
+            "sourceSize": {
+                "w": 12,
+                "h": 10
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    },
+    "meta": {
+        "image": "/sprite.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 512,
+            "h": 512
+        },
+        "scale": "1"
+    }
+}
