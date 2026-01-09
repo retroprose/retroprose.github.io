@@ -100,12 +100,12 @@ class GameIO extends PIXI.Container {
     updateDelta(delta) {
         this.input.update(delta);
 
-        if (this.input.keyState['w'])       {this.screenTransformData.y -= 1;}
-        if (this.input.keyState['s'])       {this.screenTransformData.y += 1;}
-        if (this.input.keyState['a'])       {this.screenTransformData.x -= 1;}
-        if (this.input.keyState['d'])       {this.screenTransformData.x += 1;}
-        if (this.input.keyState['q'])       {this.screenTransformData.z = this.screenTransformData.z * 1.1;}
-        if (this.input.keyState['e'])       {this.screenTransformData.z = this.screenTransformData.z / 1.1;}
+        if (this.input.keyState['ArrowUp'])       {this.screenTransformData.y -= 1;}
+        if (this.input.keyState['ArrowDown'])       {this.screenTransformData.y += 1;}
+        if (this.input.keyState['ArrowLeft'])       {this.screenTransformData.x -= 1;}
+        if (this.input.keyState['ArrowRight'])       {this.screenTransformData.x += 1;}
+        if (this.input.keyState['z'])       {this.screenTransformData.z = this.screenTransformData.z * 1.1;}
+        if (this.input.keyState['x'])       {this.screenTransformData.z = this.screenTransformData.z / 1.1;}
 
         const id = this.input.left.pointerId;
         if (id != undefined) {
@@ -113,6 +113,23 @@ class GameIO extends PIXI.Container {
             this.bindInput.axisX = -32767 + slope * (this.input.list[id].dx - -1.0);
             this.bindInput.axisY = -32767 + slope * (this.input.list[id].dy - -1.0);
             this.bindInput.a = true;
+        } else {
+            let movex = 0;
+            let movey = 0;
+            if (this.input.keyState['w'])   {movey = -1;}
+            if (this.input.keyState['s'])   {movey =  1;}
+            if (this.input.keyState['a'])   {movex = -1;}
+            if (this.input.keyState['d'])   {movex =  1;}
+            let len = Math.sqrt(movex * movex + movey * movey);
+            // console.log(movex + ", " + movey + " - " + len);
+            if (len > 0.0) {
+                movex /= len;
+                movey /= len;
+                let slope = 1.0 * (32767 - -32767) / (1.0 - -1.0);
+                this.bindInput.axisX = -32767 + slope * (movex - -1.0);
+                this.bindInput.axisY = -32767 + slope * (movey - -1.0);
+                this.bindInput.a = true;
+            }
         }
 
         const rid = this.input.right.pointerId;
@@ -124,6 +141,18 @@ class GameIO extends PIXI.Container {
             }
             this.bindInput.angle = -32767 + slope * (angle - -Math.PI);
             this.bindInput.b = true;
+        } else {
+            //if (this.input.mouseButton) {
+                let firex = this.input.mouseX - this.screen.desiredWidth / 2.0;
+                let firey = this.input.mouseY - this.screen.desiredHeight / 2.0;
+                let slope = 1.0 * (32767 - -32767) / (Math.PI - -Math.PI);
+                let angle = 0;
+                if (!(firex == 0 && firey == 0)) {
+                    angle = Math.atan2(firey, firex);
+                }
+                this.bindInput.angle = -32767 + slope * (angle - -Math.PI);
+                this.bindInput.b = true;
+            //}
         }
 
         //if (this.input.keyState['ArrowLeft'])    {this.bindInput.left = true;}
