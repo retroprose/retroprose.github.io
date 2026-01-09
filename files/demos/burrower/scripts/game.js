@@ -142,7 +142,7 @@ class GameIO extends PIXI.Container {
             this.bindInput.angle = -32767 + slope * (angle - -Math.PI);
             this.bindInput.b = true;
         } else {
-            //if (this.input.mouseButton) {
+            if (this.input.keyState[' ']) {
                 let firex = this.input.mouseX - this.screen.desiredWidth / 2.0;
                 let firey = this.input.mouseY - this.screen.desiredHeight / 2.0;
                 let slope = 1.0 * (32767 - -32767) / (Math.PI - -Math.PI);
@@ -152,7 +152,7 @@ class GameIO extends PIXI.Container {
                 }
                 this.bindInput.angle = -32767 + slope * (angle - -Math.PI);
                 this.bindInput.b = true;
-            //}
+            }
         }
 
         //if (this.input.keyState['ArrowLeft'])    {this.bindInput.left = true;}
