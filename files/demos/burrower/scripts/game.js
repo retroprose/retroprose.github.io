@@ -104,8 +104,8 @@ class GameIO extends PIXI.Container {
         if (this.input.keyState['ArrowDown'])       {this.screenTransformData.y += 1;}
         if (this.input.keyState['ArrowLeft'])       {this.screenTransformData.x -= 1;}
         if (this.input.keyState['ArrowRight'])       {this.screenTransformData.x += 1;}
-        if (this.input.keyState['z'])       {this.screenTransformData.z = this.screenTransformData.z * 1.1;}
-        if (this.input.keyState['x'])       {this.screenTransformData.z = this.screenTransformData.z / 1.1;}
+        if (this.input.keyState['z'])       {this.screenTransformData.z = this.screenTransformData.z / 1.1;}
+        if (this.input.keyState['x'])       {this.screenTransformData.z = this.screenTransformData.z * 1.1;}
 
         const id = this.input.left.pointerId;
         if (id != undefined) {
@@ -255,7 +255,7 @@ class GameIO extends PIXI.Container {
     sbox(x, y, w, h, r, c=0xffffff) {
         let s = this.screen.next();
         s.anchor.set(0.5);
-        s.alpha = 0.5;
+        s.alpha = 1.0;
         s.tint = c;
         s.x = x;
         s.y = y;
@@ -305,13 +305,9 @@ class GameIO extends PIXI.Container {
         if (!this.pixel || !this.spriteMap) { return; }
         this.screen.begin();
         this.game.render(this);
-        //this.screenTransform(this.screenTransformData);
 
-        //let dx = this.input.mouseX - 200;
-        //let dy = this.input.mouseY - 200;
-        //let r = this.game.testatan2(dy, dx);
-        //this.text("pos: " + dx + ", " + dy + " <> " + r);
-
+        this.screenTransform(this.screenTransformData);
+        
         this.screen.end();
     }
 
