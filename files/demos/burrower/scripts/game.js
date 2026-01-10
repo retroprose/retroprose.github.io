@@ -42,11 +42,13 @@ class GameIO extends PIXI.Container {
         this.input = new GameInput();
         //this.screen = new GameScreen(960 / 2, 540 / 2);
         this.screen = new GameScreen(400, 400);
+        this.hud = new GameHud();
         
         this.input.screen = this.screen;
 
         this.addChild(this.screen);
         this.addChild(this.input);
+        this.addChild(this.hud);
 
         this.resetInput();
 
@@ -298,17 +300,22 @@ class GameIO extends PIXI.Container {
     }
 
     text(str) {
-        this.screen.text(0, 0, str);
+        this.hud.text(0, 0, str);
     }
 
     render() {
         if (!this.pixel || !this.spriteMap) { return; }
+        this.hud.begin();
         this.screen.begin();
         this.game.render(this);
 
         //this.screenTransform(this.screenTransformData);
         
+        this.hud.text(0, 0, "Shield: " + this.game.getShield() + "\n" + "Energy: " + this.game.getEnergy());
+
+        
         this.screen.end();
+        this.hud.end();
     }
 
 
