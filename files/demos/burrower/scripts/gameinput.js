@@ -26,6 +26,7 @@ class GameInput extends BasicInput {
         this.right = sprite;
 
         window.onpointerdown = (e) => {
+            if (e.pointerType == 'mouse') { return; }
             const id = e.pointerId;
             this.list[id] = {
                 x: e.clientX,
@@ -50,6 +51,7 @@ class GameInput extends BasicInput {
             }
         };
         window.onpointerup = (e) => {
+            if (e.pointerType == 'mouse') { return; }
             const id = e.pointerId;
             delete this.list[id];
             if (this.left.pointerId == id) {
@@ -62,6 +64,7 @@ class GameInput extends BasicInput {
             }
         };
         window.onpointermove = (e) => {
+            if (e.pointerType == 'mouse') { return; }
             const id = e.pointerId;
             if (id in this.list) {
                 this.list[id].dx = (e.clientX - this.list[id].x) / analogRadius;
