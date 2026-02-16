@@ -8,6 +8,24 @@ class GameIO extends PIXI.Container {
             this.pixel = texture;
         });
 
+        this.spriteMap = undefined;
+        PIXI.Assets.load('./images/sprite.json').then((texture) => {
+            let maplist = ['tile_4_0','tile_0_0','tile_4_2','tile_0_2','tile_2_0','tile_1_0','tile_2_2','tile_1_2','tile_4_4','tile_0_4','tile_4_3','tile_0_3','tile_2_4','tile_1_4','tile_2_3','tile_1_3','tile_3_1','tank_bottom','tank_turret','tank_shot','particle'];
+            let map = {};
+            for (var i = 0; i < maplist.length; i++) {
+                console.log("" + maplist[i] + " - " + i);
+                map[maplist[i]] = i;
+            }
+            console.log("-------------------");
+            this.spriteMap = [];
+            for (var k in texture.textures) {
+                if (k in map) {
+                    console.log("" + map[k] + " - " + k);
+                    this.spriteMap[map[k]] = texture.textures[k];
+                }
+            }
+        });
+
         this.local = local;
 
         this.bindInput = new Module.BindInput();
@@ -162,6 +180,17 @@ class GameIO extends PIXI.Container {
     draw(o) {
         let s = this.screen.next();
         s.anchor.set(0.5);
+        s.texture = this.spriteMap[o.i];
+        s.alpha = o.a;
+        s.tint = o.c;
+        s.x = o.px;
+        s.y = o.py;
+        s.rotation = o.r;
+    }
+
+    draw_thing(o) {
+        let s = this.screen.next();
+        s.anchor.set(0.5);
         s.texture = this.pixel;
         s.alpha = o.a;
         s.tint = o.c;
@@ -233,7 +262,7 @@ class GameIO extends PIXI.Container {
     }
 
     render() {
-        if (!this.pixel) { return; }
+        if (!this.pixel || !this.spriteMap) { return; }
         this.hud.begin();
         this.screen.begin();
         this.game.render(this);
