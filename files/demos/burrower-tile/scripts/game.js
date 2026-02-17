@@ -10,7 +10,8 @@ class GameIO extends PIXI.Container {
 
         this.spriteMap = undefined;
         PIXI.Assets.load('./images/sprite.json').then((texture) => {
-            let maplist = ['tile_4_0','tile_0_0','tile_4_2','tile_0_2','tile_2_0','tile_1_0','tile_2_2','tile_1_2','tile_4_4','tile_0_4','tile_4_3','tile_0_3','tile_2_4','tile_1_4','tile_2_3','tile_1_3','tile_3_1','tank_bottom','tank_turret','tank_shot','particle'];
+            //let maplist = ['tile_4_0','tile_0_0','tile_4_2','tile_0_2','tile_2_0','tile_1_0','tile_2_2','tile_1_2','tile_4_4','tile_0_4','tile_4_3','tile_0_3','tile_2_4','tile_1_4','tile_2_3','tile_1_3','tile_3_1','tank_bottom','tank_turret','tank_shot','particle'];
+            let maplist = ['duel_0_3','duel_3_3','duel_0_2','duel_1_2','duel_0_0','duel_3_2','duel_2_3','duel_3_1','duel_1_3','duel_0_1','duel_1_0','duel_2_2','duel_3_0','duel_2_0','duel_1_1','duel_2_1','tile_0_0','tank_bottom_0_0','tank_turret_0_0','tank_shot_0_0','particle_0_0'];
             let map = {};
             for (var i = 0; i < maplist.length; i++) {
                 console.log("" + maplist[i] + " - " + i);
@@ -179,7 +180,7 @@ class GameIO extends PIXI.Container {
 
     draw(o) {
         let s = this.screen.next();
-        s.anchor.set(0.5);
+        s.anchor.set(o.ax, o.ay);
         s.texture = this.spriteMap[o.i];
         s.alpha = o.a;
         s.tint = o.c;

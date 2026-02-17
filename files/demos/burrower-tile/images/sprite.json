@@ -550,7 +550,359 @@
                 "y": 0
             }
         },
-        "tank_bottom": {
+        "duel_0_0": {
+            "frame": {
+                "x": 10,
+                "y": 166,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_1_0": {
+            "frame": {
+                "x": 18,
+                "y": 166,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_2_0": {
+            "frame": {
+                "x": 26,
+                "y": 166,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_3_0": {
+            "frame": {
+                "x": 34,
+                "y": 166,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_0_1": {
+            "frame": {
+                "x": 10,
+                "y": 174,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_1_1": {
+            "frame": {
+                "x": 18,
+                "y": 174,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_2_1": {
+            "frame": {
+                "x": 26,
+                "y": 174,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_3_1": {
+            "frame": {
+                "x": 34,
+                "y": 174,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_0_2": {
+            "frame": {
+                "x": 10,
+                "y": 182,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_1_2": {
+            "frame": {
+                "x": 18,
+                "y": 182,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_2_2": {
+            "frame": {
+                "x": 26,
+                "y": 182,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_3_2": {
+            "frame": {
+                "x": 34,
+                "y": 182,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_0_3": {
+            "frame": {
+                "x": 10,
+                "y": 190,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_1_3": {
+            "frame": {
+                "x": 18,
+                "y": 190,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_2_3": {
+            "frame": {
+                "x": 26,
+                "y": 190,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "duel_3_3": {
+            "frame": {
+                "x": 34,
+                "y": 190,
+                "w": 8,
+                "h": 8
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 8
+            },
+            "sourceSize": {
+                "w": 8,
+                "h": 8
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "tank_bottom_0_0": {
             "frame": {
                 "x": 140,
                 "y": 8,
@@ -572,7 +924,7 @@
                 "y": 0
             }
         },
-        "tank_turret": {
+        "tank_turret_0_0": {
             "frame": {
                 "x": 170,
                 "y": 13,
@@ -594,7 +946,7 @@
                 "y": 0
             }
         },
-        "tank_shot": {
+        "tank_shot_0_0": {
             "frame": {
                 "x": 199,
                 "y": 16,
@@ -616,7 +968,7 @@
                 "y": 0
             }
         },
-        "particle": {
+        "particle_0_0": {
             "frame": {
                 "x": 215,
                 "y": 17,
