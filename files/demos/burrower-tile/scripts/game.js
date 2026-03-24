@@ -11,7 +11,8 @@ class GameIO extends PIXI.Container {
         this.spriteMap = undefined;
         PIXI.Assets.load('./images/sprite.json').then((texture) => {
             //let maplist = ['tile_4_0','tile_0_0','tile_4_2','tile_0_2','tile_2_0','tile_1_0','tile_2_2','tile_1_2','tile_4_4','tile_0_4','tile_4_3','tile_0_3','tile_2_4','tile_1_4','tile_2_3','tile_1_3','tile_3_1','tank_bottom','tank_turret','tank_shot','particle'];
-            let maplist = ['duel_0_3','duel_3_3','duel_0_2','duel_1_2','duel_0_0','duel_3_2','duel_2_3','duel_3_1','duel_1_3','duel_0_1','duel_1_0','duel_2_2','duel_3_0','duel_2_0','duel_1_1','duel_2_1','tile_0_0','tank_bottom_0_0','tank_turret_0_0','tank_shot_0_0','particle_0_0'];
+            //let maplist = ['duel_0_3','duel_3_3','duel_0_2','duel_1_2','duel_0_0','duel_3_2','duel_2_3','duel_3_1','duel_1_3','duel_0_1','duel_1_0','duel_2_2','duel_3_0','duel_2_0','duel_1_1','duel_2_1','tile_0_0','tank_bottom_0_0','tank_turret_0_0','tank_shot_0_0','particle_0_0'];
+            let maplist = ['grid_0_0','grid_1_0','grid_2_0','grid_3_0','grid_4_0','grid_5_0','grid_6_0','grid_7_0','grid_8_0','grid_9_0','grid_10_0','grid_11_0','grid_12_0','grid_13_0','grid_14_0','grid_15_0','grid_16_0','grid_17_0','tile_0_0','tank_bottom_0_0','tank_turret_0_0','tank_shot_0_0','particle_0_0','circle_0_0', 'square_0_0','duel_2_1'];
             let map = {};
             for (var i = 0; i < maplist.length; i++) {
                 console.log("" + maplist[i] + " - " + i);
@@ -26,6 +27,8 @@ class GameIO extends PIXI.Container {
                 }
             }
         });
+
+        this.winText = [ "None", "Blue", "Green" ];
 
         this.local = local;
 
@@ -181,6 +184,7 @@ class GameIO extends PIXI.Container {
     draw(o) {
         let s = this.screen.next();
         s.anchor.set(o.ax, o.ay);
+        s.scale.set(o.sx);
         s.texture = this.spriteMap[o.i];
         s.alpha = o.a;
         s.tint = o.c;
@@ -272,8 +276,8 @@ class GameIO extends PIXI.Container {
             this.screenTransform(this.screenTransformData);
         }
         this.hud.text(0, 0, "Shield: " + this.game.getShield() + "\n" + "Energy: " + this.game.getEnergy());
+        this.hud.text(0, window.innerHeight - 16, "Last Winner: " + this.winText[this.game.getWinner()]);
 
-        
         this.screen.end();
         this.hud.end();
     }
