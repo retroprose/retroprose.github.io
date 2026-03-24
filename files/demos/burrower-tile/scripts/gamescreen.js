@@ -35,7 +35,7 @@ class GameScreen extends PIXI.Container {
         if (this.finalScale < 1.0) {
             this.finalScale = 1.0;
         }
-        //this.finalScale = 2.0;
+        this.finalScale = 1.0;
 
         this.scale.set(this.finalScale);
         
