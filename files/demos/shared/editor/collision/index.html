@@ -1,0 +1,51 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<meta name="theme-color" content="#000000">
+		<meta name="msapplication-navbutton-color" content="#000000">
+		<meta name="apple-mobile-wep-app-status-bar-style" content="#000000">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+		<meta name="generator" content="mycontent" />
+		<title>Demo</title>
+		<style>
+			html, body {
+				margin: 0 !important;
+            	padding: 0 !important;
+	        	overflow-x: hidden;
+				
+				touch-action: none;
+				-webkit-touch-callout: none; /* iOS Safari */
+					-webkit-user-select: none; /* Safari */
+					-khtml-user-select: none; /* Konqueror HTML */
+					-moz-user-select: none; /* Old versions of Firefox */
+						-ms-user-select: none; /* Internet Explorer/Edge */
+							user-select: none; /* Non-prefixed version, currently
+												supported by Chrome, Edge, Opera and Firefox */
+
+    		}
+			canvas {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				background-color: #000000;
+				/* overflow: hidden; */
+
+				touch-action: none;
+				-webkit-touch-callout: none; /* iOS Safari */
+					-webkit-user-select: none; /* Safari */
+					-khtml-user-select: none; /* Konqueror HTML */
+					-moz-user-select: none; /* Old versions of Firefox */
+						-ms-user-select: none; /* Internet Explorer/Edge */
+							user-select: none; /* Non-prefixed version, currently
+												supported by Chrome, Edge, Opera and Firefox */
+
+			}
+		</style>
+	</head>
+	<body>
+		<script src="../../scripts/core/pixi.min.js"></script>
+		<script src="../../scripts/editor/collision.js"></script>
+		<script>new CollisionTest().init()</script>
+	</body>
+</html>

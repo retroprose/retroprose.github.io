@@ -160,7 +160,7 @@ class ConnectedState extends PIXI.Container {
         this.lastTicks = deltaQ;
 
         if (this.state) {
-            this.state.updateDelta(deltaQ);
+            this.state.updateDelta(delta);
         }
 
         if (!this.running) {

@@ -16,6 +16,27 @@ class RectEdit {
         this.index = 0;
 
         /*
+
+
+        c.folder('platformer/images/')
+        c.bmp('sprite.png')
+        c.bindmap({
+            'n': window.c.rect,
+            'o': window.c.shift,
+            'p': window.c.expand,
+            'f': window.c.delete,
+            ' ': window.c.select
+        })
+        c.clear()
+        c.cursor(0, 0)
+        c.grid(16,16,22,11,0,0,'tiles')
+        c.cursor(0, 192)
+        c.grid(32,32,12,7,0,0,'player')
+
+        y * 22 + x
+
+        12_1, 12_5
+
 [
     {
         "name": "particle",
@@ -67,6 +88,39 @@ class RectEdit {
         "height": 10
     }
 ]
+
+            c.folder('burrower-tile/images/')
+            c.bmp('sprite.png')
+            c.bindmap({
+                'n': window.c.rect,
+                'o': window.c.shift,
+                'p': window.c.expand,
+                'f': window.c.delete,
+                ' ': window.c.select
+            })
+            c.clear()
+            c.cursor(0, 56)
+            c.grid(8,8,18,1,0,0,'grid')
+            c.cursor(56, 8)
+            c.grid(8,8,5,5,0,0,'tile')
+            c.cursor(10, 166)
+            c.grid(8,8,4,4,0,0,'duel')
+            c.cursor(140, 8)
+            c.grid(18,16,1,1,0,0,'tank_bottom')
+            c.cursor(170, 13)
+            c.grid(18,8,1,1,0,0,'tank_turret')
+            c.cursor(199, 16)
+            c.grid(8,8,1,1,0,0,'tank_shot')
+            c.cursor(215, 17)
+            c.grid(8,8,1,1,0,0,'particle')
+            c.cursor(134, 35)
+            c.grid(8,8,1,1,0,0,'circle')
+            c.cursor(172, 35)
+            c.grid(8,8,1,1,0,0,'square')
+            c.cursor(149, 31)
+            c.grid(16,16,1,1,0,0,'bigcircle')
+
+
 
             c.folder('burrower/images/')
             c.bmp('sprite.png')

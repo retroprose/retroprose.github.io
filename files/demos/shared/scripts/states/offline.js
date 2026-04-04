@@ -21,6 +21,7 @@ class OfflineState extends PIXI.Container {
 
         this.endGame = this.endGame.bind(this);
         window.addEventListener("keydown", this.endGame);
+
     }
 
     destroy() {
@@ -37,6 +38,9 @@ class OfflineState extends PIXI.Container {
             this.returned = {
                 next: 'SelectState'
             };
+        }
+        if (event.key == 'q') {
+            this.advanceFrame = true;
         }
     }
 
@@ -59,11 +63,14 @@ class OfflineState extends PIXI.Container {
 
         this.tickCounter += delta;
 
-        this.state.updateDelta(deltaQ);
+        this.state.updateDelta(delta);
         this.state.processInput(this.buffer);
 
+        //if (this.advanceFrame == true) {
+        //    this.advanceFrame = false;
         while (this.tickCounter >= 17) {
             this.tickCounter -= 17;
+
 
             if (this.framealt == true) {
                 // make a random number

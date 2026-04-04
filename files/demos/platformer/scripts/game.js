@@ -3,6 +3,14 @@ class GameIO extends PIXI.Container {
     constructor(local) {
         super();
 
+        this.ascii = undefined;
+        PIXI.Assets.load('../shared/images/tilemap-sprite.json').then((texture) => {
+            this.ascii = [];
+            for (const key in texture.textures) {
+                this.ascii[parseInt(key)] = texture.textures[key];
+            }
+        });
+
         this.pixel = undefined;
         PIXI.Assets.load('../shared/images/white-pixel.png').then((texture) => {
             this.pixel = texture;
@@ -91,13 +99,23 @@ class GameIO extends PIXI.Container {
     updateDelta(delta) {
         this.input.update(delta);
 
-        if (this.input.left)    {this.bindInput.left = true;}
+        //console.log("ltime: " + this.input.left.timer + ", rtime: " + this.input.right.timer + "left: " + this.input.left.current + ", right: " + this.input.right.current + ", dpress: " + this.input.doublePress + ", dtap: " + this.input.doubleTap);
+        //console.log("left: " + this.input.left.current + ", right: " + this.input.right.current + ", dpress: " + this.input.doublePress + ", dtap: " + this.input.doubleTap);
+
+
+        if (this.input.left.current)    {this.bindInput.left = true;}
+        if (this.input.right.current)   {this.bindInput.right = true;}
+        if (this.input.doublePress)     {this.bindInput.x = true;}
+        if (this.input.doubleTap)       {this.bindInput.a = true;}
+
+
+        /*if (this.input.left)    {this.bindInput.left = true;}
         if (this.input.right)   {this.bindInput.right = true;}
 
         if (this.input.keyState['ArrowLeft'])    {this.bindInput.left = true;}
         if (this.input.keyState['ArrowRight'])   {this.bindInput.right = true;}
-        //if (this.input.keyState['ArrowUp'])      {this.bindInput.up = true;}
-        //if (this.input.keyState['ArrowDown'])   {this.bindInput.down = true;}
+        if (this.input.keyState['ArrowUp'])      {this.bindInput.up = true;}
+        if (this.input.keyState['ArrowDown'])   {this.bindInput.down = true;}*/
 
         //if (this.input.keyState['x'])       {this.bindInput.x = true;}
         //if (this.input.keyState['z'])       {this.bindInput.y = true;}
@@ -114,7 +132,7 @@ class GameIO extends PIXI.Container {
     draw(o) {
         let s = this.screen.next();
         s.anchor.set(o.ax, o.ay);
-        s.scale.set(o.sx);
+        s.scale.set(o.sx, o.sy);
         s.texture = this.spriteMap[o.i];
         s.alpha = o.a;
         s.tint = o.c;
@@ -186,6 +204,31 @@ class GameIO extends PIXI.Container {
         this.line(x, y + h, x + w, y + h, c);
     }
 
+    text2(sx, sy, text, c=15) {
+        if (!this.ascii) return;
+        let x = sx - 8;
+        let y = sy - 8;
+        for (let i = 0; i < text.length; ++i) {
+            if (text.charAt(i) == '\n') {
+                x = sx;
+                y += 4;
+            } else {
+                let s = this.screen.next();
+                
+                s.anchor.set(0.0);
+                s.scale.set(0.5);
+                s.texture = this.ascii[text.charCodeAt(i) + c * 256];
+                s.alpha = 1.0;
+                s.tint = 0xffffff;
+                s.x = x;
+                s.y = y;
+                s.rotation = 0.0;
+                
+                x += 4;
+            }
+        }
+    }
+
     screenTransform(o) {
         this.screen.scroll(-o.x * o.z + this.screen.desiredWidth / 2, -o.y * o.z + this.screen.desiredHeight / 2);
         this.screen.rotate(o.r);
@@ -197,7 +240,7 @@ class GameIO extends PIXI.Container {
     }
 
     render() {
-        if (!this.pixel || !this.spriteMap) { return; }
+        if (!this.pixel || !this.spriteMap || !this.ascii) { return; }
         this.hud.begin();
         this.screen.begin();
         this.game.render(this);
