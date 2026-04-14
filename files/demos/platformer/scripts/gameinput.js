@@ -189,6 +189,7 @@ class GameInput extends BasicInput {
         if (this.keyState['ArrowDown'])    { this.left.visible = true; this.right.visible = true; }
         if (this.keyState['z'])   { this.a.visible = true; }
         if (this.keyState['x'])   { this.b.visible = true; }
+        if (this.keyState['c'])    { this.a.visible = true; this.b.visible = true; }
 
         for (let k in this.list) {
             const point = this.list[k];
