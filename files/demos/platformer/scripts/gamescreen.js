@@ -33,9 +33,10 @@ class GameScreen extends PIXI.Container {
         this.finalScale = Math.min(scaleX, scaleY);
         this.finalScale = Math.floor(this.finalScale);
         if (this.finalScale < 1.0) {
-            this.finalScale = 1.0;
+            //this.finalScale = 1.0;
+            this.finalScale = 0.5;
         }
-        this.finalScale = 1.0;
+        //this.finalScale = 2.0;
 
         this.scale.set(this.finalScale);
         
@@ -81,4 +82,5 @@ class GameScreen extends PIXI.Container {
             this.container.children[i].visible = false;
         }
     }
+
 }
