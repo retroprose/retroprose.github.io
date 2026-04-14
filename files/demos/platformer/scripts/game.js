@@ -102,11 +102,15 @@ class GameIO extends PIXI.Container {
         //console.log("ltime: " + this.input.left.timer + ", rtime: " + this.input.right.timer + "left: " + this.input.left.current + ", right: " + this.input.right.current + ", dpress: " + this.input.doublePress + ", dtap: " + this.input.doubleTap);
         //console.log("left: " + this.input.left.current + ", right: " + this.input.right.current + ", dpress: " + this.input.doublePress + ", dtap: " + this.input.doubleTap);
 
+        if (this.input.left.pressed)    {this.bindInput.left = true;}
+        if (this.input.right.pressed)   {this.bindInput.right = true;}
+        if (this.input.a.pressed)       {this.bindInput.a = true;}
+        if (this.input.b.pressed)       {this.bindInput.b = true;}
 
-        if (this.input.left.current)    {this.bindInput.left = true;}
-        if (this.input.right.current)   {this.bindInput.right = true;}
-        if (this.input.doublePress)     {this.bindInput.x = true;}
-        if (this.input.doubleTap)       {this.bindInput.a = true;}
+        //if (this.input.left.current)    {this.bindInput.left = true;}
+        //if (this.input.right.current)   {this.bindInput.right = true;}
+        //if (this.input.doublePress)     {this.bindInput.x = true;}
+        //if (this.input.doubleTap)       {this.bindInput.a = true;}
 
 
         /*if (this.input.left)    {this.bindInput.left = true;}
