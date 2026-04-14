@@ -49,14 +49,14 @@ class GameInput extends BasicInput {
     resize() {
 
         const shift = 5.0;
-        const stickLength = 100.0;
+        const stickLength = 200.0;
         const diag = 1.0 / Math.sqrt(2);
 
         // dpad
         this.dpad.dotProduct = diag * 0 + diag * window.innerHeight;
         this.dpad.x = 0;
         this.dpad.y = window.innerHeight;
-        this.dpad.alpha = 0.5;
+        this.dpad.alpha = 0.25;
         this.dpad
             .clear()
             .moveTo(0, 0)
@@ -68,6 +68,7 @@ class GameInput extends BasicInput {
         this.left.y = window.innerHeight;
         this.left.x -= diag * shift;
         this.left.y -= diag * shift;
+        this.left.alpha = 0.5;
         this.left
             .clear()
             .moveTo(0, 0)
@@ -79,6 +80,7 @@ class GameInput extends BasicInput {
         this.right.y = window.innerHeight;
         this.right.x += diag * shift;
         this.right.y += diag * shift;
+        this.right.alpha = 0.5;
         this.right
             .clear()
             .moveTo(0, 0)
@@ -90,7 +92,7 @@ class GameInput extends BasicInput {
         this.buttons.dotProduct = -diag * window.innerWidth + diag * window.innerHeight;
         this.buttons.x = window.innerWidth;
         this.buttons.y = window.innerHeight;
-        this.buttons.alpha = 0.5;
+        this.buttons.alpha = 0.25;
         this.buttons
             .clear()
             .moveTo(0, 0)
@@ -102,6 +104,7 @@ class GameInput extends BasicInput {
         this.a.y = window.innerHeight;
         this.a.x += -diag * shift;
         this.a.y += diag * shift;
+        this.a.alpha = 0.5;
         this.a
             .clear()
             .moveTo(0, 0)
@@ -113,6 +116,7 @@ class GameInput extends BasicInput {
         this.b.y = window.innerHeight;
         this.b.x -= -diag * shift;
         this.b.y -= diag * shift;
+        this.b.alpha = 0.5;
         this.b
             .clear()
             .moveTo(0, 0)
