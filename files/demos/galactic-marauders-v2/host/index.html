@@ -1,0 +1,161 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content="mycontent" />
+		<title>Host Game</title>
+		<style> /* no styles */ </style>
+	</head>
+	<body>
+		<h1>Host Game</h1>
+		<form id="user-form">
+			<input name="domain" type="text" value="localhost" />
+            <input name="password" type="text" value="password" />
+			<input name="name" type="text" value="default name" />
+		</form>
+		<button onclick="host();">Host</button>
+		<button onclick="join();">Join</button>
+		<div id="roster">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Player</th>
+						<th scope="col">Kick</th>
+					</tr>
+				</thead>
+				<tbody id="roster-body">				
+				</tbody>
+			</table>
+		</div>
+		<div><p id="error"></p></div>
+		<script>
+			// start roster polling function here
+			function refrestRoster() {
+				const form = document.getElementById("user-form");
+				const formData = new FormData(form);
+				var object = {};
+				formData.forEach(function(value, key){					
+					object[key] = value;					
+				});
+				const domain = object.domain;
+				fetch(`http://${domain}/data`, {
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					method: 'GET'
+				})
+				.then((response) => response.json())
+				.then((json) => {
+					const roster = document.getElementById("roster-body");
+					let list = [];
+					let index = 0;
+					console.log(json);
+					for (const entry of json.roster) {
+						if (entry == null) {
+  							list.push(`<tr><th scope="row">__UNOCCUPIED__</th><td><button disabled>Kick</button></td></tr>`);
+						} else {
+							list.push(`<tr><th scope="row">${entry.name}</th><td><button onclick="kick(${index});">Kick</button></td></tr>`);
+						}
+						++index;
+					}
+					roster.innerHTML = list.join('');
+				});
+			}
+			refrestRoster();
+			setInterval(refrestRoster, 3000);
+			// kick player
+			function kick(slot) {
+				const form = document.getElementById("user-form");
+				const formData = new FormData(form);
+				var object = {};
+				formData.forEach(function(value, key){					
+					object[key] = value;					
+				});
+				const domain = object.domain;
+				fetch(`http://${domain}/kick/${slot}`, {
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					method: 'POST',
+					body: '{}'
+				})
+				.then((response) => response.json())
+				.then((json) => {
+					console.log(json);
+				});
+			}
+			// host game
+			function host() {
+				const form = document.getElementById("user-form");
+				const formData = new FormData(form);
+				var object = {};
+				formData.forEach(function(value, key){					
+					object[key] = value;					
+				});
+				const domain = object.domain;
+				const password = object.password;
+				delete object.domain;
+				delete object.password;
+				var json = JSON.stringify({
+					password: password,
+					user: object,
+					settings: { enemies: 45 }
+				});
+				console.log(json);
+				fetch(`http://${domain}/host`, {
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					method: 'POST',
+					body: json
+				})
+				.then((response) => response.json())
+				.then((json) => {
+					console.log(json);
+					const err = document.getElementById("error");
+					console.log(json);
+					const url = `http://${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
+					err.innerText = url;
+					window.location.replace(url);
+				});
+			}
+			// join game
+			function join() {
+				const form = document.getElementById("user-form");
+				const formData = new FormData(form);
+				var object = {};
+				formData.forEach(function(value, key){					
+					object[key] = value;					
+				});
+				const domain = object.domain;
+				const password = object.password;
+				delete object.domain;
+				delete object.password;
+				var json = JSON.stringify({
+					user: object
+				});
+				console.log(json);
+				fetch(`http://${domain}/join`, {
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					method: 'POST',
+					body: json
+				})
+				.then((response) => response.json())
+				.then((json) => {
+					console.log(json);
+					const err = document.getElementById("error");
+					const url = `http://${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
+					err.innerText = url;
+					window.location.replace(url);
+				});
+			}
+		</script>
+	</body>
+</html>

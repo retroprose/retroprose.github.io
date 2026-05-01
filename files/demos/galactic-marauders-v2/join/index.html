@@ -1,0 +1,67 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content="mycontent" />
+		<title>Join Game</title>
+		<style> /* no styles */ </style>
+	</head>
+	<body>
+		<h1>Join Game</h1>
+		<form id="user-form">
+			<input id="domain" name="domain" type="text" value="localhost" />
+			<input name="name" type="text" value="default name" />
+		</form>
+		<button onclick="join();">Join</button>
+		<div><p id="error"></p></div>
+		<script>
+			// get domain from url
+			const params = new URLSearchParams(window.location.search);  
+			if (params.has('u')) {
+				const domainInput = document.getElementById("domain");
+				domainInput.value = params.get('u');
+				domainInput.disabled = true;
+			}
+
+			// join game
+			function join() {
+				const form = document.getElementById("user-form");
+				const formData = new FormData(form);
+				var object = {};
+				formData.forEach(function(value, key){					
+					object[key] = value;					
+				});
+				const domainInput = document.getElementById("domain");
+				if (domainInput.disabled) {
+					object.domain = domainInput.value;
+				}
+				const domain = object.domain;
+				const password = object.password;
+				delete object.domain;
+				delete object.password;
+				var json = JSON.stringify({
+					user: object
+				});
+				console.log(json);
+				console.log(`http://${domain}/join`);
+				fetch(`http://${domain}/join`, {
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					method: 'POST',
+					body: json
+				})
+				.then((response) => response.json())
+				.then((json) => {
+					console.log(json);
+					const err = document.getElementById("error");
+					const url = `http://${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
+					err.innerText = url;
+					window.location.replace(url);
+				});
+			}
+		</script>
+	</body>
+</html>
