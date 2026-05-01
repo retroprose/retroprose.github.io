@@ -118,7 +118,7 @@
 					console.log(json);
 					const err = document.getElementById("error");
 					console.log(json);
-					const url = `http://${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
+					const url = `https://${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
 					err.innerText = url;
 					window.location.replace(url);
 				});
@@ -151,7 +151,7 @@
 				.then((json) => {
 					console.log(json);
 					const err = document.getElementById("error");
-					const url = `http://${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
+					const url = `https://${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
 					err.innerText = url;
 					window.location.replace(url);
 				});
