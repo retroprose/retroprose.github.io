@@ -26,41 +26,43 @@
 
 			// join game
 			function join() {
-				const form = document.getElementById("user-form");
-				const formData = new FormData(form);
-				var object = {};
-				formData.forEach(function(value, key){					
-					object[key] = value;					
-				});
-				const domainInput = document.getElementById("domain");
-				if (domainInput.disabled) {
-					object.domain = domainInput.value;
-				}
-				const domain = object.domain;
-				const password = object.password;
-				delete object.domain;
-				delete object.password;
-				var json = JSON.stringify({
-					user: object
-				});
-				console.log(json);
-				console.log(`http://${domain}/join`);
-				fetch(`http://${domain}/join`, {
-					headers: {
-						'Accept': 'application/json',
-						'Content-Type': 'application/json'
-					},
-					method: 'POST',
-					body: json
-				})
-				.then((response) => response.json())
-				.then((json) => {
-					console.log(json);
+				try {
+					const form = document.getElementById("user-form");
+					const formData = new FormData(form);
+					var object = {};
+					formData.forEach(function(value, key){					
+						object[key] = value;					
+					});
+					const domainInput = document.getElementById("domain");
+					if (domainInput.disabled) {
+						object.domain = domainInput.value;
+					}
+					const domain = object.domain;
+					const password = object.password;
+					delete object.domain;
+					delete object.password;
+					var json = JSON.stringify({
+						user: object
+					});
+					fetch(`http://${domain}/join`, {
+						headers: {
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						},
+						method: 'POST',
+						body: json
+					})
+					.then((response) => response.json())
+					.then((json) => {
+						const err = document.getElementById("error");						
+						const url = `${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
+						err.innerText = url;
+						window.location.replace(url);
+					});
+				} catch (e) {
 					const err = document.getElementById("error");
-					const url = `http://${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
-					err.innerText = url;
-					window.location.replace(url);
-				});
+					err.innerHTML = '<p>' + s.toString() + '</p>';
+				}
 			}
 		</script>
 	</body>
