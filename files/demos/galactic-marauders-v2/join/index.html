@@ -59,7 +59,12 @@
 						errList.push('<p>' + url + '</p>');
 						err.innerHTML = errList.join('');		
 						window.location.replace(url);
-					});
+					})
+					.catch(error => {
+    					// 3. This catches BOTH network errors AND the error thrown above
+						errList.push('<p> ERROR: ' + error.message + '</p>');
+						err.innerHTML = errList.join('');	
+  					});	
 				} catch (e) {
 					err.innerHTML = '<p>' + e.toString() + '</p>';
 				}
