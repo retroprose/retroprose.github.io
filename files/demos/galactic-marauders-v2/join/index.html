@@ -11,7 +11,7 @@
 		<h1>Join Game</h1>
 		<form id="user-form">
 			<input id="domain" name="domain" type="text" value="localhost" />
-			<input name="name" type="text" value="default name" />
+			<input id="name" name="name" type="text" value="default name" />
 		</form>
 		<button onclick="join();">Join</button>
 		<div><p id="error"></p></div>
@@ -26,24 +26,25 @@
 
 			// join game
 			function join() {
+				const err = document.getElementById("error");
+				const errList = [];
+				errList.push('<p>start of function</p>');
+				err.innerHTML = errList.join('');
 				try {
-					const form = document.getElementById("user-form");
-					const formData = new FormData(form);
-					var object = {};
-					formData.forEach(function(value, key){					
-						object[key] = value;					
-					});
+					errList.push('<p>start of block</p>');
+					err.innerHTML = errList.join('');
 					const domainInput = document.getElementById("domain");
-					if (domainInput.disabled) {
-						object.domain = domainInput.value;
-					}
-					const domain = object.domain;
-					const password = object.password;
-					delete object.domain;
-					delete object.password;
+					const nameInput = document.getElementById("name");
+					const domain = domainInput.value;
+					errList.push('<p>' + domain + '</p>');
+					err.innerHTML = errList.join('');				
 					var json = JSON.stringify({
-						user: object
+						user: {
+							name: nameInput.value
+						}
 					});
+					errList.push('<p>start of fetch</p>');
+					err.innerHTML = errList.join('');
 					fetch(`http://${domain}/join`, {
 						headers: {
 							'Accept': 'application/json',
@@ -53,15 +54,14 @@
 						body: json
 					})
 					.then((response) => response.json())
-					.then((json) => {
-						const err = document.getElementById("error");						
+					.then((json) => {										
 						const url = `${json.url}?s=${json.slot}&k=${json.key}&u=${domain}`;
-						err.innerText = url;
+						errList.push('<p>' + url + '</p>');
+						err.innerHTML = errList.join('');		
 						window.location.replace(url);
 					});
 				} catch (e) {
-					const err = document.getElementById("error");
-					err.innerHTML = '<p>' + s.toString() + '</p>';
+					err.innerHTML = '<p>' + e.toString() + '</p>';
 				}
 			}
 		</script>
