@@ -16,6 +16,11 @@
 			.then((json) => {				
 				console.log(json);
 			})
+			.catch(error => {
+				// 3. This catches BOTH network errors AND the error thrown above
+				const output = document.getElementById("error");
+				output.innerHTML = "<p>" + error.message + "</p>";
+			});	
 
 			const socket = new WebSocket(`wss://3.15.18.21/ws/3/243235`);
 			const data1 = new Uint8Array(10);
