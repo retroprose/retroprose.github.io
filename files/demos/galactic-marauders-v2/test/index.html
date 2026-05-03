@@ -1,0 +1,78 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content="mycontent" />
+		<title>Host Game</title>
+		<style> /* no styles */ </style>
+	</head>
+	<body>		
+		<div><p id="error"></p></div>
+		<script>
+
+			fetch(`https://3.15.18.21/`, {method: 'GET'})
+			.then((response) => response.json())
+			.then((json) => {				
+				console.log(json);
+			})
+
+			const socket = new WebSocket(`wss://3.15.18.21/ws/3/243235`);
+			const data1 = new Uint8Array(10);
+			const data2 = new Uint8Array(10);
+			let which = false;
+			for (let i = 0; i < 10; ++i) { 
+				data2[i] = 1;
+				if (i % 2 == 0) {
+					data1[i] = 1;
+					data2[i] = 0;
+ 				}
+			}
+			socket.binaryType = "arraybuffer";
+			
+			socket.onopen = () => {
+				console.log("Opened");
+				setInterval(() => {
+					console.log("Sent");
+					which = !which;
+					if (which) {
+						socket.send(data1);		
+					} else {
+						socket.send(data2);		
+					}
+					
+				}, 1000);
+			};
+
+			socket.onclose = () => {
+				console.log("Closed");				
+			};
+
+			socket.onerror = () => {
+				console.log("Connection failed");
+			};
+
+			socket.onmessage = (event) => {
+				console.log("Recieved:");
+				console.log(event.data);
+				const bytes = new Uint8Array(event.data);
+				const output = document.getElementById("error");
+				console.log(bytes);
+				let list = [];
+				for (let i = 0; i < bytes.byteLength; ++i) {					
+					list.push("" + bytes[i]);
+				}
+				output.innerHTML = "<p>" + list.join(', ') + "</p>";
+			}
+
+			/*fetch(`http://${domain}/data`, {
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				method: 'GET'
+			})
+			.then((response) => {console.log(response)})*/
+		</script>
+	</body>
+</html>

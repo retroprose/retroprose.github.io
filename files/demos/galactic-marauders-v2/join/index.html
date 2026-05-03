@@ -45,6 +45,8 @@
 					});
 					errList.push('<p>start of fetch</p>');
 					err.innerHTML = errList.join('');
+					errList.push('<p>' + json + '</p>');
+					err.innerHTML = errList.join('');
 					fetch(`http://${domain}/join`, {
 						headers: {
 							'Accept': 'application/json',
