@@ -12,10 +12,13 @@
 		<div><p id="error"></p></div>
 		<div id="connect">
 			<h3>Connect</h3>
-			<label for="domain">Domain: </label><input id="domain" type="text" value="localhost"/><label for="password">Password: </label><input id="password" type="text" value="password" /><button onclick="connect();">Connect</button>
+			<label for="domain">Domain: </label><input id="domain" type="text" value="http://localhost/"/><label for="password">Password: </label><input id="password" type="text" value="password" /><button onclick="connect();">Connect</button>
 		</div>
 		<div id="configure" hidden>
 			<h3>Configure</h3>
+			<div>
+				<label for="">Join Link: </label><span id="join-link"></span><button onclick="copyLink();">Copy</button>
+			</div>
 			<label for="settings">Settings: </label><textarea id="settings"></textarea><button onclick="configure();">Configure</button>
 		</div>
 		<div id="join" hidden>
@@ -43,7 +46,7 @@
 				const domain = document.getElementById("domain");
 				const password = document.getElementById("password");
 				password.value = (params.has('p')) ? params.get('p') : '';
-				domain.value = params.get('u');				
+				domain.value = decodeURI(params.get('u'));
 				connect();
 			}
 			
@@ -51,24 +54,30 @@
 
 			function default_values() {
 				const guest = document.getElementById("name");
-				const config = document.getElementById("settings");
 				guest.value = 'Guest' + Math.floor(Math.random()*9999);
+				const config = document.getElementById("settings");
 				configData = {
-					url: "https://localhost:666/galactic-marauders-v2",
+					url: "http://localhost:666/galactic-marauders-v2",
 					slot: 32,
 					input: 1,
 					buffer: 32,
 					user: {
-						special: "data"
+					   	fastForward: 3,
+						inputDelay: 3
 					}
 				}
-				config.value = JSON.stringify(configData, null, 4);				
+				config.value = JSON.stringify(configData, null, 4);
 			}
 			default_values();
+
+			function copyLink() {
+				const joinLink = document.getElementById("join-link");
+				navigator.clipboard.writeText(joinLink.innerHTML);
+			}
 			
 			function refreshRoster() {
 				const domain = document.getElementById("domain");
-				fetch(`https://${domain.value}/roster`, {
+				fetch(`${domain.value}roster`, {
 					headers: {
 						'Accept': 'application/json'
 					},
@@ -100,7 +109,7 @@
 				console.log('kick ' + slot)
 				const domain = document.getElementById("domain");
 				const password = document.getElementById("password");
-				fetch(`https://${domain.value}/kick/${slot}`, {
+				fetch(`${domain.value}kick/${slot}`, {
 					headers: {
 						'Authorization': 'Basic ' + btoa('admin:' + password.value),
 						'Accept': 'application/json',
@@ -129,8 +138,16 @@
 				} else {
 					const domain = document.getElementById("domain");				
 					const config = document.getElementById("configure");
-					const settings = document.getElementById("settings");					
-					fetch(`https://${domain.value}/data`, {
+					const settings = document.getElementById("settings");
+					const joinLink = document.getElementById("join-link");			
+					let encoded = domain.value
+						.replaceAll(':', '%3A')
+						.replaceAll('/', '%2F')
+						.replaceAll('-', '%2D')
+						.replaceAll('.', '%2E')
+					;					
+					joinLink.innerHTML = `${window.location}?u=${encoded}`;
+					fetch(`${domain.value}data`, {
 						headers: {
 							'Accept': 'application/json',
 						},
@@ -160,7 +177,7 @@
 				const player = document.getElementById("join");
 				const roster = document.getElementById("roster");
 
-				fetch(`https://${domain.value}/config`, {
+				fetch(`${domain.value}config`, {
 					headers: {
 						'Authorization': 'Basic ' + btoa('admin:' + password.value),
 						'Accept': 'application/json',
@@ -187,13 +204,19 @@
 				const guest = document.getElementById("name");
 				const password = document.getElementById("password");
 				const domain = document.getElementById("domain");
+				let encoded = domain.value
+					.replaceAll(':', '%3A')
+					.replaceAll('/', '%2F')
+					.replaceAll('-', '%2D')
+					.replaceAll('.', '%2E')
+				;
 				const user = {
 					name: guest.value
 				};
 				const userJson = JSON.stringify(user);
 				if (password.value.trim() == '') {
 					// this is the host launching the game
-					fetch(`https://${domain.value}/join`, {
+					fetch(`${domain.value}join`, {
 						headers: {
 							//'Authorization': 'Basic ' + btoa('guest:join'),
 							'Accept': 'application/json',
@@ -209,14 +232,14 @@
 							const error = document.getElementById("error");
 							error.innerHTML = "<p>Host hasn't configured game yet...</p>";
 						} else {
-							const url = `${json.url}?s=${json.slot}&k=${json.key}&u=${domain.value}`;
+							const url = `${json.url}?s=${json.slot}&k=${json.key}&u=${encoded}`;
 							console.log(url);
 							window.location.replace(url);
 						}
 					});
 				} else {
 					// this is the host launching the game
-					fetch(`https://${domain.value}/host`, {
+					fetch(`${domain.value}host`, {
 						headers: {
 							'Authorization': 'Basic ' + btoa('admin:' + password.value),
 							'Accept': 'application/json',
@@ -228,7 +251,7 @@
 					.then((response) => response.json())
 					.then((json) => {
 						console.log(json);
-						const url = `${json.url}?s=${json.slot}&k=${json.key}&u=${domain.value}`;
+						const url = `${json.url}?s=${json.slot}&k=${json.key}&u=${encoded}`;
 						console.log(url);
 						window.location.replace(url);
 					});

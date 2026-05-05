@@ -120,16 +120,9 @@
 					this.x = window.innerWidth / 2.0;
 					this.y = -this.sentFrame.y + window.innerHeight / 2.0;
 				}
-			}			
+			}
 			// create game
-			app = new Game().init({
-				frameTime: 1000.0 / 60.0,
-				//frameTime: 1000.0,
-				playerCount: 32,
-				inputSize: 1,
-				fastForward: 3,
-				inputDelay: 0
-			});
+			app = new Game().init();
 		</script>
 	</body>
 </html>

@@ -1,7 +1,7 @@
 // main game class
 class Game {
 
-    async init(config) {
+    async init() {
         // may sure cpp module is initalized before doing anything else
         await (() => {
             return new Promise(resolve => {
@@ -26,7 +26,19 @@ class Game {
         this.renderObjectIndex = 0;
 
         // app data
-        this.data = config;
+        let domain = null;
+        const params = new URLSearchParams(window.location.search);  
+        if (params.has('s') && params.has('k') && params.has('u')) {
+            domain = {
+                slot: Number(params.get('s')),
+                key: params.get('k'),
+                url: decodeURI(params.get('u'))
+            };
+            domain.ws = domain.url.replace('https://', 'wss://').replace('http://', 'ws://');
+        }
+
+        const response = await fetch(`${domain.url}data`);
+        this.config = await response.json();
 
         // container for game objects
         this.container = new PIXI.Container();
@@ -106,7 +118,23 @@ class Game {
         // initalize network config
         this.displayText.text = 'Connecting to Relay Server...';
         
-        this.network = UMS.createNetwork(config);
+        if (domain == null) {
+            this.network = new FakeNetwork({
+                frameTime: 1000.0 / 60.0,
+                inputSize: 1
+            });
+        } else {
+            this.network = new StaggeredNetwork({
+                frameTime: 1000.0 / 60.0,
+                server: domain.ws,
+                local: domain.slot,
+                key: domain.key,
+                playerCount: this.config.slot,
+                inputSize: this.config.input,
+                fastForward: this.config.user.fastForward,
+                inputDelay: this.config.user.inputDelay
+            });
+        }
 
         this.network.ondisconnect = () => {
             this.displayText.visible = true;

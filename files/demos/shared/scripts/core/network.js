@@ -1,7 +1,8 @@
 /*
-
-    
-
+new FakeNetwork({
+    frameTime: 1000.0 / 60.0    
+    inputSize: 1,
+});
 */
 
 class FakeNetwork {
@@ -10,6 +11,8 @@ class FakeNetwork {
         this.connected = true;
 
         this.config = config; 
+
+        this.config.playerCount = 1;        
 
         //this.local = this.config.slot;
         this.local = 0;
@@ -78,8 +81,19 @@ class FakeNetwork {
 
 }
 
-
-
+/*
+new StaggeredNetwork({
+    frameTime: 1000.0 / 60.0,    
+    server: this.config.domain.ws,
+    local: this.config.domain.slot,
+    key: this.config.key,
+    playerCount: this.config.slot,
+    inputSize: this.config.input,
+    //bufferSize: this.config.buffer,
+    fastForward: this.config.user.fastForward,
+    inputDelay: this.config.user.inputDelay
+});
+*/
 
 class StaggeredNetwork {
 
@@ -92,7 +106,7 @@ class StaggeredNetwork {
         
         this.connected = false;
         this.seed = 0;
-        this.local = this.config.slot;
+        this.local = this.config.local;
 
         // queued frames recieved from server
         this.tempQueue = [];
@@ -122,7 +136,7 @@ class StaggeredNetwork {
         this.fastForwardFrame = -1;
         this.bufferedFrame = -1;
 
-        const url = `wss://${this.config.url}/ws/${this.config.slot}/${this.config.key}`;
+        const url = `${this.config.server}ws/${this.config.local}/${this.config.key}`;
 
         console.log(url);
         this.socket = new WebSocket(url);
@@ -282,19 +296,4 @@ class StaggeredNetwork {
         }
     }
 
-};
-
-
-window.UMS = {
-    createNetwork: (config) => {
-        const params = new URLSearchParams(window.location.search);  
-        if (params.has('s') && params.has('k') && params.has('u')) {
-        	config.slot = Number(params.get('s'));
-        	config.key = params.get('k');
-        	config.url = params.get('u');
-        	return new StaggeredNetwork(config);
-        } else {
-            return new FakeNetwork(config);
-        }
-    }
 };
