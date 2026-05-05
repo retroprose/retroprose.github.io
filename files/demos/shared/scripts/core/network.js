@@ -136,7 +136,7 @@ class StaggeredNetwork {
         this.fastForwardFrame = -1;
         this.bufferedFrame = -1;
 
-        const url = `${this.config.server}ws/${this.config.local}/${this.config.key}`;
+        const url = `wss://${this.config.server}/ws/${this.config.local}/${this.config.key}`;
 
         console.log(url);
         this.socket = new WebSocket(url);

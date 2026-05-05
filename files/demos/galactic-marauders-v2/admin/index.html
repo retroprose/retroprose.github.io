@@ -57,7 +57,8 @@
 				guest.value = 'Guest' + Math.floor(Math.random()*9999);
 				const config = document.getElementById("settings");
 				configData = {
-					url: "http://localhost:666/galactic-marauders-v2",
+					//url: "http://localhost:666/galactic-marauders-v2",
+					url: "<game-url-goes-here>",
 					slot: 32,
 					input: 1,
 					buffer: 32,
@@ -77,7 +78,7 @@
 			
 			function refreshRoster() {
 				const domain = document.getElementById("domain");
-				fetch(`${domain.value}roster`, {
+				fetch(`https://${domain.value}/roster`, {
 					headers: {
 						'Accept': 'application/json'
 					},
@@ -109,7 +110,7 @@
 				console.log('kick ' + slot)
 				const domain = document.getElementById("domain");
 				const password = document.getElementById("password");
-				fetch(`${domain.value}kick/${slot}`, {
+				fetch(`https://${domain.value}/kick/${slot}`, {
 					headers: {
 						'Authorization': 'Basic ' + btoa('admin:' + password.value),
 						'Accept': 'application/json',
@@ -147,7 +148,7 @@
 						.replaceAll('.', '%2E')
 					;					
 					joinLink.innerHTML = `${window.location}?u=${encoded}`;
-					fetch(`${domain.value}data`, {
+					fetch(`https://${domain.value}/data`, {
 						headers: {
 							'Accept': 'application/json',
 						},
@@ -177,7 +178,7 @@
 				const player = document.getElementById("join");
 				const roster = document.getElementById("roster");
 
-				fetch(`${domain.value}config`, {
+				fetch(`https://${domain.value}/config`, {
 					headers: {
 						'Authorization': 'Basic ' + btoa('admin:' + password.value),
 						'Accept': 'application/json',
@@ -216,7 +217,7 @@
 				const userJson = JSON.stringify(user);
 				if (password.value.trim() == '') {
 					// this is the host launching the game
-					fetch(`${domain.value}join`, {
+					fetch(`https://${domain.value}/join`, {
 						headers: {
 							//'Authorization': 'Basic ' + btoa('guest:join'),
 							'Accept': 'application/json',
@@ -232,14 +233,14 @@
 							const error = document.getElementById("error");
 							error.innerHTML = "<p>Host hasn't configured game yet...</p>";
 						} else {
-							const url = `${json.url}?s=${json.slot}&k=${json.key}&u=${encoded}`;
+							const url = `https://${json.url}?s=${json.slot}&k=${json.key}&u=${encoded}`;
 							console.log(url);
 							window.location.replace(url);
 						}
 					});
 				} else {
 					// this is the host launching the game
-					fetch(`${domain.value}host`, {
+					fetch(`https://${domain.value}/host`, {
 						headers: {
 							'Authorization': 'Basic ' + btoa('admin:' + password.value),
 							'Accept': 'application/json',
@@ -251,7 +252,7 @@
 					.then((response) => response.json())
 					.then((json) => {
 						console.log(json);
-						const url = `${json.url}?s=${json.slot}&k=${json.key}&u=${encoded}`;
+						const url = `https://${json.url}?s=${json.slot}&k=${json.key}&u=${encoded}`;
 						console.log(url);
 						window.location.replace(url);
 					});

@@ -32,9 +32,8 @@ class Game {
             domain = {
                 slot: Number(params.get('s')),
                 key: params.get('k'),
-                url: decodeURI(params.get('u'))
+                url: decodeURI(params.get('u')) 
             };
-            domain.ws = domain.url.replace('https://', 'wss://').replace('http://', 'ws://');
         }
 
         const response = await fetch(`${domain.url}data`);
@@ -126,7 +125,7 @@ class Game {
         } else {
             this.network = new StaggeredNetwork({
                 frameTime: 1000.0 / 60.0,
-                server: domain.ws,
+                server: domain.url,
                 local: domain.slot,
                 key: domain.key,
                 playerCount: this.config.slot,
