@@ -12,7 +12,7 @@
 		<div><p id="error"></p></div>
 		<div id="connect">
 			<h3>Connect</h3>
-			<label for="domain">Domain: </label><input id="domain" type="text" value="http://localhost/"/><label for="password">Password: </label><input id="password" type="text" value="password" /><button onclick="connect();">Connect</button>
+			<label for="domain">Domain: </label><input id="domain" type="text" value="<ip-address>"/><label for="password">Password: </label><input id="password" type="text" value="password" /><button onclick="connect();">Connect</button>
 		</div>
 		<div id="configure" hidden>
 			<h3>Configure</h3>
@@ -57,7 +57,6 @@
 				guest.value = 'Guest' + Math.floor(Math.random()*9999);
 				const config = document.getElementById("settings");
 				configData = {
-					//url: "http://localhost:666/galactic-marauders-v2",
 					url: "<game-url-goes-here>",
 					slot: 32,
 					input: 1,
