@@ -54,7 +54,7 @@
 				const config = document.getElementById("settings");
 				guest.value = 'Guest' + Math.floor(Math.random()*9999);
 				configData = {
-					url: "http://localhost:666/galactic-marauders-v2",
+					url: "https://localhost:666/galactic-marauders-v2",
 					slot: 32,
 					input: 1,
 					buffer: 32,
@@ -68,7 +68,7 @@
 			
 			function refreshRoster() {
 				const domain = document.getElementById("domain");
-				fetch(`http://${domain.value}/roster`, {
+				fetch(`https://${domain.value}/roster`, {
 					headers: {
 						'Accept': 'application/json'
 					},
@@ -100,7 +100,7 @@
 				console.log('kick ' + slot)
 				const domain = document.getElementById("domain");
 				const password = document.getElementById("password");
-				fetch(`http://${domain.value}/kick/${slot}`, {
+				fetch(`https://${domain.value}/kick/${slot}`, {
 					headers: {
 						'Authorization': 'Basic ' + btoa('admin:' + password.value),
 						'Accept': 'application/json',
@@ -130,7 +130,7 @@
 					const domain = document.getElementById("domain");				
 					const config = document.getElementById("configure");
 					const settings = document.getElementById("settings");					
-					fetch(`http://${domain.value}/data`, {
+					fetch(`https://${domain.value}/data`, {
 						headers: {
 							'Accept': 'application/json',
 						},
@@ -160,7 +160,7 @@
 				const player = document.getElementById("join");
 				const roster = document.getElementById("roster");
 
-				fetch(`http://${domain.value}/config`, {
+				fetch(`https://${domain.value}/config`, {
 					headers: {
 						'Authorization': 'Basic ' + btoa('admin:' + password.value),
 						'Accept': 'application/json',
@@ -193,7 +193,7 @@
 				const userJson = JSON.stringify(user);
 				if (password.value.trim() == '') {
 					// this is the host launching the game
-					fetch(`http://${domain.value}/join`, {
+					fetch(`https://${domain.value}/join`, {
 						headers: {
 							//'Authorization': 'Basic ' + btoa('guest:join'),
 							'Accept': 'application/json',
@@ -216,7 +216,7 @@
 					});
 				} else {
 					// this is the host launching the game
-					fetch(`http://${domain.value}/host`, {
+					fetch(`https://${domain.value}/host`, {
 						headers: {
 							'Authorization': 'Basic ' + btoa('admin:' + password.value),
 							'Accept': 'application/json',
