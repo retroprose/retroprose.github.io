@@ -2,14 +2,6 @@
 class Game {
 
     async init() {
-        // may sure cpp module is initalized before doing anything else
-        await (() => {
-            return new Promise(resolve => {
-                Module.onRuntimeInitialized = function() {
-                    resolve();
-                };
-            });
-        })();
         // initialize pixi.js
         this.pixi = new PIXI.Application();
         await this.pixi.init({ background: '#000000', resizeTo: window });
@@ -33,11 +25,10 @@ class Game {
                 slot: Number(params.get('s')),
                 key: params.get('k'),
                 url: decodeURI(params.get('u')) 
-            };
+            };            
+            const response = await fetch(`https://${domain.url}/data`);
+            this.config = await response.json();
         }
-
-        const response = await fetch(`https://${domain.url}/data`);
-        this.config = await response.json();
 
         // container for game objects
         this.container = new PIXI.Container();
