@@ -36,7 +36,7 @@ class Game {
             };
         }
 
-        const response = await fetch(`${domain.url}data`);
+        const response = await fetch(`https://${domain.url}/data`);
         this.config = await response.json();
 
         // container for game objects
