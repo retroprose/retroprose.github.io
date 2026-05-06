@@ -1,7 +1,7 @@
 // main game class
 class Game {
 
-    async init() {
+    async init(config) {
         // initialize pixi.js
         this.pixi = new PIXI.Application();
         await this.pixi.init({ background: '#000000', resizeTo: window });
@@ -17,18 +17,7 @@ class Game {
         });
         this.renderObjectIndex = 0;
 
-        // app data
-        let domain = null;
-        const params = new URLSearchParams(window.location.search);  
-        if (params.has('s') && params.has('k') && params.has('u')) {
-            domain = {
-                slot: Number(params.get('s')),
-                key: params.get('k'),
-                url: decodeURI(params.get('u')) 
-            };            
-            const response = await fetch(`https://${domain.url}/data`);
-            this.config = await response.json();
-        }
+        this.config = config;
 
         // container for game objects
         this.container = new PIXI.Container();
@@ -108,21 +97,21 @@ class Game {
         // initalize network config
         this.displayText.text = 'Connecting to Relay Server...';
         
-        if (domain == null) {
-            this.network = new FakeNetwork({
-                frameTime: 1000.0 / 60.0,
-                inputSize: 1
-            });
-        } else {
+        if (this.config.slot > 1) {        
             this.network = new StaggeredNetwork({
                 frameTime: 1000.0 / 60.0,
-                server: domain.url,
-                local: domain.slot,
-                key: domain.key,
+                server: this.config.domain.url,
+                local: this.config.domain.slot,
+                key: this.config.domain.key,
                 playerCount: this.config.slot,
                 inputSize: this.config.input,
                 fastForward: this.config.user.fastForward,
                 inputDelay: this.config.user.inputDelay
+            });
+        } else {
+            this.network = new FakeNetwork({
+                frameTime: 1000.0 / 60.0,
+                inputSize: 1
             });
         }
 
@@ -140,6 +129,8 @@ class Game {
 
             console.log("sending ready frame");
             this.network.ready(); 
+
+            // if players is more than one, download roster
 
             // get the update loop started!
             requestAnimationFrame((deltaTotal) => {
