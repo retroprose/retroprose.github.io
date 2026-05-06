@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 		<meta name="generator" content="mycontent" />
 		<title>Galactic Marauders v2</title>
-		<style>
+		<style id="style">
 			html, body {
 				margin: 0 !important;
             	padding: 0 !important;
@@ -84,6 +84,10 @@
 		<script src="./scripts/cpp-module.js"></script>
 		<script src="./scripts/game.js"></script>
 		<script>
+
+			window.tempStyle = document.getElementById("style");
+			document.head.remove(window.tempStyle);
+
 			window.messageNum = 0;
 			
 			function default_values() {
@@ -361,6 +365,7 @@
 				const admin = document.getElementById("admin");		
 				user.hidden = true;
 				admin.hidden = true;
+				document.body.appendChild(window.tempStyle);
 				window.gameObject = new Game();
 				window.gameObject.init({
 					slot: 1,
