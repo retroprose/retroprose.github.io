@@ -5,7 +5,7 @@
 		<meta name="theme-color" content="#000000">
 		<meta name="msapplication-navbutton-color" content="#000000">
 		<meta name="apple-mobile-wep-app-status-bar-style" content="#000000">
-		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 		<meta name="generator" content="mycontent" />
 		<title>Galactic Marauders v2</title>
 		<style id="style">
@@ -252,6 +252,7 @@
 				const admin = document.getElementById("admin");		
 				user.hidden = true;
 				admin.hidden = true;
+				resetZoom();
 				let response;
 				let gameLaunched = false;
 				let config = null;
@@ -309,6 +310,7 @@
 				const joinMode = admin.hidden;
 				user.hidden = true;
 				admin.hidden = true;
+				resetZoom();
 				let response;
 				let gameLaunched = false;
 				let config = null;
@@ -384,6 +386,11 @@
 					domain: domain.value,
 					settings: settings.value
 				};
+			}
+
+			function resetZoom() {
+				const viewport = document.querySelector('meta[name="viewport"]');
+				viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
 			}
 
 			function displayMessage(text) {
