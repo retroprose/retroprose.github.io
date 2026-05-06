@@ -276,7 +276,7 @@
 					const userJson = {
 						name: input.name
 					};
-					const userJsonStr = JSON.stringify(user);
+					const userJsonStr = JSON.stringify(userJson);
 					response = await fetch(`${input.domain}host`, {
 						headers: {
 							'Authorization': 'Basic ' + btoa('admin:' + input.password),
@@ -331,12 +331,11 @@
 						displayMessage('failed to get config');
 						return;
 					}
-					console.log(input);
 					// join the game
 					const userJson = {
 						name: input.name
 					};
-					const userJsonStr = JSON.stringify(user);
+					const userJsonStr = JSON.stringify(userJson);
 					response = await fetch(`${input.domain}join`, {
 						headers: {
 							//'Authorization': 'Basic ' + btoa('guest:join'),
