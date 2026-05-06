@@ -85,11 +85,6 @@
 		<script src="./scripts/game.js"></script>
 		<script>
 
-			window.tempStyle = document.getElementById("style");
-			document.head.remove(window.tempStyle);
-
-			window.messageNum = 0;
-			
 			function default_values() {
 				const password = document.getElementById("password");
 				const domain = document.getElementById("domain");
@@ -109,9 +104,12 @@
 				}
 				config.value = JSON.stringify(configData, null, 4);
 			}
-			default_values();
-
+		
 			Module.onRuntimeInitialized = function() {
+				window.tempStyle = document.getElementById("style");
+				document.head.remove(window.tempStyle);
+				window.messageNum = 0;
+				default_values();
 				const params = new URLSearchParams(window.location.search);
 				if (params.size == 0) {
 					// just run in single player mode
