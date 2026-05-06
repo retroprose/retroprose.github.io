@@ -99,7 +99,6 @@
 				//password.value = 'password';
 				name.value = 'Guest' + Math.floor(Math.random()*9999);
 				configData = {
-					url: "http://localhost:666/galactic-marauders-v2",
 					slot: 32,
 					input: 1,
 					buffer: 32,
@@ -116,6 +115,7 @@
 				const params = new URLSearchParams(window.location.search);
 				if (params.size == 0) {
 					// just run in single player mode
+					document.body.appendChild(window.tempStyle);
 					window.gameObject = new Game();
 					window.gameObject.init({
 						slot: 1,
@@ -138,6 +138,10 @@
 						admin.hidden = false;
 						if (password.value != '' && domain.value != '') {
 							refreshConfig();
+						}
+					} else {
+						if (domain.value.trim() != '') {
+							join();
 						}
 					}
 				}
@@ -299,6 +303,7 @@
 					displayMessage(e.message);
 				}
 				if (gameLaunched) {
+					document.body.appendChild(window.tempStyle);
 					window.gameObject = new Game();
 					window.gameObject.init(config);
 				}
@@ -357,6 +362,7 @@
 					displayMessage(e.message);
 				}
 				if (gameLaunched) {
+					document.body.appendChild(window.tempStyle);
 					window.gameObject = new Game();
 					window.gameObject.init(config);
 				}
