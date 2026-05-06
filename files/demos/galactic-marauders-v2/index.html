@@ -84,7 +84,7 @@
 		<script src="./scripts/cpp-module.js"></script>
 		<script src="./scripts/game.js"></script>
 		<script>
-
+		
 			function default_values() {
 				const password = document.getElementById("password");
 				const domain = document.getElementById("domain");
@@ -104,7 +104,7 @@
 				}
 				config.value = JSON.stringify(configData, null, 4);
 			}
-		
+
 			Module.onRuntimeInitialized = function() {
 				window.tempStyle = document.getElementById("style");
 				document.head.remove(window.tempStyle);
@@ -139,7 +139,7 @@
 						}
 					} else {
 						if (domain.value.trim() != '') {
-							setTimeout(join, 1000);
+							join();
 						}
 					}
 				}
@@ -330,6 +330,7 @@
 						displayMessage('failed to get config');
 						return;
 					}
+					console.log(input);
 					// join the game
 					const userJson = {
 						name: input.name
