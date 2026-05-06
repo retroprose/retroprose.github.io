@@ -209,6 +209,7 @@
 						displayMessage('failed to get roster');
 						return;
 					}
+					console.log(json);
 					const roster = document.getElementById("roster");
 					let list = [];
 					let index = 0;
@@ -220,7 +221,6 @@
 						}
 						++index;
 					}
-					console.log(list);
 					roster.innerHTML = list.join('');
 					displayMessage('roster refreshed');
 				} catch (e) {
