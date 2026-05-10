@@ -1,0 +1,430 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<meta name="theme-color" content="#000000">
+		<meta name="msapplication-navbutton-color" content="#000000">
+		<meta name="apple-mobile-wep-app-status-bar-style" content="#000000">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+		<meta name="generator" content="mycontent" />
+		<title>Galactic Marauders v2</title>
+		<style id="style">
+			html, body {
+				margin: 0 !important;
+            	padding: 0 !important;
+	        	overflow-x: hidden;
+				
+				touch-action: none;
+				-webkit-touch-callout: none; /* iOS Safari */
+					-webkit-user-select: none; /* Safari */
+					-khtml-user-select: none; /* Konqueror HTML */
+					-moz-user-select: none; /* Old versions of Firefox */
+						-ms-user-select: none; /* Internet Explorer/Edge */
+							user-select: none; /* Non-prefixed version, currently
+												supported by Chrome, Edge, Opera and Firefox */
+
+    		}
+			canvas {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				background-color: #000000;
+				/* overflow: hidden; */
+
+				touch-action: none;
+				-webkit-touch-callout: none; /* iOS Safari */
+					-webkit-user-select: none; /* Safari */
+					-khtml-user-select: none; /* Konqueror HTML */
+					-moz-user-select: none; /* Old versions of Firefox */
+						-ms-user-select: none; /* Internet Explorer/Edge */
+							user-select: none; /* Non-prefixed version, currently
+												supported by Chrome, Edge, Opera and Firefox */
+
+			}
+		</style>
+	</head>
+	<body>
+		<div id="user" hidden>
+			<h1>Galactic Marauders</h1>
+			<label for="name">Name: </label><input id="name" type="text" /></body><button onclick="join();">Join</button><br />
+			<p id="message"></p>
+		</div>
+		<div id="admin" hidden>
+			<h1>Admin Panel</h1>
+			<h3>Join Link</h3>
+			<button onclick="copyLink();">Copy</button><span id="join-link"></span><br />
+			<h3>Launch Game</h3>
+			<button onclick="launch();">Launch</button><br />
+			<button onclick="launchOffline();">Launch Offline</button><br />
+			<h3>Credentials</h3>
+			<label for="domain">Domain: </label><input id="domain" type="text" value="" /><br />
+			<label for="password">Password: </label><input id="password" type="text" value="" /><br />
+			<h3>Configure</h3>
+			<button onclick="refreshConfig();">Refresh</button><button onclick="updateConfig();">Update</button><br />
+			<textarea id="settings"></textarea><br />
+			<h3>Roster</h3>
+			<button onclick="refreshRoster();">Refresh</button><br />
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Player</th>
+						<th scope="col">Connected</th>
+						<th scope="col">Kick</th>
+					</tr>
+				</thead>
+				<tbody id="roster">
+				</tbody>
+			</table>
+		</div>
+		
+		<!-- core scripts -->
+		<script src="../shared/scripts/core/pixi.min.js"></script>
+		<script src="../shared/scripts/core/network.js"></script>
+		<script src="../shared/scripts/core/networkvisualizer.js"></script>
+		<script src="./scripts/cpp-module.js"></script>
+		<script src="./scripts/main.js"></script>
+		
+		<script>
+		
+			function default_values() {
+				const password = document.getElementById("password");
+				const domain = document.getElementById("domain");
+				const name = document.getElementById("name");
+				const config = document.getElementById("settings");
+				//domain.value = 'http://localhost/';
+				//password.value = 'password';
+				name.value = 'Guest' + Math.floor(Math.random()*9999);
+				configData = {
+					slot: 32,
+					input: 1,
+					buffer: 32,
+					user: {
+					   	fastForward: 3,
+						inputDelay: 3
+					}
+				}
+				config.value = JSON.stringify(configData, null, 4);
+			}
+
+			Module.onRuntimeInitialized = function() {
+				window.tempStyle = document.getElementById("style");
+				document.head.remove(window.tempStyle);
+				window.messageNum = 0;
+				default_values();
+				const params = new URLSearchParams(window.location.search);
+				if (params.size == 0) {
+					// just run in single player mode
+					document.body.appendChild(window.tempStyle);
+					window.gameObject = new Main();
+					window.gameObject.init({
+						slot: 1,
+						input: 1
+					});
+				} else {
+					const user = document.getElementById("user");
+					user.hidden = false;
+
+					const domain = document.getElementById("domain");
+					const password = document.getElementById("password");
+					if (params.has('p')) { password.value = params.get('p'); }
+					if (params.has('u')) { domain.value = params.get('u'); }
+					//password.value = (params.has('p')) ? params.get('p') : '';
+					//domain.value = (params.has('u')) ? decodeURI(params.get('u')) : '';				
+					
+					if (params.has('m')) {
+						// admin mode
+						const admin = document.getElementById("admin");
+						admin.hidden = false;
+						if (password.value != '' && domain.value != '') {
+							refreshConfig();
+						}
+					} else {
+						if (domain.value.trim() != '') {
+							join();
+						}
+					}
+				}
+			}
+
+			function copyLink() {
+				const joinLink = document.getElementById("join-link");
+				navigator.clipboard.writeText(joinLink.innerHTML);
+			}
+
+			async function updateConfig() {
+				try {
+					const input = getInput();
+					const response = await fetch(`${domain.value}config`, {
+						headers: {
+							'Authorization': 'Basic ' + btoa('admin:' + input.password),
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						},
+						method: 'PUT',
+						body: input.settings
+					});	
+					const json = await response.json();
+					if (json.code < 1) {
+						displayMessage('failed to get config');
+						return;
+					}
+					// set join link here
+					getLink();
+					displayMessage('config updated.');
+				} catch (e) {
+					displayMessage(e.message);
+				}
+			}
+
+			async function refreshConfig() {
+				try {
+					const input = getInput();
+					const response = await fetch(`${input.domain}data`, {
+						headers: { 'Accept': 'application/json' },
+						method: 'GET'
+					});
+					const json = await response.json();
+					if (json.hasOwnProperty('code')) {
+						displayMessage('failed to get config');
+						return;
+					}
+					const settings = document.getElementById("settings");
+					settings.value = JSON.stringify(json, null, 4);
+					// set join link here
+					getLink();
+					displayMessage('config refreshed');
+				} catch (e) {
+					displayMessage(e.message);
+				}
+			}
+
+			async function refreshRoster() {
+				try {
+					const input = getInput();
+					const response = await fetch(`${domain.value}roster`, {
+						headers: { 'Accept': 'application/json' },
+						method: 'GET'
+					});
+					const json = await response.json();
+					if (json.hasOwnProperty('code')) {
+						displayMessage('failed to get roster');
+						return;
+					}
+					console.log(json);
+					const roster = document.getElementById("roster");
+					let list = [];
+					let index = 0;
+					for (const entry of json) {
+						if (entry.user == null) {
+							list.push(`<tr><th scope="row">__UNOCCUPIED__</th><td>false</td><td><button disabled>Kick</button></td></tr>`);
+						} else {
+							list.push(`<tr><th scope="row">${entry.user.name}</th><td>${entry.connected}</td><td><button onclick="kick(${index});">Kick</button></td></tr>`);
+						}
+						++index;
+					}
+					roster.innerHTML = list.join('');
+					displayMessage('roster refreshed');
+				} catch (e) {
+					displayMessage(e.message);
+				}
+			}
+
+			async function kick(slot) {
+				let playerKicked = false;
+				try {
+					const input = getInput();
+					const response = await fetch(`${input.domain}kick/${slot}`, {
+						headers: {
+							'Authorization': 'Basic ' + btoa('admin:' + input.password),
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						},
+						method: 'PUT',
+						body: '{}'
+					});
+					const json = await response.json();
+					if (json.code < 1) {
+						displayMessage('failed to kick player');
+						return;
+					}
+					playerKicked = true;
+					displayMessage(`kicked player ${slot}`);
+				} catch (e) {
+					displayMessage(e.message);
+				}
+				if (playerKicked == true) {
+					refreshRoster();
+				}
+			}
+
+			async function launch() {
+				const user = document.getElementById("user");
+				const admin = document.getElementById("admin");		
+				user.hidden = true;
+				admin.hidden = true;
+				resetZoom();
+				let response;
+				let gameLaunched = false;
+				let config = null;
+				try {
+					const input = getInput();
+					response = await fetch(`${input.domain}data`, {
+						headers: { 'Accept': 'application/json' },
+						method: 'GET'
+					});
+					config = await response.json();
+					if (config.hasOwnProperty('code')) {
+						user.hidden = false;
+						admin.hidden = false;
+						displayMessage('failed to get config');
+						return;
+					}
+					// host the game
+					const userJson = {
+						name: input.name
+					};
+					const userJsonStr = JSON.stringify(userJson);
+					response = await fetch(`${input.domain}host`, {
+						headers: {
+							'Authorization': 'Basic ' + btoa('admin:' + input.password),
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						},
+						method: 'PUT',
+						body: userJsonStr
+					});
+					const json = await response.json();
+					if (json.code < 1) {
+						user.hidden = false;
+						admin.hidden = false;
+						displayMessage('failed to launch');
+						return;
+					}
+					config.domain = json;
+					config.domain.url = input.domain;	// hacky quick fix
+					gameLaunched = true;
+				} catch (e) {
+					user.hidden = false;
+					admin.hidden = false;
+					displayMessage(e.message);
+				}
+				if (gameLaunched) {
+					document.body.appendChild(window.tempStyle);
+					window.gameObject = new Main();
+					window.gameObject.init(config);
+				}
+			}
+
+			async function join() {
+				const user = document.getElementById("user");
+				const admin = document.getElementById("admin");		
+				const joinMode = admin.hidden;
+				user.hidden = true;
+				admin.hidden = true;
+				resetZoom();
+				let response;
+				let gameLaunched = false;
+				let config = null;
+				try {
+					const input = getInput();
+					response = await fetch(`${input.domain}data`, {
+						headers: { 'Accept': 'application/json' },
+						method: 'GET'
+					});
+					config = await response.json();
+					if (config.hasOwnProperty('code')) {
+						user.hidden = false;
+						admin.hidden = joinMode;
+						displayMessage('failed to get config');
+						return;
+					}
+					// join the game
+					const userJson = {
+						name: input.name
+					};
+					const userJsonStr = JSON.stringify(userJson);
+					response = await fetch(`${input.domain}join`, {
+						headers: {
+							//'Authorization': 'Basic ' + btoa('guest:join'),
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						},
+						method: 'PUT',
+						body: userJsonStr
+					});
+					const json = await response.json();
+					if (json.code < 1) {
+						user.hidden = false;
+						admin.hidden = joinMode;
+						displayMessage('failed to join game');
+						return;
+					}
+					config.domain = json;
+					config.domain.url = input.domain;	// hacky quick fix
+					gameLaunched = true;
+				} catch (e) {
+					user.hidden = false;
+					admin.hidden = joinMode;
+					displayMessage(e.message);
+				}
+				if (gameLaunched) {
+					document.body.appendChild(window.tempStyle);
+					window.gameObject = new Main();
+					window.gameObject.init(config);
+				}
+			}
+
+			function launchOffline() {
+				const user = document.getElementById("user");
+				const admin = document.getElementById("admin");		
+				user.hidden = true;
+				admin.hidden = true;
+				document.body.appendChild(window.tempStyle);
+				window.gameObject = new Main();
+				window.gameObject.init({
+					slot: 1,
+					input: 1
+				});
+			}
+
+			function getInput() {
+				const name = document.getElementById("name");
+				const password = document.getElementById("password");
+				const domain = document.getElementById("domain");
+				const settings = document.getElementById("settings");
+				return {
+					name: name.value,
+					password: password.value,
+					domain: domain.value,
+					settings: settings.value
+				};
+			}
+
+			function resetZoom() {
+				//const viewport = document.querySelector('meta[name="viewport"]');
+				//viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
+			}
+
+			function displayMessage(text) {
+				const message = document.getElementById("message");
+				++window.messageNum;
+				message.innerHTML = `Message No. ${window.messageNum}: ${text}`;
+			}
+
+			function getLink() {
+				console.log(window.location);
+				const input = getInput();
+				const joinLink = document.getElementById("join-link");
+				const split = window.location.href.split('?');
+				const encoded = input.domain
+					.replaceAll(':', '%3A')
+					.replaceAll('/', '%2F')
+					.replaceAll('-', '%2D')
+					.replaceAll('.', '%2E')
+				;
+				joinLink.innerHTML = `${split[0]}?u=${encoded}`;
+			}
+
+		</script>
+	</body>
+</html>
