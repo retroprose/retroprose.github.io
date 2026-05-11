@@ -183,8 +183,8 @@ class Main {
         // scale invader screen
         const scaleX = window.innerWidth / this.screen.virtualWidth;
         const scaleY = window.innerHeight / this.screen.virtualHeight;
-        //const finalScale = Math.min(scaleX, scaleY);
-        const finalScale = 2.0;
+        const finalScale = Math.min(scaleX, scaleY);
+        //const finalScale = 2.0;
         this.screen.scale.set(finalScale);
         
         this.screen.x = (window.innerWidth - (this.screen.virtualWidth * finalScale)) / 2;
