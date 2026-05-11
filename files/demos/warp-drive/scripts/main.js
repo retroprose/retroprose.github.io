@@ -152,6 +152,7 @@ class Main {
 
             // set up game here
             this.game.setup({
+                seed: seed,
                 playerCount: this.network.config.playerCount,
                 local: this.network.local
             });
@@ -182,7 +183,8 @@ class Main {
         // scale invader screen
         const scaleX = window.innerWidth / this.screen.virtualWidth;
         const scaleY = window.innerHeight / this.screen.virtualHeight;
-        const finalScale = Math.min(scaleX, scaleY);
+        //const finalScale = Math.min(scaleX, scaleY);
+        const finalScale = 2.0;
         this.screen.scale.set(finalScale);
         
         this.screen.x = (window.innerWidth - (this.screen.virtualWidth * finalScale)) / 2;
@@ -259,27 +261,12 @@ class Main {
     }
 
     lerpAngle(p_from, p_to, p_weight) {
-        //let delta = (b - a + Math.PI * 2) % (Math.PI * 2);
-        //if (delta > Math.PI) delta -= Math.PI * 2;
-        //return a + delta * t;
-         
-        //let delta = (b - a + 180 * 2) % (180 * 2);
-        //if (delta > 180) delta -= 180 * 2;
-        //return a + delta * t;
-
-        //double difference = fmod(p_to - p_from, Math_TAU); 
- 	    //double distance = fmod(2.0 * difference, Math_TAU) - difference; 
- 	    //return p_from + distance * p_weight; 
-    
         let difference = (p_to - p_from) % 360;
         let distance = ((2.0 * difference) % 360) - difference;
         return p_from + distance * p_weight;    
     }
 
     setCamera(x, y, angle) {
-        //this.world.x = -x;
-        //this.world.y = -y;
-        //this.camera.angle = -angle;
         this.cameraData.x = -x;
         this.cameraData.y = -y;
         this.cameraData.a = -angle;
