@@ -11,10 +11,15 @@ class Main {
         this.game = new Module.BindGame();
         this.bindInput = new Module.BindInput();
 
-        this.texture = undefined;
-        PIXI.Assets.load('./images/sprite.json').then((texture) => {
-            this.texture = texture;
-        });
+        this.texture = await PIXI.Assets.load('./images/sprite.json');
+
+        const tm = await fetch('./data/tilemap.json');
+        this.tilemap = await tm.json();
+
+        const ob = await fetch('./data/objects.json');
+        this.docks = await ob.json();
+
+    
         this.renderObjectIndex = 0;
 
         this.config = config;
@@ -27,6 +32,9 @@ class Main {
 
         // world and camera coordinates
         this.world = new PIXI.Container();
+        this.space = new PIXI.Container();
+        this.grid = new PIXI.Container();
+        this.space2 = new PIXI.Container();
         this.camera = new PIXI.Container();
         this.screen = new PIXI.Container();
 
@@ -35,9 +43,73 @@ class Main {
         this.camera.x = this.screen.virtualWidth / 2;
         this.camera.y = this.screen.virtualHeight / 2 + this.screen.virtualHeight / 4;
 
+        this.camera.addChild(this.space2);
+        this.camera.addChild(this.space);
+        this.camera.addChild(this.grid);
         this.camera.addChild(this.world);
         this.screen.addChild(this.camera);
         this.pixi.stage.addChild(this.screen);
+
+        /*let numStars = 200;
+        let backgroundSize = 720;
+        for (let i = 0; i < numStars*4; ++i) {
+            let s = new PIXI.Sprite();            
+            s.texture = this.texture.textures[0xdb];
+            s.tint = 0xc8c8c8;
+            s.width = 1.0;
+            s.height = 1.0;
+            this.space.addChild(s);
+        }
+        for (let i = 0; i < numStars; ++i) {
+            let x = Math.random() * backgroundSize;
+            let y = Math.random() * backgroundSize;
+            this.space.getChildAt(i+0).x = x;
+            this.space.getChildAt(i+0).y = y;
+            this.space.getChildAt(i+1).x = x + backgroundSize;
+            this.space.getChildAt(i+1).y = y;
+            this.space.getChildAt(i+2).x = x;
+            this.space.getChildAt(i+2).y = y + backgroundSize;
+            this.space.getChildAt(i+3).x = x + backgroundSize;
+            this.space.getChildAt(i+3).y = y + backgroundSize;
+        }*/
+
+        for (let i = 0; i < this.tilemap.length; ++i) {
+            let t = this.tilemap[i];
+            if (t > 0) {
+                let s = new PIXI.Sprite();           
+                s.anchor.set(0.5); 
+                s.texture = this.texture.textures[t];
+                s.tint = 0xa9a9a9;
+                s.x = (i % 300) * 8 + 4;
+                s.y = Math.floor(i / 300) * 8 + 4;
+                this.grid.addChild(s);
+            }
+        }
+
+        // make stars
+        let numStars = 500;
+        let backgroundSize = 300 * 8;
+        for (let i = 0; i < numStars; ++i) {
+            let s = new PIXI.Sprite();            
+            s.texture = this.texture.textures[0xdb];
+            s.tint = 0x888888;
+            s.width = 1.0;
+            s.height = 1.0;
+            s.x = Math.random() * backgroundSize;
+            s.y = Math.random() * backgroundSize;
+            this.space.addChild(s);
+        }
+
+        for (let i = 0; i < numStars; ++i) {
+            let s = new PIXI.Sprite();            
+            s.texture = this.texture.textures[0xdb];
+            s.tint = 0x383838;
+            s.width = 1.0;
+            s.height = 1.0;
+            s.x = Math.random() * backgroundSize;
+            s.y = Math.random() * backgroundSize;
+            this.space2.addChild(s);
+        }
 
         this.cameraData = {
             x: 0.0,
@@ -105,6 +177,8 @@ class Main {
                 this.keyPrimary = true;
             } else if (event.key == 'p') {
                 this.paused = !this.paused;
+            } else if (event.key == 'o') {
+                this.advance = true;
             } else if (event.key == '\\') {
                 this.visualizer.visible = !this.visualizer.visible;
             }
@@ -154,7 +228,9 @@ class Main {
             this.game.setup({
                 seed: seed,
                 playerCount: this.network.config.playerCount,
-                local: this.network.local
+                local: this.network.local,
+                map: this.tilemap,
+                docks: this.docks
             });
 
             console.log("sending ready frame");
@@ -171,6 +247,7 @@ class Main {
         };
 
         this.paused = false;
+        this.advance = false;
     
         return this;
     }
@@ -195,7 +272,8 @@ class Main {
         let delta = deltaTotal - this.lastTick;
         this.lastTick = deltaTotal;
 
-        if (this.paused == false) {
+        if (this.paused == false || this.advance == true) {
+            this.advance = false;
             // update input with delta
             // if there are any touches on left or right side of screen
             for (let k in this.pointerList) {	
@@ -245,7 +323,15 @@ class Main {
 
         this.world.x = this.cameraData.x;
         this.world.y = this.cameraData.y;
+        this.grid.x = this.cameraData.x;
+        this.grid.y = this.cameraData.y;
+        
+        this.space.x = this.cameraData.x / 2.0;  // have this wrap around
+        this.space.y = this.cameraData.y / 2.0;
+        this.space2.x = this.cameraData.x / 4.0;  // have this wrap around
+        this.space2.y = this.cameraData.y / 4.0;
         //this.camera.angle = this.cameraData.a;
+        
         this.camera.angle = this.lerpAngle(this.camera.angle, this.cameraData.a, (delta / 1000.0) * 2.5);
 
         this.displayText.visible = this.network.stalled;
