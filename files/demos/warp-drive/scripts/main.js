@@ -76,10 +76,20 @@ class Main {
         for (let i = 0; i < this.tilemap.length; ++i) {
             let t = this.tilemap[i];
             if (t > 0) {
-                let s = new PIXI.Sprite();           
+                let s = new PIXI.Sprite();
                 s.anchor.set(0.5); 
-                s.texture = this.texture.textures[t];
-                s.tint = 0xa9a9a9;
+                if (t >= 97 && t <= 122) {
+                    s.texture = this.texture.textures[0x0f];
+                    let c = (i % 300);
+                    let r = Math.floor(i / 300);
+                    if (c <= 58)         { s.tint = 0xb21030 }
+                    else if (r <= 59)    { s.tint = 0x49a269 }
+                    else if (c >= 241)   { s.tint = 0xffa200 }
+                    else if (r >= 241)   { s.tint = 0xa271ff }
+                } else {
+                    s.texture = this.texture.textures[t];
+                    s.tint = 0xa9a9a9;                
+                }
                 s.x = (i % 300) * 8 + 4;
                 s.y = Math.floor(i / 300) * 8 + 4;
                 this.grid.addChild(s);
