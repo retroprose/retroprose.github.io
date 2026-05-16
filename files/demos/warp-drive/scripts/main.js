@@ -277,15 +277,15 @@ class Main {
             // update input with delta
             // if there are any touches on left or right side of screen
             for (let k in this.pointerList) {	
-                if (this.pointerList[k].y < window.innerHeight / 2) {
-                    this.bindInput.primary = true;
-                } else {
+                //if (this.pointerList[k].y < window.innerHeight / 2) {
+                //    this.bindInput.primary = true;
+                //} else {
                     if (this.pointerList[k].x < window.innerWidth / 2) {
                         this.bindInput.left = true;
                     } else if (this.pointerList[k].x >= window.innerWidth / 2) {
                         this.bindInput.right = true;
                     }
-                }
+                //}
             }
             if (this.keyLeft) { this.bindInput.left = true; }
             if (this.keyRight) { this.bindInput.right = true; }
