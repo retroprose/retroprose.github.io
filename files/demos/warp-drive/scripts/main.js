@@ -142,6 +142,17 @@ class Main {
         });
         this.pixi.stage.addChild(this.displayText);
 
+        // stall text
+        this.stallText = new PIXI.Text({
+            text: 'X',
+            style: {
+                fill: '#ffffff',
+                fontSize: 24
+            }
+        });
+        this.stallText.visible = false;
+        this.pixi.stage.addChild(this.stallText);
+
         // event listeners
         this.resize();
         window.addEventListener("resize", () => this.resize());
@@ -232,7 +243,7 @@ class Main {
         
             // hide display text
             this.displayText.visible = false;
-            this.displayText.text = 'Stalled';
+            this.displayText.text = '';
 
             // set up game here
             this.game.setup({
@@ -344,7 +355,7 @@ class Main {
         
         this.camera.angle = this.lerpAngle(this.camera.angle, this.cameraData.a, (delta / 1000.0) * 2.5);
 
-        this.displayText.visible = this.network.stalled;
+        this.stallText.visible = this.network.stalled;
 
         if (this.visualizer.visible) {
             this.visualizer.update(this.network);
@@ -366,6 +377,19 @@ class Main {
         this.cameraData.x = -x;
         this.cameraData.y = -y;
         this.cameraData.a = -angle;
+    }
+
+    setTeam(team) {
+        console.log(team);
+        this.displayText.visible = true;
+        switch (team) {
+            case 0: this.displayText.text = 'Team 1'; break;
+            case 1: this.displayText.text = 'Team 2'; break;
+            case 2: this.displayText.text = 'Team 3'; break;
+            case 3: this.displayText.text = 'Team 4'; break;
+            case 11: this.displayText.text = 'Get Ready'; break;
+            default: this.displayText.text = ''; this.displayText.visible = false; break;
+        }
     }
 
     // x, y, frame, scale, color
