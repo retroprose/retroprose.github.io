@@ -383,10 +383,10 @@ class Main {
         //console.log(team);
         this.displayText.visible = true;
         switch (team) {
-            case 0: this.displayText.text = 'Team 1'; break;
-            case 1: this.displayText.text = 'Team 2'; break;
-            case 2: this.displayText.text = 'Team 3'; break;
-            case 3: this.displayText.text = 'Team 4'; break;
+            case 0: this.displayText.text = 'Red Team'; break;
+            case 1: this.displayText.text = 'Green Team'; break;
+            case 2: this.displayText.text = 'Yellow Team'; break;
+            case 3: this.displayText.text = 'Blue Team'; break;
             case 11: this.displayText.text = 'Get Ready'; break;
             default: this.displayText.text = ''; this.displayText.visible = false; break;
         }
