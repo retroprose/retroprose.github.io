@@ -380,7 +380,7 @@ class Main {
     }
 
     setTeam(team) {
-        console.log(team);
+        //console.log(team);
         this.displayText.visible = true;
         switch (team) {
             case 0: this.displayText.text = 'Team 1'; break;
