@@ -25,6 +25,10 @@ class Game {
         this.container.virtualHeight = 540 * 2;
         this.pixi.stage.addChild(this.container);
 
+        this.debugTouchIndex = 0;
+        this.debugTouch = new PIXI.Container();
+        this.pixi.stage.addChild(this.debugTouch);
+
         this.visualizer = new NetworkVisualizer();
         this.visualizer.visible = false;
         this.pixi.stage.addChild(this.visualizer);
@@ -205,6 +209,24 @@ class Game {
             for (let i = this.renderObjectIndex; i < this.container.children.length; ++i) {
                 this.container.children[i].visible = false;
             }
+
+            // debug touch
+            this.debugTouchIndex = 0;
+            for (let k in this.pointerList) {
+                if (this.debugTouch.children.length <= this.debugTouchIndex) {
+                    this.debugTouch.addChild(new PIXI.Sprite());
+                }
+                let sprite = this.debugTouch.children[this.debugTouchIndex++];
+                sprite.anchor.set(0.5);
+                sprite.visible = true;
+                sprite.texture = this.texture.textures[62];
+                sprite.x = this.pointerList[k].x;
+                sprite.y = this.pointerList[k].y;
+                sprite.scale.set(64.0);
+            }
+            for (let i = this.debugTouchIndex; i < this.debugTouch.children.length; ++i) {
+                this.debugTouch.children[i].visible = false;
+            }
         }
 
         this.displayText.visible = this.network.stalled;
@@ -228,8 +250,8 @@ class Game {
         sprite.anchor.set(0.5);
         sprite.visible = true;
         sprite.texture = this.texture.textures[frame];
-        sprite.x = x
-        sprite.y = y
+        sprite.x = x;
+        sprite.y = y;
         sprite.alpha = alpha;
         sprite.scale.set(scale);
         //return sprite;
