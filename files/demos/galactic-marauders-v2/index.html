@@ -153,9 +153,10 @@
 			async function updateConfig() {
 				try {
 					const input = getInput();
-					const response = await fetch(`${domain.value}config`, {
+					const response = await fetch(`${domain.value}config/${input.password}`, {
+					//const response = await fetch(`${domain.value}config`, {
 						headers: {
-							'Authorization': 'Basic ' + btoa('admin:' + input.password),
+							//'Authorization': 'Basic ' + btoa('admin:' + input.password),
 							'Accept': 'application/json',
 							'Content-Type': 'application/json'
 						},
@@ -232,9 +233,10 @@
 				let playerKicked = false;
 				try {
 					const input = getInput();
-					const response = await fetch(`${input.domain}kick/${slot}`, {
+					const response = await fetch(`${input.domain}kick/${slot}/${input.password}`, {
+					//const response = await fetch(`${input.domain}kick/${slot}`, {
 						headers: {
-							'Authorization': 'Basic ' + btoa('admin:' + input.password),
+							//'Authorization': 'Basic ' + btoa('admin:' + input.password),
 							'Accept': 'application/json',
 							'Content-Type': 'application/json'
 						},
@@ -283,9 +285,10 @@
 						name: input.name
 					};
 					const userJsonStr = JSON.stringify(userJson);
-					response = await fetch(`${input.domain}host`, {
+					response = await fetch(`${input.domain}host/${input.password}`, {
+					//response = await fetch(`${input.domain}host`, {
 						headers: {
-							'Authorization': 'Basic ' + btoa('admin:' + input.password),
+							//'Authorization': 'Basic ' + btoa('admin:' + input.password),
 							'Accept': 'application/json',
 							'Content-Type': 'application/json'
 						},
