@@ -22,6 +22,8 @@ class FakeNetwork {
         this.fastForwardFrame = -1;
         this.bufferedFrame = -1;
 
+        this._needsCopy = false;
+
         this.inputSize = this.config.inputSize;
         this.frameTime = this.config.frameTime;
         this.tickCounter = 0;
@@ -47,6 +49,7 @@ class FakeNetwork {
     }
 
     update(delta) {
+        this._needsCopy = false;
         let sent = false;
         this.tickCounter += delta;
         while (this.tickCounter >= this.frameTime) {
@@ -69,13 +72,14 @@ class FakeNetwork {
             }
             this.networkFrame = this.updateFrame;
             this.fastForwardFrame = this.updateFrame;
+            this._needsCopy = true;
             return true;
         } else {
             return false;
         }
     }
 
-    needsCopy() { return false; }
+    needsCopy() { return this._needsCopy; }
 
     needsFastForward() { return false; }
 
