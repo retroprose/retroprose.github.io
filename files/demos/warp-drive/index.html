@@ -58,7 +58,7 @@
 			<button onclick="launchOffline();">Launch Offline</button><br />
 			<h3>Credentials</h3>
 			<label for="domain">Domain: </label><input id="domain" type="text" value="" /><br />
-			<label for="password">Password: </label><input id="password" type="text" value="" /><br />
+			<label for="password">Password: </label><input id="password" type="password" value="" /><br />
 			<h3>Configure</h3>
 			<button onclick="refreshConfig();">Refresh</button><button onclick="updateConfig();">Update</button><br />
 			<textarea id="settings"></textarea><br />
@@ -102,7 +102,7 @@
 					   	fastForward: 0,
 						inputDelay: 6
 					}
-				}
+				};
 				config.value = JSON.stringify(configData, null, 4);
 			}
 
@@ -144,7 +144,7 @@
 						}
 					}
 				}
-			}
+			};
 
 			function copyLink() {
 				const joinLink = document.getElementById("join-link");
@@ -154,15 +154,19 @@
 			async function updateConfig() {
 				try {
 					const input = getInput();
-					const response = await fetch(`${domain.value}config/${input.password}`, {
-					//const response = await fetch(`${domain.value}config`, {
+					
+					const configJson = JSON.parse(input.settings);
+					configJson.pass = input.password;
+					const configJsonStr = JSON.stringify(configJson, null, 4);
+
+					const response = await fetch(`${domain.value}config`, {
 						headers: {
 							//'Authorization': 'Basic ' + btoa('admin:' + input.password),
 							'Accept': 'application/json',
 							'Content-Type': 'application/json'
 						},
 						method: 'PUT',
-						body: input.settings
+						body: configJsonStr
 					});	
 					const json = await response.json();
 					if (json.code < 1) {
@@ -234,15 +238,20 @@
 				let playerKicked = false;
 				try {
 					const input = getInput();
-					const response = await fetch(`${input.domain}kick/${slot}/${input.password}`, {
-					//const response = await fetch(`${input.domain}kick/${slot}`, {
+					// kick a user
+					const kickJson = {
+						'pass': input.password,
+						'slot': slot
+					};
+					const kickJsonStr = JSON.stringify(kickJson);
+					const response = await fetch(`${input.domain}kick`, {
 						headers: {
 							//'Authorization': 'Basic ' + btoa('admin:' + input.password),
 							'Accept': 'application/json',
 							'Content-Type': 'application/json'
 						},
 						method: 'PUT',
-						body: '{}'
+						body: kickJsonStr
 					});
 					const json = await response.json();
 					if (json.code < 1) {
@@ -283,11 +292,13 @@
 					}
 					// host the game
 					const userJson = {
-						name: input.name
+						'pass': input.password,
+						'user': {
+							name: input.name
+						}
 					};
 					const userJsonStr = JSON.stringify(userJson);
-					response = await fetch(`${input.domain}host/${input.password}`, {
-					//response = await fetch(`${input.domain}host`, {
+					response = await fetch(`${input.domain}host`, {
 						headers: {
 							//'Authorization': 'Basic ' + btoa('admin:' + input.password),
 							'Accept': 'application/json',
@@ -343,7 +354,9 @@
 					}
 					// join the game
 					const userJson = {
-						name: input.name
+						'user': {
+							name: input.name
+						}
 					};
 					const userJsonStr = JSON.stringify(userJson);
 					response = await fetch(`${input.domain}join`, {
