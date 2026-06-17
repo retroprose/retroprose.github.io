@@ -47,7 +47,7 @@ class Main {
 
         // event listeners
         document.addEventListener("visibilitychange", () => this.network.close());
-        window.addEventListener("blur", () => this.network.close());
+        //window.addEventListener("blur", () => this.network.close());
         window.addEventListener("resize", () => this.resize());
 
         window.addEventListener('touchstart', (e) => e.preventDefault());
