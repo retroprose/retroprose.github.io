@@ -236,9 +236,7 @@ class Main {
             }
         }
 
-        //this.displayText.visible = this.network.stalled;
-        this.displayText.visible = true;
-        this.displayText.text = "buffered: " + this.network.bufferedFrame
+        this.displayText.visible = this.network.stalled;
         
         // update the network visualizer
         if (this.visualizer.visible) {
