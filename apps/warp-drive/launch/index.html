@@ -246,8 +246,13 @@
 						displayMessage('failed to get config');
 						return;
 					}
-					const settings = document.getElementById("settings");
-					settings.value = JSON.stringify(json, null, 4);
+
+					const config_players = document.getElementById("settings_players");
+					const config_delay = document.getElementById("settings_delay");
+
+					config_players.value = "" + json.slot;
+					config_delay.value = "" + json.user.inputDelay;
+
 					// set join link here
 					getLink();
 					displayMessage('config refreshed');
