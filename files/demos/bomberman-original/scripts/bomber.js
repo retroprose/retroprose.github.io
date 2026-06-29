@@ -126,6 +126,9 @@ class BomberIO extends PIXI.Container {
         this.pixel = undefined;
         PIXI.Assets.load('../shared/images/white-pixel.png').then((texture) => {
             this.pixel = texture;
+            this.input = new Input(this.pixel, 75, 15, 25, 75);
+            this.addChild(this.input);
+            this.resize();
         });
 
         this.bomberTexture = undefined;
@@ -143,14 +146,13 @@ class BomberIO extends PIXI.Container {
         this.entity = new Module.BindEntity();
         this.bindInput = new Module.BindInput();
 
-        this.input = new InputStick();
+        this.input = undefined;
         this.output = new Screen(960, 540);
 
         this.toggleControl = this.toggleControl.bind(this);
         window.addEventListener('keydown', this.toggleControl);
 
         this.addChild(this.output);
-        this.addChild(this.input);
 
         this.resetInput();
     }
@@ -164,8 +166,9 @@ class BomberIO extends PIXI.Container {
     }
 
     resize() {
-        this.input.resize();
         this.output.resize();
+        if (this.input == undefined) {return;}
+        this.input.resize();
     }
 
     toggleControl(event) {
@@ -197,7 +200,7 @@ class BomberIO extends PIXI.Container {
 
     updateDelta(delta) {
 
-        this.input.update(delta);
+        
         
         for (const gamepad of navigator.getGamepads()) {
             if (!gamepad) continue;
@@ -214,7 +217,7 @@ class BomberIO extends PIXI.Container {
             if (gamepad.buttons[0].pressed) this.bindInput.detonate = true;
         }
 
-        if (this.input.keyState["ArrowUp"]) this.bindInput.up = true;
+        /*if (this.input.keyState["ArrowUp"]) this.bindInput.up = true;
         if (this.input.keyState["ArrowDown"]) this.bindInput.down = true;
         if (this.input.keyState["ArrowLeft"]) this.bindInput.left = true;
         if (this.input.keyState["ArrowRight"]) this.bindInput.right = true;
@@ -222,38 +225,20 @@ class BomberIO extends PIXI.Container {
         if (this.input.keyState[" "]) this.bindInput.bomb = true;
         if (this.input.keyState["c"]) this.bindInput.punch = true;
         if (this.input.keyState["v"]) this.bindInput.kick = true;
-        if (this.input.keyState["b"]) this.bindInput.detonate = true;
+        if (this.input.keyState["b"]) this.bindInput.detonate = true;*/
 
-        const dx = this.input.stickStateX;
-        const dy = this.input.stickStateY;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        if (d > 0.5) {
-            let at = Math.atan2(dy, dx);
-            at += 0.3926991;
-            if (at >= 0 && at <= Math.PI / 4) {
-                this.bindInput.right = true;
-            } else if (at >= Math.PI / 4 && at <= Math.PI / 2) {
-                this.bindInput.right = true;
-                this.bindInput.down = true;
-            } else if (at >= Math.PI / 2 && at <= 3 * Math.PI / 4) {
-                this.bindInput.down = true;
-            } else if (at >= 3 * Math.PI / 4 && at <= Math.PI) {
-                this.bindInput.down = true;
-                this.bindInput.left = true;
-            } else if (at <= 0 && at >= -Math.PI / 4) {
-                this.bindInput.up = true;
-                this.bindInput.right = true;
-            } else if (at <= -Math.PI / 4 && at >= -Math.PI / 2) {
-                this.bindInput.up = true;
-            } else if (at <= -Math.PI / 2 && at >= 3 * -Math.PI / 4) {
-                this.bindInput.up = true;
-                this.bindInput.left = true;
-            } else if (at <= -3 * Math.PI / 4 || at >= 3 * Math.PI / 4) {
-                this.bindInput.left = true;
-            }
+        if (this.input == undefined) {
+            return;
         }
 
-        if (this.input.buttonState) this.bindInput.bomb = true;
+        this.input.update(delta);
+
+        if (this.input.up) this.bindInput.up = true;
+        if (this.input.down) this.bindInput.down = true;
+        if (this.input.left) this.bindInput.left = true;
+        if (this.input.right) this.bindInput.right = true;
+
+        if (this.input.a) this.bindInput.bomb = true;
     }
 
     update() {
@@ -366,8 +351,9 @@ class BomberIO extends PIXI.Container {
                     sprite.x = entity.position_x + offsetX;
                     sprite.y = entity.position_y + offsetY - 8;
 
-                    //console.log( "team: " + entity.team + ", face: " + entity.face + ", ticker: " + Math.floor(entity.ticker / 2) );
+                    console.log( "team: " + entity.team + ", face: " + entity.face + ", ticker: " + Math.floor(entity.ticker / 2) );
                     let id = playerAnimations[entity.team][entity.face][Math.floor(entity.ticker / 2)];
+                    console.log( "id: " + id);
                     sprite.texture = sheet.textures[id];
         
                     // @todo: draw local slot differently!
