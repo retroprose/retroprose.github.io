@@ -59,7 +59,6 @@ class Input extends PIXI.Container {
             }  else {
                 s.tint = 0xffffff;
             }
-            s.alpha = 0.5;
             this.squares.push(s);
             this.pad.addChild(s);
         }
@@ -101,7 +100,7 @@ class Input extends PIXI.Container {
     update(delta) {
 
         for (const t of this.squares) {
-            t.alpha = 0.5;
+            t.alpha = 0.25;
         }
 
         this.bits = this.noBits;
@@ -146,7 +145,7 @@ class Input extends PIXI.Container {
         }
 
         if (i != -1) {
-            this.squares[i].alpha = 1.0;
+            this.squares[i].alpha = 0.5;
         }
 
 
