@@ -13,7 +13,7 @@ class Main {
         this.textures = {};
         this.textures["ascii"] = await PIXI.Assets.load('./images/white-pixel.png');
 
-        this.input = new Input(this.textures["ascii"], 75.0, 20.0, 20.0);
+        this.input = new Input(this.textures["ascii"], 75.0, 10.0, 20.0);
         this.pixi.stage.addChild(this.input);
         
         // event listeners and get main loop started

@@ -12,6 +12,20 @@ class Input extends PIXI.Container {
         this.pad = new PIXI.Sprite();
         this.addChild(this.pad);
 
+        this.bits = 0x0;
+        
+        this.noBits = 0x0;
+
+        this.rightBit = 0x1;
+        this.downBit = 0x1 << 1;
+        this.leftBit = 0x1 << 2;
+        this.upBit = 0x1 << 3;
+
+        this.rightDownBits = this.rightBit | this.downBit;
+        this.rightUpBits = this.rightBit | this.upBit;
+        this.leftDownBits = this.leftBit | this.downBit;
+        this.leftUpBits = this.leftBit | this.upBit;
+
         this.up = false;
         this.down = false;
         this.left = false;
@@ -19,54 +33,36 @@ class Input extends PIXI.Container {
 
         // pad squares
         let s;
+        this.squares = [];
 
-        s = new PIXI.Sprite();
-        s.texture = this.pixel;
-        s.width = this.padsize;
-        s.height = this.thickness;
-        s.x = this.thickness / 2;
-        s.y = -s.height / 2;
-        s.tint = 0xffffff;
-        s.alpha = 0.5;
-        this.pad.right = s;
-        this.pad.addChild(s);
-
-        s = new PIXI.Sprite();
-        s.texture = this.pixel;
-        s.width = this.padsize;
-        s.height = this.thickness;
-        s.x = -this.thickness / 2 - s.width;
-        s.y = -s.height / 2;
-        s.tint = 0xffffff;
-        s.alpha = 0.5;
-        this.pad.left = s;
-        this.pad.addChild(s);
-
-        s = new PIXI.Sprite();
-        s.texture = this.pixel;
-        s.width = this.thickness;
-        s.height = this.padsize;
-        s.x = -s.width / 2;
-        s.y = this.thickness / 2;
-        s.tint = 0xffffff;
-        s.alpha = 0.5;
-        this.pad.down = s;
-        this.pad.addChild(s);
-        
-        s = new PIXI.Sprite();
-        s.texture = this.pixel;
-        s.width = this.thickness;
-        s.height = this.padsize;
-        s.x = -s.width / 2;
-        s.y = -this.thickness / 2 - s.height;
-        s.tint = 0xffffff;
-        s.alpha = 0.5;
-        this.pad.up = s;
-        this.pad.addChild(s);
-
-    
-        
-
+        const p = this.padsize;
+        const t = this.thickness;
+        const locations = [
+            [t, -t, p, t+t],    // right
+            [t, t, p, p],    // right-down
+            [-t, t, t+t, p],    // down
+            [-t-p, t, p, p],    // down-left
+            [-t-p, -t, p, t+t],    // left
+            [-t-p, -t-p, p, p],    // left-up
+            [-t, -t-p, t+t, p],    // up
+            [t, -t-p, p, p]     // right-up
+        ]
+        for (const a of locations) {
+            s = new PIXI.Sprite();
+            s.texture = this.pixel;
+            s.x = a[0];
+            s.y = a[1];
+            s.width = a[2];
+            s.height = a[3];
+            if (this.squares.length % 2 == 0) {
+                s.tint = 0xff0000;
+            }  else {
+                s.tint = 0xffffff;
+            }
+            s.alpha = 0.5;
+            this.squares.push(s);
+            this.pad.addChild(s);
+        }
 
         this.list = {};
         window.onpointerdown = (e) => {
@@ -104,13 +100,14 @@ class Input extends PIXI.Container {
 
     update(delta) {
 
+        for (const t of this.squares) {
+            t.alpha = 0.5;
+        }
 
-        this.pad.left.alpha = 0.5
-        this.pad.right.alpha = 0.5
-        this.pad.up.alpha = 0.5
-        this.pad.down.alpha = 0.5
+        this.bits = this.noBits;
 
-        
+        let padthumb = false;
+
         for (let key in this.list) {
                
             const point = this.list[key];
@@ -121,44 +118,35 @@ class Input extends PIXI.Container {
             const absx = Math.abs(diffx);
             const absy = Math.abs(diffy);
 
-            
-
-            if (absx > this.thickness) {
-                if (diffx < 0) { this.left = true; this.pad.left.alpha = 1.0; }
-                if (diffx > 0) { this.right = true; this.pad.right.alpha = 1.0; }
-            }
-            if (absy > this.thickness) {
-                if (diffy < 0) { this.up = true; this.pad.up.alpha = 1.0; }
-                if (diffy > 0) { this.down = true; this.pad.down.alpha = 1.0; }
-            }
-
-
-
-            /*if (point.x <= window.innerWidth / 2) {
-                const dotProduct = diag * point.x + diag * point.y;
-                const diff = Math.abs(dotProduct - this.dpad.dotProduct);
-                if (diff < threshold) {
-                    this.left.visible = true;
-                    this.right.visible = true;
-                } else if (dotProduct < this.dpad.dotProduct) {
-                    this.left.visible = true;
-                } else if (dotProduct > this.dpad.dotProduct) {
-                    this.right.visible = true;
+            if (absx < this.padsize && absy < this.padsize && padthumb == false) {
+                padthumb = true;
+                if (absx > this.thickness) {
+                    if (diffx < 0) { this.bits |= this.leftBit; }
+                    if (diffx > 0) { this.bits |= this.rightBit; }
+                }
+                if (absy > this.thickness) {
+                    if (diffy < 0) { this.bits |= this.upBit; }
+                    if (diffy > 0) { this.bits |= this.downBit; }
                 }
             }
-            if (this.list[k].x > window.innerWidth / 2) {
-                const dotProduct = -diag * point.x + diag * point.y;
-                const diff = Math.abs(dotProduct - this.buttons.dotProduct);
-                if (diff < threshold) {
-                    this.a.visible = true;
-                    this.b.visible = true;
-                } else if (dotProduct < this.buttons.dotProduct) {
-                    this.b.visible = true;
-                } else if (dotProduct > this.buttons.dotProduct) {
-                    this.a.visible = true;
-                }    
-            }*/
 
+        }
+
+        let i = -1;
+        switch (this.bits) {
+            case this.rightBit:         i =  0; break;
+            case this.rightDownBits:    i =  1; break;
+            case this.downBit:          i =  2; break;
+            case this.leftDownBits:     i =  3; break;
+            case this.leftBit:          i =  4; break;
+            case this.leftUpBits:       i =  5; break;
+            case this.upBit:            i =  6; break;
+            case this.rightUpBits:      i =  7; break;
+            default:                    i = -1; break;
+        }
+
+        if (i != -1) {
+            this.squares[i].alpha = 1.0;
         }
 
 
