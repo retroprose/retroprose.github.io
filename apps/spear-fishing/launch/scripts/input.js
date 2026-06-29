@@ -1,6 +1,6 @@
 class Input extends PIXI.Container {
 
-    constructor(pixel, padsize, thickness, offset) {
+    constructor(pixel, padsize, thickness, offset, buttonsize) {
 
         super();
 
@@ -8,14 +8,17 @@ class Input extends PIXI.Container {
         this.padsize = padsize;
         this.thickness = thickness;
         this.offset = offset;
+        this.buttonsize = buttonsize;
 
         this.pad = new PIXI.Sprite();
         this.addChild(this.pad);
 
-        this.bits = 0x0;
-        
-        this.noBits = 0x0;
+        this.buttons = new PIXI.Sprite();
+        this.addChild(this.buttons);
 
+        this.bits = 0x0;
+
+        this.noBits = 0x0;
         this.rightBit = 0x1;
         this.downBit = 0x1 << 1;
         this.leftBit = 0x1 << 2;
@@ -31,6 +34,11 @@ class Input extends PIXI.Container {
         this.left = false;
         this.right = false;
 
+        this.start = false;
+        this.select = false;
+        this.a = false;
+        this.b = false;
+
         // pad squares
         let s;
         this.squares = [];
@@ -45,7 +53,10 @@ class Input extends PIXI.Container {
             [-t-p, -t, p, t+t],    // left
             [-t-p, -t-p, p, p],    // left-up
             [-t, -t-p, t+t, p],    // up
-            [t, -t-p, p, p]     // right-up
+            [t, -t-p, p, p],     // right-up
+            [this.thickness, -this.buttonsize/2, this.buttonsize, this.buttonsize],     // a
+            [-this.thickness, -this.buttonsize/2, this.thickness+this.thickness, this.buttonsize],     // a+b
+            [-this.thickness-this.buttonsize, -this.buttonsize/2, this.buttonsize, this.buttonsize]     // b
         ]
         for (const a of locations) {
             s = new PIXI.Sprite();
@@ -60,9 +71,16 @@ class Input extends PIXI.Container {
                 s.tint = 0xffffff;
             }
             this.squares.push(s);
-            this.pad.addChild(s);
+            if (this.squares.length > 8) {
+                this.buttons.addChild(s);
+            } else {
+                this.pad.addChild(s);
+            }
         }
 
+
+
+        
         this.list = {};
         window.onpointerdown = (e) => {
             this.list[e.pointerId] = {
@@ -90,9 +108,11 @@ class Input extends PIXI.Container {
         this.pad.x = size / 2 + this.offset;
         this.pad.y = window.innerHeight - size / 2 - this.offset;
         
-        //this.pad.x = window.innerWidth / 2;
-        //this.pad.y = window.innerHeight / 2;
+        //this.buttons.x = window.innerWidth / 2;
+        //this.buttons.y = window.innerHeight / 2;
 
+        this.buttons.x = window.innerWidth - this.thickness - this.buttonsize - this.offset;
+        this.buttons.y = this.pad.y;
 
 
     }
@@ -104,18 +124,21 @@ class Input extends PIXI.Container {
         }
 
         this.bits = this.noBits;
+        this.a = false;
+        this.b = false;
 
         let padthumb = false;
+        let diffx, diffy, absx, absy;
 
         for (let key in this.list) {
                
             const point = this.list[key];
 
-            const diffx = point.x - this.pad.x;
-            const diffy = point.y - this.pad.y;
+            diffx = point.x - this.pad.x;
+            diffy = point.y - this.pad.y;
 
-            const absx = Math.abs(diffx);
-            const absy = Math.abs(diffy);
+            absx = Math.abs(diffx);
+            absy = Math.abs(diffy);
 
             if (absx < this.padsize && absy < this.padsize && padthumb == false) {
                 padthumb = true;
@@ -126,6 +149,23 @@ class Input extends PIXI.Container {
                 if (absy > this.thickness) {
                     if (diffy < 0) { this.bits |= this.upBit; }
                     if (diffy > 0) { this.bits |= this.downBit; }
+                }
+            }
+
+            diffx = point.x - this.buttons.x;
+            diffy = point.y - this.buttons.y;
+
+            absx = Math.abs(diffx);
+            absy = Math.abs(diffy);
+
+            if (absx < this.buttonsize && absy < this.buttonsize / 2) {
+                if (absx < this.thickness) {
+                    this.a = true;
+                    this.b = true;
+                    this.squares[9].alpha = 0.5;
+                } else {
+                    if (diffx < 0) { this.b = true; this.squares[10].alpha = 0.5; }
+                    if (diffx > 0) { this.a = true; this.squares[8].alpha = 0.5; }
                 }
             }
 
@@ -147,7 +187,6 @@ class Input extends PIXI.Container {
         if (i != -1) {
             this.squares[i].alpha = 0.5;
         }
-
 
     }
 
