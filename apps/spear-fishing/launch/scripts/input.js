@@ -124,6 +124,10 @@ class Input extends PIXI.Container {
         }
 
         this.bits = this.noBits;
+        this.right = false;
+        this.left = false;
+        this.up = false;
+        this.down = false;
         this.a = false;
         this.b = false;
 
@@ -170,6 +174,11 @@ class Input extends PIXI.Container {
             }
 
         }
+
+        if (this.bits & this.rightBit) { this.right = true; }
+        if (this.bits & this.leftBit) { this.left = true; }
+        if (this.bits & this.upBit) { this.up = true; }
+        if (this.bits & this.downBit) { this.down = true; }
 
         let i = -1;
         switch (this.bits) {
