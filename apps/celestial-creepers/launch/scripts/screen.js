@@ -38,7 +38,7 @@ class Screen extends PIXI.Container {
         }
         //this.finalScale = 2.0;
 
-        console.log(this.finalScale);
+        //console.log(this.finalScale);
 
         this.scale.set(this.finalScale);
         

@@ -136,8 +136,6 @@ class Main {
         this.game.render(this);
         this.screen.end();
 
-        //?
-
         requestAnimationFrame(this.update.bind(this));
     }
 
