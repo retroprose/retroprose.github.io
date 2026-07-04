@@ -16,8 +16,11 @@ class Main {
         this.textures = {};
         this.textures["ascii"] = (await PIXI.Assets.load('./images/sprite.json')).textures;
 
-        const response = await fetch('./data/map.json');
+        let response;
+        response = await fetch('./data/map.json');
         const map = await response.json();
+        response = await fetch('./data/data.json');
+        const global = await response.json();
 
         this.screen = new Screen(720, 405);
         this.pixi.stage.addChild(this.screen);
@@ -40,7 +43,9 @@ class Main {
         this.resize();
         window.addEventListener("resize", () => this.resize());
 
-
+        window.cmd = (d) => {
+            this.game.change(d);
+        };
 
         // initalize network config
         this.displayText.text = 'Connecting to Relay Server...';
@@ -80,7 +85,8 @@ class Main {
                 seed: seed,
                 playerCount: this.network.config.playerCount,
                 local: this.network.local,
-                map: map
+                map: map,
+                global: global
             });
 
             console.log("sending ready frame");
@@ -114,6 +120,10 @@ class Main {
         // update input
         this.input.update(delta);
 
+        if (this.input.pause) {
+            this.network.tickCounter = -this.network.frameTime;
+        }
+        
         // true if input got sent over the network
         this.game.getInput(this.input, this.network.inputBuffer);
         if (this.network.update(delta)) {
@@ -146,7 +156,7 @@ class Main {
     }
 
     // x, y, frame, scale, color
-    box(x, y, w, h, t, a) {
+    box(x, y, w, h, t, a, ang) {
         let sprite = this.screen.next();
         sprite.anchor.set(0.5);
         sprite.visible = true;
@@ -155,6 +165,7 @@ class Main {
         sprite.y = y;
         sprite.width = w;
         sprite.height = h;
+        sprite.rotation = ang;
         sprite.tint = t;
         sprite.alpha = a;
     }

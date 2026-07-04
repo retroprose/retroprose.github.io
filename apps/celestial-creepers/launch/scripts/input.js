@@ -10,6 +10,8 @@ class Input extends PIXI.Container {
         this.offset = offset;
         this.cellHeight = -1;
 
+        this.pause = false;
+
         // make left and right throttle
         this.left = this.makeThrottle();
         this.right = this.makeThrottle();
@@ -20,7 +22,15 @@ class Input extends PIXI.Container {
         // disable touches
         window.addEventListener('touchstart', (e) => e.preventDefault());
         window.addEventListener('touchend', (e) => e.preventDefault());
+        window.addEventListener('keyup', this.keyUp.bind(this));
+        window.addEventListener('keydown', this.keyDown.bind(this));
+        window.addEventListener('gamepadconnected', this.gamepadConnected.bind(this));
+        window.addEventListener('gamepaddisconnected', this.gamepadDisconnected.bind(this));
 
+        // hold key state
+        this.keyState = {};
+        this._gamepads = {};
+        
         // touch listeners
         this.list = {};
         window.onpointerdown = (e) => {
@@ -42,6 +52,49 @@ class Input extends PIXI.Container {
 
         this.resize();
     }
+
+     destroy() {
+        super.destroy();
+        window.removeEventListener('keyup', this.keyUp.bind(this));
+        window.removeEventListener('keydown', this.keyDown.bind(this));
+        window.removeEventListener('gamepadconnected', this.gamepadConnected.bind(this));
+        window.removeEventListener('gamepaddisconnected', this.gamepadDisconnected.bind(this));
+    }
+
+    keyDown(e) {
+        if (e.key == "\\") {
+            this.visible = !this.visible;
+        }
+        if (e.key == " ") {
+            this.pause = !this.pause;
+        }
+        this.keyState[e.key] = true;
+    }
+
+    keyUp(e) {
+        this.keyState[e.key] = false;
+    } 
+
+    gamepadConnected(e) {
+        console.log(
+            "Gamepad connected at index %d: %s. %d buttons, %d axes.",
+            e.gamepad.index,
+            e.gamepad.id,
+            e.gamepad.buttons.length,
+            e.gamepad.axes.length,
+        );
+        this._gamepads[e.gamepad.index] = e.gamepad;
+    }
+
+    gamepadDisconnected(e) {
+        console.log(
+            "Gamepad disconnected from index %d: %s",
+            e.gamepad.index,
+            e.gamepad.id,
+        );
+        delete this._gamepads[e.gamepad.index];
+    }
+
 
     makeThrottle() {
         let c = new PIXI.Container();
@@ -76,6 +129,8 @@ class Input extends PIXI.Container {
     }
 
     update(delta) {
+        
+        // reset inputs
         for (const item of this.left.children) {
             item.alpha = 0.25;
         }
@@ -84,6 +139,8 @@ class Input extends PIXI.Container {
         }
         this.leftThrottle = 0;
         this.rightThrottle = 0;
+        
+        // poll touch actions
         let s;
         for (let key in this.list) {
             const point = this.list[key];
@@ -100,6 +157,31 @@ class Input extends PIXI.Container {
                 s.alpha = 0.5;
             }
         }
+
+        // poll gamepad actions
+        for (const gamepad of navigator.getGamepads()) {
+            if (!gamepad) continue;
+            //if (gamepad.buttons.length < 16) continue;
+
+            let str = '';
+            for (const index in gamepad.buttons) {
+                if (gamepad.buttons[index].pressed) {
+                    str += ` ${index}`;
+                }
+            }
+            if (str != '') {
+                console.log(str);
+            }
+        }
+
+        // poll keys
+        if (this.keyState['e']) { this.leftThrottle =  2; } 
+        if (this.keyState['d']) { this.leftThrottle =  1; } 
+        if (this.keyState['c']) { this.leftThrottle = -1; } 
+        
+        if (this.keyState['o']) { this.rightThrottle =  2; } 
+        if (this.keyState['k']) { this.rightThrottle =  1; } 
+        if (this.keyState['m']) { this.rightThrottle = -1; } 
 
     }
 
