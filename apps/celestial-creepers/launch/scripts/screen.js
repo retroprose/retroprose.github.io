@@ -8,7 +8,7 @@ class Screen extends PIXI.Container {
         this.desiredHeight = height;
 
         this.background = new PIXI.Graphics();
-        this.background.beginFill(0x00c800); // The fill color doesn't matter for the mask, only its shape
+        this.background.beginFill(0x000000); // The fill color doesn't matter for the mask, only its shape
         this.background.drawRect(0, 0, width, height); // Example: A rectangular clip region
         this.background.endFill();
         this.addChild(this.background);
