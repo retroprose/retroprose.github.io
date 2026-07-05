@@ -1,7 +1,7 @@
 {
     "gravity": 0.05,
-    "thrustVertical": 0.075,
-    "thrustHorizontal": 0.05,
-    "maxVel": 16.0,
+    "thrust": 0.075,
+    "velocityMax": 16.0,
+    "velocity": 8.0,
     "bias": 0.2
 }
