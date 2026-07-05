@@ -2928,6 +2928,12 @@ ${functionBody}
       handle[key] = value;
     };
 
+  var __emval_strictly_equals = (first, second) => {
+      first = Emval.toValue(first);
+      second = Emval.toValue(second);
+      return first === second;
+    };
+
   var getHeapMax = () =>
       // Stay one Wasm page short of 4GB: while e.g. Chrome is able to allocate
       // full 4GB Wasm memories, the size will wrap back to 0 bytes in Wasm side
@@ -3716,6 +3722,8 @@ var wasmImports = {
   _emval_run_destructors: __emval_run_destructors,
   /** @export */
   _emval_set_property: __emval_set_property,
+  /** @export */
+  _emval_strictly_equals: __emval_strictly_equals,
   /** @export */
   emscripten_resize_heap: _emscripten_resize_heap,
   /** @export */

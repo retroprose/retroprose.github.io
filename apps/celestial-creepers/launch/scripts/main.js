@@ -25,7 +25,8 @@ class Main {
         this.screen = new Screen(720, 405);
         this.pixi.stage.addChild(this.screen);
 
-        this.input = new Input(this.textures["ascii"][0xdb], 5, 100.0, 10.0);
+        this.input = new GameInput();
+        this.input.screen = this.screen;
         this.pixi.stage.addChild(this.input);
 
         // system display text
@@ -64,7 +65,7 @@ class Main {
         } else {
             this.network = new FakeNetwork({
                 frameTime: 1000.0 / 60.0,
-                inputSize: 1
+                inputSize: 5
             });
         }
 
