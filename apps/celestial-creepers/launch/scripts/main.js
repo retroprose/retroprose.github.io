@@ -129,7 +129,7 @@ class Main {
             const y = gamepad.axes[1];
             const d = Math.sqrt(x * x + y * y);
 
-            console.log(`${x} ${y} ${d}`);
+            //consolelog(`${x} ${y} ${d}`);
 
             if (d > 0.005) {
                 this.otherInput.left.x = -32767 + slope * (x - -1.0);
