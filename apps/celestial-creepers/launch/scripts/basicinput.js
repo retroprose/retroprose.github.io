@@ -10,6 +10,8 @@ class BasicInput extends PIXI.Container {
         this.mouseX = 0;
         this.mouseY = 0;
 
+        this._gamepads = {};
+
         // bind functions
         this.keyDown = this.keyDown.bind(this);
         this.keyUp = this.keyUp.bind(this);

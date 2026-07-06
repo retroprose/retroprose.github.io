@@ -25,6 +25,7 @@ class Main {
         this.screen = new Screen(720, 405);
         this.pixi.stage.addChild(this.screen);
 
+        this.otherInput = { used: false, left: {x: 0, y: 0}};
         this.input = new GameInput();
         this.input.screen = this.screen;
         this.pixi.stage.addChild(this.input);
@@ -120,13 +121,35 @@ class Main {
 
         // update input
         this.input.update(delta);
+        this.otherInput.used = false;
+        const slope = 1.0 * (32767 - -32767) / (1.0 - -1.0);
+        for (const gamepad of navigator.getGamepads()) {
+            if (!gamepad) continue;
+            const x = gamepad.axes[0];
+            const y = gamepad.axes[1];
+            const d = Math.sqrt(x * x + y * y);
+
+            console.log(`${x} ${y} ${d}`);
+
+            if (d > 0.005) {
+                this.otherInput.left.x = -32767 + slope * (x - -1.0);
+                this.otherInput.left.y = -32767 + slope * (y - -1.0);
+                this.otherInput.used = true;
+            }
+        }
 
         if (this.input.pause) {
             this.network.tickCounter = -this.network.frameTime;
         }
         
         // true if input got sent over the network
-        this.game.getInput(this.input, this.network.inputBuffer);
+        if (this.otherInput.used) {
+            console.log(this.otherInput);
+            this.game.getInput(this.otherInput, this.network.inputBuffer);
+        } else {
+            this.game.getInput(this.input, this.network.inputBuffer);
+        }
+
         if (this.network.update(delta)) {
             // reset keys maybe
         }
