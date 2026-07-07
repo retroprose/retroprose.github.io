@@ -1,6 +1,6 @@
 {
     "gravity": 0.05,
-    "thrust": 0.05,
+    "thrust": 0.2,
     "thrustMax": 0.075,
     "velocityMax": 16.0,
     "velocity": 8.0,

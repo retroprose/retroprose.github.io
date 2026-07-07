@@ -30,6 +30,8 @@ class Main {
         this.input.screen = this.screen;
         this.pixi.stage.addChild(this.input);
 
+        //this.input.pause = true;
+
         // system display text
         this.displayText = new PIXI.Text({
             text: 'Loading...',
