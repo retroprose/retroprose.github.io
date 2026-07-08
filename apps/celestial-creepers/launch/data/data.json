@@ -1,8 +1,10 @@
 {
     "gravity": 0.05,
     "thrust": 0.15,
-    "thrustMax": 0.075,
-    "velocityMax": 16.0,
-    "velocity": 8.0,
-    "bias": 0.2
+    "frequencyHz": 4.0,
+    "dampingRatio": 0.7,
+    "massEff": 6.0,
+    "shipMass": 25.0,
+    "astroMass": 1.0,
+    "orbitDamping": 0.1
 }
