@@ -59,12 +59,14 @@ class BasicInput extends PIXI.Container {
     }
 
     mouseMove(e) {
-        if (this.screen != null) {
+        /*if (this.screen != null) {
             //const local = this.screen.toLocal({x: e.screenX, y: e.screenY});
             const local = this.screen.toLocal({x: e.clientX, y: e.clientY});
             this.mouseX = local.x;
             this.mouseY = local.y;
-        }
+        }*/
+        this.mouseX = e.clientX;
+        this.mouseY = e.clientY;
     }
 
     keyDown(e) {

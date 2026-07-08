@@ -30,7 +30,18 @@ class Main {
         this.input.screen = this.screen;
         this.pixi.stage.addChild(this.input);
 
-        //this.input.pause = true;
+        // full screen mode
+        window.addEventListener('keydown', (event) => {
+            if (event.key == '`') {
+                if (this.pixi.canvas.requestFullscreen) {
+                    this.pixi.canvas.requestFullscreen();
+                } else if (this.pixi.canvas.webkitRequestFullscreen) { // Safari
+                    this.pixi.canvas.webkitRequestFullscreen();
+                } else if (this.pixi.canvas.msRequestFullscreen) { // IE11
+                    this.pixi.canvas.msRequestFullscreen();
+                }
+            }
+        });
 
         // system display text
         this.displayText = new PIXI.Text({
@@ -139,14 +150,32 @@ class Main {
                 this.otherInput.used = true;
             }
         }
-
-        if (this.input.pause) {
-            this.network.tickCounter = -this.network.frameTime;
+        const dx = this.input.mouseX - window.innerWidth / 2;
+        const dy = this.input.mouseY - window.innerHeight / 2;
+        const dl = Math.sqrt(dx * dx + dy * dy);
+        const dm = Math.min(window.innerHeight / 2 - 10, window.innerWidth / 2 - 10);
+        if (dl < dm) {
+            if (dl < 8.0) {
+                this.otherInput.left.x = 0;
+                this.otherInput.left.y = 0;
+                this.otherInput.used = true;
+            } else {
+                const x = dx / dm;
+                const y = dy / dm;
+                console.log(x + ", " + y + " - " + dl);
+                this.otherInput.left.x = -32767 + slope * (x - -1.0);
+                this.otherInput.left.y = -32767 + slope * (y - -1.0);
+                this.otherInput.used = true;
+            }
         }
+
+        // to pause the game
+        // (if paused)
+        // this.network.tickCounter = -this.network.frameTime;
         
         // true if input got sent over the network
         if (this.otherInput.used) {
-            console.log(this.otherInput);
+            //console.log(this.otherInput);
             this.game.getInput(this.otherInput, this.network.inputBuffer);
         } else {
             this.game.getInput(this.input, this.network.inputBuffer);

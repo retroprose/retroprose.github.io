@@ -33,7 +33,7 @@ class GameInput extends BasicInput {
         window.addEventListener('touchend', (e) => e.preventDefault());
 
         window.onpointerdown = (e) => {
-            //if (e.pointerType == 'mouse') { return; }
+            if (e.pointerType == 'mouse') { return; }
             const id = e.pointerId;
             this.list[id] = {
                 cx: e.clientX,
@@ -60,7 +60,7 @@ class GameInput extends BasicInput {
             }
         };
         window.onpointerup = (e) => {
-            //if (e.pointerType == 'mouse') { return; }
+            if (e.pointerType == 'mouse') { return; }
             const id = e.pointerId;
             delete this.list[id];
             if (this.leftSprite.pointerId == id) {
@@ -75,7 +75,7 @@ class GameInput extends BasicInput {
             }
         };
         window.onpointermove = (e) => {
-            //if (e.pointerType == 'mouse') { return; }
+            if (e.pointerType == 'mouse') { return; }
             const id = e.pointerId;
             if (id in this.list) {
                 let x = (e.clientX - this.list[id].cx) / analogRadius;
