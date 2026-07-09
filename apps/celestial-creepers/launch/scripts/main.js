@@ -162,7 +162,7 @@ class Main {
             } else {
                 const x = dx / dm;
                 const y = dy / dm;
-                console.log(x + ", " + y + " - " + dl);
+                //console.log(x + ", " + y + " - " + dl);
                 this.otherInput.left.x = -32767 + slope * (x - -1.0);
                 this.otherInput.left.y = -32767 + slope * (y - -1.0);
                 this.otherInput.used = true;
