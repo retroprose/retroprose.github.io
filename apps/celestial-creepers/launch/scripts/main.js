@@ -15,6 +15,13 @@ class Main {
         // load textures
         this.textures = {};
         this.textures["ascii"] = (await PIXI.Assets.load('./images/sprite.json')).textures;
+        this.textures["space"] = (await PIXI.Assets.load('./images/creeper-sprite.json')).textures;
+
+        this.texnames = [
+            "__NULL__",
+            "spaceship_0_0",
+            "astro_6_1"
+        ];
 
         let response;
         response = await fetch('./data/map.json');
@@ -210,7 +217,6 @@ class Main {
         this.screen.zoom(z);
     }
 
-    // x, y, frame, scale, color
     box(x, y, w, h, t, a, ang) {
         let sprite = this.screen.next();
         sprite.anchor.set(0.5);
@@ -224,5 +230,20 @@ class Main {
         sprite.tint = t;
         sprite.alpha = a;
     }
+
+    sprite(x, y, w, h, t, a, ang) {
+        let sprite = this.screen.next();
+        sprite.anchor.set(0.5);
+        sprite.visible = true;
+        sprite.texture = this.textures["space"][this.texnames[t]];
+        sprite.x = x;
+        sprite.y = y;
+        sprite.width = w;
+        sprite.height = h;
+        sprite.rotation = ang;
+        sprite.tint = 0xffffff;
+        sprite.alpha = a;
+    }
+
 
 }
