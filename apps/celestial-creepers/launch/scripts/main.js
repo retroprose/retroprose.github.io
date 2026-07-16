@@ -190,6 +190,14 @@ class Main {
                 this.otherInput.used = true;
             }
         }
+        if (this.input.mouseLeftButton) { 
+            this.otherInput.leftShot = true;
+            this.otherInput.used = true;
+        }
+        if (this.input.mouseRightButton) { 
+            this.otherInput.rightShot = true;
+            this.otherInput.used = true;
+        }
 
         // to pause the game
         // (if paused)

@@ -6,7 +6,8 @@ class BasicInput extends PIXI.Container {
         this.screen = null;
 
         this.keyState = {};
-        this.mouseButton = false;
+        this.mouseLeftButton = false;
+        this.mouseRightButton = false;
         this.mouseX = 0;
         this.mouseY = 0;
 
@@ -51,11 +52,13 @@ class BasicInput extends PIXI.Container {
     }
 
     mouseUp(e) {
-        this.mouseButton = false;
+        if (e.button == 0) { this.mouseLeftButton = false; }
+        if (e.button == 2) { this.mouseRightButton = false; }
     }
 
     mouseDown(e) {
-        this.mouseButton = true;
+        if (e.button == 0) { this.mouseLeftButton = true; }
+        if (e.button == 2) { this.mouseRightButton = true; }
     }
 
     mouseMove(e) {

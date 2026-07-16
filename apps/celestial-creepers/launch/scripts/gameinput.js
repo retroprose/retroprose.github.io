@@ -34,6 +34,7 @@ class GameInput extends BasicInput {
 
         window.addEventListener('touchstart', (e) => e.preventDefault());
         window.addEventListener('touchend', (e) => e.preventDefault());
+        window.addEventListener('contextmenu', (e) => e.preventDefault());
 
         window.onpointerdown = (e) => {
             if (e.pointerType == 'mouse') { return; }
