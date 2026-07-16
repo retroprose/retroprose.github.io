@@ -12,6 +12,9 @@ class GameInput extends BasicInput {
 
         let sprite;
 
+        this.leftShot = false;
+        this.rightShot = false;
+
         this.left = undefined;
         this.right = undefined;
 
@@ -96,8 +99,16 @@ class GameInput extends BasicInput {
     }
 
     update(delta) {
-        
-
+        this.leftShot = false;
+        this.rightShot = false;
+        if (this.right != undefined) {
+            if (this.right.x < -0.2) {
+                this.leftShot = true;
+            }
+            if (this.right.x > 0.2) {
+                this.rightShot = true;
+            }
+        }
     }
     
 }

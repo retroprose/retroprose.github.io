@@ -20,7 +20,8 @@ class Main {
         this.texnames = [
             "__NULL__",
             "spaceship_0_0",
-            "astro_6_1"
+            "astro_6_1",
+            "hook_0_0"
         ];
 
         let response;
@@ -32,7 +33,12 @@ class Main {
         this.screen = new Screen(720, 405);
         this.pixi.stage.addChild(this.screen);
 
-        this.otherInput = { used: false, left: {x: 0, y: 0}};
+        this.otherInput = { 
+            used: false, 
+            left: {x: 0, y: 0},
+            leftShot: false,
+            rightShot: false
+        };
         this.input = new GameInput();
         this.input.screen = this.screen;
         this.pixi.stage.addChild(this.input);
@@ -149,6 +155,15 @@ class Main {
             const y = gamepad.axes[1];
             const d = Math.sqrt(x * x + y * y);
 
+            if (gamepad.buttons[0].value > 0) { 
+                this.otherInput.leftShot = true;
+                this.otherInput.used = true;
+            }
+            if (gamepad.buttons[1].value > 0) { 
+                this.otherInput.rightShot = true;
+                this.otherInput.used = true;
+            }
+
             //consolelog(`${x} ${y} ${d}`);
 
             if (d > 0.005) {
@@ -190,12 +205,14 @@ class Main {
 
         if (this.network.update(delta)) {
             // reset keys maybe
+            this.otherInput.leftShot = false;
+            this.otherInput.rightShot = false;
         }
         while (this.network.needsUpdate()) {
             this.game.setInput(this.network.frameBuffer);
             this.game.update();							
         }        
-        if (this.network.needsCopy()) {							
+        if (this.network.needsCopy()) {	
             //this.game.copy();
         }
         while (this.network.needsFastForward()) {
