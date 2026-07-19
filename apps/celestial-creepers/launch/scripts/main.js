@@ -43,6 +43,24 @@ class Main {
         this.input.screen = this.screen;
         this.pixi.stage.addChild(this.input);
 
+        // add stars
+        let low, high;
+        for (var i = 0; i < 2500; ++i) {
+            let s = new PIXI.Sprite();
+            s.texture = this.textures["ascii"][0xdb];
+            s.tint = 0xc8c8c8;
+            high = 1024 * 16;
+            low = -1024 * 16;
+            s.x = Math.random()*(high - low + 1) + low;
+            high = 0;
+            low = -128 * 16;
+            s.y = Math.random()*(high - low + 1) + low;
+            s.width = 2;
+            s.height = 2;
+            this.screen.stars.addChild(s);
+        }
+
+
         // full screen mode
         window.addEventListener('keydown', (event) => {
             if (event.key == '`') {
