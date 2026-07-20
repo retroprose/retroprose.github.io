@@ -23,6 +23,11 @@ class Screen extends PIXI.Container {
         this.mask = this.maskShape;
         this.addChild(this.maskShape);
 
+        //this.stars2Scale = 4;
+        //this.stars2 = new PIXI.Container();
+        //this.addChild(this.stars2);
+
+        this.starsScale = 2;
         this.stars = new PIXI.Container();
         this.addChild(this.stars);
 
@@ -60,16 +65,18 @@ class Screen extends PIXI.Container {
 
         //console.log(this.container.x + ", " + this.container.y + " - " + this.stars.x + ", " + this.stars.y);
 
-        this.stars.x = x / 2.0;
-        this.stars.y = y / 2.0;
-        //this.stars.x = x;
-        //this.stars.y = y;
+        this.stars.x = x / this.starsScale;
+        this.stars.y = y / this.starsScale;
+
+        //this.stars2.x = x / this.stars2Scale;
+        //this.stars2.y = y / this.stars2Scale;
     }
 
     rotate(a) {
         this.container.rotation = a;
 
         this.stars.rotation = a;
+        //this.stars2.rotation = a;
     }
 
     zoom(s) {
@@ -77,6 +84,7 @@ class Screen extends PIXI.Container {
         this.container.scale.set(s);
 
         this.stars.scale.set(s);
+        //this.stars2.scale.set(s);
     }
 
     next() {

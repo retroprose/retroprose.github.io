@@ -21,7 +21,9 @@ class Main {
             "__NULL__",
             "spaceship_0_0",
             "astro_6_1",
-            "hook_0_0"
+            "hook_0_0",
+            "gem_0_0",
+            "gem_0_0"
         ];
 
         let response;
@@ -43,22 +45,40 @@ class Main {
         this.input.screen = this.screen;
         this.pixi.stage.addChild(this.input);
 
+        this.screen.starsScale = 4;
+        this.screen.stars2Scale = 8;
+
         // add stars
         let low, high;
-        for (var i = 0; i < 2500; ++i) {
+        for (var i = 0; i < 1500; ++i) {
             let s = new PIXI.Sprite();
             s.texture = this.textures["ascii"][0xdb];
             s.tint = 0xc8c8c8;
-            high = 1024 * 16;
-            low = -1024 * 16;
+            high = (1024 / this.screen.starsScale) * 16;
+            low = -(1024 / this.screen.starsScale) * 16;
             s.x = Math.random()*(high - low + 1) + low;
-            high = 0;
+            high = 128 * 16;
             low = -128 * 16;
             s.y = Math.random()*(high - low + 1) + low;
             s.width = 2;
             s.height = 2;
             this.screen.stars.addChild(s);
         }
+
+        /*for (var i = 0; i < 750; ++i) {
+            let s = new PIXI.Sprite();
+            s.texture = this.textures["ascii"][0xdb];
+            s.tint = 0xc8c8c8;
+            high = (1024 / this.screen.stars2Scale) * 16;
+            low = -(1024 / this.screen.stars2Scale) * 16;
+            s.x = Math.random()*(high - low + 1) + low;
+            high = 128 * 16;
+            low = -128 * 16;
+            s.y = Math.random()*(high - low + 1) + low;
+            s.width = 2;
+            s.height = 2;
+            this.screen.stars2.addChild(s);
+        }*/
 
 
         // full screen mode
