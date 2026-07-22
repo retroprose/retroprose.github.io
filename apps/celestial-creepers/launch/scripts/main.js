@@ -22,8 +22,8 @@ class Main {
             "spaceship_0_0",
             "astro_6_1",
             "hook_0_0",
-            "gem_0_0",
-            "gem_0_0"
+            "creeper_0_0",
+            "creepernode_0_0"
         ];
 
         let response;

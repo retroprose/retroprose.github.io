@@ -9041,6 +9041,50 @@
                 "x": 0,
                 "y": 0
             }
+        },
+        "creeper_0_0": {
+            "frame": {
+                "x": 413,
+                "y": 213,
+                "w": 48,
+                "h": 36
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 36
+            },
+            "sourceSize": {
+                "w": 48,
+                "h": 36
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "creepernode_0_0": {
+            "frame": {
+                "x": 474,
+                "y": 218,
+                "w": 24,
+                "h": 24
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 24,
+                "h": 24
+            },
+            "sourceSize": {
+                "w": 24,
+                "h": 24
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
         }
     },
     "meta": {
