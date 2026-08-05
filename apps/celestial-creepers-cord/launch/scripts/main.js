@@ -10,7 +10,6 @@ class Main {
         PIXI.TextureStyle.defaultOptions.scaleMode = 'nearest';		
 
         this.config = config;
-        this.dump = {};
         this.game = new Module.BindGame();
 
         // load textures
@@ -29,13 +28,9 @@ class Main {
 
         let response;
         response = await fetch('./data/map.json');
-        const gameMapData = await response.json();
+        const map = await response.json();
         response = await fetch('./data/data.json');
-        const gameData = await response.json();
-        // splice the map into the main game data
-        gameData["systems"]["physics"]["width"] = gameMapData["width"];
-        gameData["systems"]["physics"]["height"] = gameMapData["height"];
-        gameData["systems"]["physics"]["data"] = gameMapData["data"];
+        const global = await response.json();
 
         this.screen = new Screen(720, 405);
         this.pixi.stage.addChild(this.screen);
@@ -152,16 +147,13 @@ class Main {
             this.displayText.y = 0;
             this.displayText.anchor.set(0.0);
 
-            // overwrite player count from network object
-            gameData["systems"]["input"]["players"] = this.network.config.playerCount;
-            gameData["systems"]["input"]["seed"] = seed;
-
-            let testy = this.game.setup({
+            this.game.setup({
+                seed: seed,
+                playerCount: this.network.config.playerCount,
                 local: this.network.local,
-                data: gameData
+                map: map,
+                global: global
             });
-
-            console.log(testy);
 
             console.log("sending ready frame");
             this.network.ready(); 
@@ -277,12 +269,6 @@ class Main {
         // render the scene
         this.screen.begin();
         this.game.render(this);
-
-        //this.game.dump(this.dump);
-        //console.log(this.dump);
-
-        this.text(10,10,"I AM HERE!");
-
         this.screen.end();
 
         requestAnimationFrame(this.update.bind(this));
@@ -292,29 +278,6 @@ class Main {
         this.screen.scroll(-x * z + this.screen.desiredWidth / 2, -y * z + this.screen.desiredHeight / 2);
         this.screen.rotate(r);
         this.screen.zoom(z);
-    }
-
-    text(sx, sy, text, c=0xffffff) {
-        let x = sx;
-        let y = sy;
-        for (let i = 0; i < text.length; ++i) {
-            if (text.charAt(i) == '\n') {
-                x = sx;
-                y += 8;
-            } else {
-                let sprite = this.screen.next();
-                sprite.anchor.set(0.0);
-                sprite.visible = true;
-                sprite.texture = this.textures["ascii"][text.charCodeAt(i)];
-                sprite.x = x;
-                sprite.y = y;
-                sprite.scale.set(1.0);
-                sprite.rotation = 0.0;
-                sprite.tint = c;
-                sprite.alpha = 1.0;
-                x += 8;
-            }
-        }
     }
 
     box(x, y, w, h, t, a, ang) {

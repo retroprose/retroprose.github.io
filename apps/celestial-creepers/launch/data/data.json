@@ -1,11 +1,47 @@
 {
-    "gravity": 0.05,
-    "thrust": 0.15,
-    "frequencyHz": 4.0,
-    "dampingRatio": 0.7,
-    "massEff": 6.0,
-    "shipMass": 25.0,
-    "astroMass": 5.0,
-    "orbitDamping": 0.05,
-    "cordLength": 24
+    "systems": {
+        "input": {
+            "playerCount": 16,
+            "object": [
+                "body",
+                "velocity"
+            ]
+        },
+        "physics": {
+            "gravity": 3277,
+            "thrust": 9830,
+            "frequencyHz": 262144,
+            "dampingRatio": 45875,
+            "massEff": 393216,
+            "shipMass": 1638400,
+            "astroMass": 327680,
+            "orbitDamping": 3277,
+            "cordLength": 1572864,
+            "handler": [
+                "handler"
+            ],
+            "body": [
+                "body"
+            ],
+            "object": [
+                "body",
+                "velocity"
+            ],
+            "physic": [
+                "body",
+                "velocity",
+                "handler"
+            ]
+        },
+        "scripting": {
+            "scripts": {
+                "architype": "scripts",
+                "types": [
+                    "script"
+                ]
+            },
+            "script": ["script"]
+        }
+    },
+    "database": []
 }

@@ -2895,15 +2895,6 @@ ${functionBody}
     };
 
 
-  
-  var __emval_get_global = (name) => {
-      if (!name) {
-        return Emval.toHandle(globalThis);
-      }
-      name = getStringOrSymbol(name);
-      return Emval.toHandle(globalThis[name]);
-    };
-
   var __emval_get_property = (handle, key) => {
       handle = Emval.toValue(handle);
       key = Emval.toValue(key);
@@ -2922,14 +2913,8 @@ ${functionBody}
       return emval_methodCallers[caller](handle, methodName, destructorsRef, args);
     };
 
-  var __emval_invoke_i64 = (a1,a2,a3,a4,a5) => __emval_invoke(a1,a2,a3,a4,a5);
-
-  var __emval_new_array = () => Emval.toHandle([]);
-
   
   var __emval_new_cstring = (v) => Emval.toHandle(getStringOrSymbol(v));
-
-  var __emval_new_object = () => Emval.toHandle({});
 
   
   
@@ -3648,8 +3633,8 @@ function checkIncomingModuleAPI() {
 
 // Imports from the Wasm binary.
 var ___getTypeName = makeInvalidEarlyAccess('___getTypeName');
-var _malloc = makeInvalidEarlyAccess('_malloc');
 var _fflush = makeInvalidEarlyAccess('_fflush');
+var _malloc = makeInvalidEarlyAccess('_malloc');
 var _strerror = makeInvalidEarlyAccess('_strerror');
 var _emscripten_stack_get_end = makeInvalidEarlyAccess('_emscripten_stack_get_end');
 var _emscripten_stack_get_base = makeInvalidEarlyAccess('_emscripten_stack_get_base');
@@ -3666,8 +3651,8 @@ var wasmTable = makeInvalidEarlyAccess('wasmTable');
 
 function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['__getTypeName'] != 'undefined', 'missing Wasm export: __getTypeName');
-  assert(typeof wasmExports['malloc'] != 'undefined', 'missing Wasm export: malloc');
   assert(typeof wasmExports['fflush'] != 'undefined', 'missing Wasm export: fflush');
+  assert(typeof wasmExports['malloc'] != 'undefined', 'missing Wasm export: malloc');
   assert(typeof wasmExports['strerror'] != 'undefined', 'missing Wasm export: strerror');
   assert(typeof wasmExports['emscripten_stack_get_end'] != 'undefined', 'missing Wasm export: emscripten_stack_get_end');
   assert(typeof wasmExports['emscripten_stack_get_base'] != 'undefined', 'missing Wasm export: emscripten_stack_get_base');
@@ -3680,8 +3665,8 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['memory'] != 'undefined', 'missing Wasm export: memory');
   assert(typeof wasmExports['__indirect_function_table'] != 'undefined', 'missing Wasm export: __indirect_function_table');
   ___getTypeName = createExportWrapper('__getTypeName', 1);
-  _malloc = createExportWrapper('malloc', 1);
   _fflush = createExportWrapper('fflush', 1);
+  _malloc = createExportWrapper('malloc', 1);
   _strerror = createExportWrapper('strerror', 1);
   _emscripten_stack_get_end = wasmExports['emscripten_stack_get_end'];
   _emscripten_stack_get_base = wasmExports['emscripten_stack_get_base'];
@@ -3731,21 +3716,13 @@ var wasmImports = {
   /** @export */
   _emval_decref: __emval_decref,
   /** @export */
-  _emval_get_global: __emval_get_global,
-  /** @export */
   _emval_get_property: __emval_get_property,
   /** @export */
   _emval_incref: __emval_incref,
   /** @export */
   _emval_invoke: __emval_invoke,
   /** @export */
-  _emval_invoke_i64: __emval_invoke_i64,
-  /** @export */
-  _emval_new_array: __emval_new_array,
-  /** @export */
   _emval_new_cstring: __emval_new_cstring,
-  /** @export */
-  _emval_new_object: __emval_new_object,
   /** @export */
   _emval_run_destructors: __emval_run_destructors,
   /** @export */

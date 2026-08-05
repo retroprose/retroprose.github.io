@@ -71,8 +71,19 @@ class FakeNetwork {
         if (this.updateFrame < this.bufferedFrame) {
             ++this.updateFrame;
             if (this.updateFrame % 2 == 0) {
+                let i = this.updateFrame;
+                this.frameBuffer[0] = (i & 0x000000ff);
+                this.frameBuffer[1] = (i & 0x0000ff00) >> 8;
+                this.frameBuffer[2] = (i & 0x00ff0000) >> 16;
+                this.frameBuffer[3] = (i & 0xff000000) >> 24;
                 const index = this.local * this.inputSize + 4;
                 this.frameBuffer.set(this.inputBuffer, index);
+            } else {
+                let i = this.updateFrame;
+                this.frameBuffer[0] = (i & 0x000000ff);
+                this.frameBuffer[1] = (i & 0x0000ff00) >> 8;
+                this.frameBuffer[2] = (i & 0x00ff0000) >> 16;
+                this.frameBuffer[3] = (i & 0xff000000) >> 24;
             }
             this.networkFrame = this.updateFrame;
             this.fastForwardFrame = this.updateFrame;
@@ -178,7 +189,18 @@ class StaggeredNetwork {
                     this.onlaunch(this.seed);
                 } else {
                     //console.log("Recieved: " + event.data.byteLength);
+
+                    /*let temp = new Uint8Array(event.data);
+                    let frameNo = 0;
+                    frameNo |= temp[0];
+                    frameNo |= temp[1] << 8;
+                    frameNo |= temp[2] << 16;
+                    frameNo |= temp[3] << 24;
+                    console.log("recieved frame: " + frameNo);
+                    this.queue.push(new Uint8Array(temp));*/
+
                     this.queue.push(new Uint8Array(event.data));
+                    
                     //this.tempQueue.push(new Uint8Array(event.data));
                     //const randomNumber = Math.floor(Math.random() * 5000) + 2000;
                     //setTimeout(() => {
@@ -201,7 +223,7 @@ class StaggeredNetwork {
         // this should fully fill the delay buffer
         const count = Math.floor(this.inputDelay / 2) + 1;
         this.uploadQueue.push(new Uint8Array(this.inputBuffer));
-        for (let i = 1; i < count; ++i) {
+        for (let i = 0; i < count; ++i) {
             this.sendBuffer[0] = (i & 0x000000ff);
             this.sendBuffer[1] = (i & 0x0000ff00) >> 8;
             this.sendBuffer[2] = (i & 0x00ff0000) >> 16;
@@ -209,11 +231,6 @@ class StaggeredNetwork {
             this.socket.send(this.sendBuffer);
             this.uploadQueue.push(new Uint8Array(this.inputBuffer));
         }
-        this.sendBuffer[0] = 0;
-        this.sendBuffer[1] = 0;
-        this.sendBuffer[2] = 0;
-        this.sendBuffer[3] = 0;
-        this.socket.send(this.sendBuffer);
         this.bufferedFrame = this.inputDelay;
         //this.printUpload("READY");
     }
@@ -264,6 +281,7 @@ class StaggeredNetwork {
             // stagger frame logic
             ++this.updateFrame;
             if (this.updateFrame % 2 == 0) {
+
                 this.currentInput = this.queue.shift();
                 this.uploadQueue.shift();
 
@@ -272,7 +290,13 @@ class StaggeredNetwork {
                 //console.log(this.currentInput);
 
                 //this.printUpload("SHIFTING");
-            }
+            } 
+
+            this.frameBuffer[0] = (this.updateFrame & 0x000000ff);
+            this.frameBuffer[1] = (this.updateFrame & 0x0000ff00) >> 8;
+            this.frameBuffer[2] = (this.updateFrame & 0x00ff0000) >> 16;
+            this.frameBuffer[3] = (this.updateFrame & 0xff000000) >> 24;
+
             this.fastForwardFrame = this.updateFrame;
             this._needsCopy = true;
             return true;
