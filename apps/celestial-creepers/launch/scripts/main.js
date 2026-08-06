@@ -206,6 +206,8 @@ class Main {
                         }
                     }
                 }
+            } else {
+                this.roster[0].name = "Host";
             }
         };
 
@@ -319,13 +321,34 @@ class Main {
 
         //console.log(this.roster);
 
+        let seconds = Math.floor(this.network.fastForwardFrame / 60);
+        let minutes = Math.floor(seconds / 60);
+        let hours = Math.floor(minutes / 60);
+
+        seconds -= minutes * 60;
+        minutes -= hours * 60;
+
+        let sbuf = "";
+        let mbuf = "";
+
+        if (seconds < 10) { sbuf = "0"; }
+        if (minutes < 10) { mbuf = "0"; }
+
         this.displayText.visible = true;
-        let str = "";
+        let total = 0;
+        let str = `${hours}:${mbuf}${minutes}:${sbuf}${seconds}\n`;
         for (let i = 0; i < this.roster.length; ++i) {
             if (this.roster[i].connected == true) {
-                str += `${this.roster[i].name}: ${this.roster[i].count}\n`;
+                str += `${this.roster[i].name}: ${this.roster[i].count}`;
+                total += this.roster[i].count;
+                if (i == this.network.local) {
+                    str += '    <- You\n';
+                } else {
+                    str += '\n';
+                }
             }
         }
+        str += `Total: ${total}\n`;
         this.displayText.text = str;
 
         this.screen.end();
