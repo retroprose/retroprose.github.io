@@ -13,6 +13,8 @@ class Main {
         this.dump = {};
         this.game = new Module.BindGame();
 
+        this.roster = [];
+
         // load textures
         this.textures = {};
         this.textures["ascii"] = (await PIXI.Assets.load('./images/sprite.json')).textures;
@@ -104,7 +106,7 @@ class Main {
             text: 'Loading...',
             style: {
                 fill: '#ffffff',
-                fontSize: 24
+                fontSize: 16
             }
         });
         this.pixi.stage.addChild(this.displayText);
@@ -156,6 +158,15 @@ class Main {
             gameData["systems"]["input"]["players"] = this.network.config.playerCount;
             gameData["systems"]["input"]["seed"] = seed;
 
+            for (let i = 0; i < this.network.config.playerCount; ++i) {
+                this.roster.push({
+                    //connected: false,
+                    connected: true,
+                    name: "slot " + i,
+                    count: 0
+                });
+            }
+
             let testy = this.game.setup({
                 local: this.network.local,
                 data: gameData
@@ -166,8 +177,6 @@ class Main {
             console.log("sending ready frame");
             this.network.ready(); 
 
-            // if players is more than one, download roster
-
             // get the update loop started!
             this.lastTick = 0;
             requestAnimationFrame((deltaTotal) => {
@@ -175,6 +184,29 @@ class Main {
                 this.update(deltaTotal);
             });
 
+            //console.log(this.config);
+
+            // if players is more than one, download roster
+            if (this.network.config.playerCount > 1) {
+                const response = await fetch(`${this.config.domain.url}roster`, {
+                    headers: { 'Accept': 'application/json' },
+                    method: 'GET'
+                });
+                const json = await response.json();
+                if (json.hasOwnProperty('code')) {
+                    console.log('failed to get roster');
+                } else {
+                    //console.log(json);
+                    for (let i = 0; i < this.network.config.playerCount; ++i) {
+                        if (json[i].connected == true) {
+                            this.roster[i].connected = true;
+                            if (json[i].user != null) {
+                                this.roster[i].name = json[i].user.name;
+                            }
+                        }
+                    }
+                }
+            }
         };
 
 
@@ -282,6 +314,19 @@ class Main {
         //console.log(this.dump);
 
         //this.text(10,10,"I AM HERE!");
+
+        this.game.dump(this.roster);
+
+        //console.log(this.roster);
+
+        this.displayText.visible = true;
+        let str = "";
+        for (let i = 0; i < this.roster.length; ++i) {
+            if (this.roster[i].connected == true) {
+                str += `${this.roster[i].name}: ${this.roster[i].count}\n`;
+            }
+        }
+        this.displayText.text = str;
 
         this.screen.end();
 
