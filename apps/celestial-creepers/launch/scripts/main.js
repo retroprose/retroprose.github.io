@@ -281,7 +281,7 @@ class Main {
         //this.game.dump(this.dump);
         //console.log(this.dump);
 
-        this.text(10,10,"I AM HERE!");
+        //this.text(10,10,"I AM HERE!");
 
         this.screen.end();
 
