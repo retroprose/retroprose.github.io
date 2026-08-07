@@ -270,11 +270,27 @@ class Main {
                 this.otherInput.used = true;
             }
         }
-        if (this.input.mouseLeftButton) { 
+
+        let kdx = 0;
+        let kdy = 0;
+        if (this.input.keyState['ArrowUp'])     { kdy = -1.0; }
+        if (this.input.keyState['ArrowDown'])   { kdy =  1.0; }
+        if (this.input.keyState['ArrowLeft'])   { kdx = -1.0; }
+        if (this.input.keyState['ArrowRight'])  { kdx =  1.0; }
+        if (kdx != 0 || kdy != 0) {
+            const dist = Math.sqrt(kdx * kdx + kdy * kdy);
+            const x = kdx / dist;
+            const y = kdy / dist;
+            this.otherInput.left.x = -32767 + slope * (x - -1.0);
+            this.otherInput.left.y = -32767 + slope * (y - -1.0);
+            this.otherInput.used = true;
+        }
+
+        if (this.input.mouseLeftButton || this.input.keyState['z']) { 
             this.otherInput.leftShot = true;
             this.otherInput.used = true;
         }
-        if (this.input.mouseRightButton) { 
+        if (this.input.mouseRightButton || this.input.keyState['x']) { 
             this.otherInput.rightShot = true;
             this.otherInput.used = true;
         }
@@ -330,13 +346,15 @@ class Main {
 
         let sbuf = "";
         let mbuf = "";
+        let tbuf = "";
 
         if (seconds < 10) { sbuf = "0"; }
         if (minutes < 10) { mbuf = "0"; }
+        if (this.network.stalled) { tbuf = "X"; }
 
         this.displayText.visible = true;
         let total = 0;
-        let str = `${hours}:${mbuf}${minutes}:${sbuf}${seconds}\n`;
+        let str = `${hours}:${mbuf}${minutes}:${sbuf}${seconds} ${tbuf}\n`;
         for (let i = 0; i < this.roster.length; ++i) {
             if (this.roster[i].connected == true) {
                 str += `${this.roster[i].name}: ${this.roster[i].count}`;
