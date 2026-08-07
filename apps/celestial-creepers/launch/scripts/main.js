@@ -42,6 +42,7 @@ class Main {
         this.screen = new Screen(720, 405);
         this.pixi.stage.addChild(this.screen);
 
+        this.mouseActive = false;
         this.otherInput = { 
             used: false, 
             left: {x: 0, y: 0},
@@ -252,25 +253,26 @@ class Main {
                 this.otherInput.used = true;
             }
         }
-        const dx = this.input.mouseX - window.innerWidth / 2;
-        const dy = this.input.mouseY - window.innerHeight / 2;
-        const dl = Math.sqrt(dx * dx + dy * dy);
-        const dm = Math.min(window.innerHeight / 2 - 10, window.innerWidth / 2 - 10);
-        if (dl < dm) {
-            if (dl < 8.0) {
-                this.otherInput.left.x = 0;
-                this.otherInput.left.y = 0;
-                this.otherInput.used = true;
-            } else {
-                const x = dx / dm;
-                const y = dy / dm;
-                //console.log(x + ", " + y + " - " + dl);
-                this.otherInput.left.x = -32767 + slope * (x - -1.0);
-                this.otherInput.left.y = -32767 + slope * (y - -1.0);
-                this.otherInput.used = true;
+        if (this.mouseActive == true) {
+            const dx = this.input.mouseX - window.innerWidth / 2;
+            const dy = this.input.mouseY - window.innerHeight / 2;
+            const dl = Math.sqrt(dx * dx + dy * dy);
+            const dm = Math.min(window.innerHeight / 2 - 10, window.innerWidth / 2 - 10);
+            if (dl < dm) {
+                if (dl < 8.0) {
+                    this.otherInput.left.x = 0;
+                    this.otherInput.left.y = 0;
+                    this.otherInput.used = true;
+                } else {
+                    const x = dx / dm;
+                    const y = dy / dm;
+                    //console.log(x + ", " + y + " - " + dl);
+                    this.otherInput.left.x = -32767 + slope * (x - -1.0);
+                    this.otherInput.left.y = -32767 + slope * (y - -1.0);
+                    this.otherInput.used = true;
+                }
             }
         }
-
         let kdx = 0;
         let kdy = 0;
         if (this.input.keyState['ArrowUp'])     { kdy = -1.0; }
@@ -286,11 +288,28 @@ class Main {
             this.otherInput.used = true;
         }
 
-        if (this.input.mouseLeftButton || this.input.keyState['z']) { 
+        if (this.input.mouseLeftButton) {
+            if (this.mouseActive == true) {
+                this.otherInput.leftShot = true;
+                this.otherInput.used = true;
+            } else {
+                this.mouseActive = true;
+            }
+        }
+        if (this.input.mouseRightButton) { 
+            if (this.mouseActive == true) {
+                this.otherInput.rightShot = true;
+                this.otherInput.used = true;
+            } else {
+                this.mouseActive = true;
+            }
+        }
+
+        if (this.input.keyState['z']) { 
             this.otherInput.leftShot = true;
             this.otherInput.used = true;
         }
-        if (this.input.mouseRightButton || this.input.keyState['x']) { 
+        if (this.input.keyState['x']) { 
             this.otherInput.rightShot = true;
             this.otherInput.used = true;
         }
