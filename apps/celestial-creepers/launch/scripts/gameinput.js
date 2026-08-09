@@ -109,6 +109,9 @@ class GameInput extends BasicInput {
             if (this.right.x > 0.2) {
                 this.rightShot = true;
             }
+            if (this.right.y > 0.2) {
+                this.drop = true;
+            }
         }
     }
     

@@ -245,6 +245,11 @@ class Main {
                 this.otherInput.used = true;
             }
 
+            if (gamepad.buttons[2].value > 0) { 
+                this.otherInput.drop = true;
+                this.otherInput.used = true;
+            }
+
             //consolelog(`${x} ${y} ${d}`);
 
             if (d > 0.005) {
@@ -313,6 +318,10 @@ class Main {
             this.otherInput.rightShot = true;
             this.otherInput.used = true;
         }
+        if (this.input.keyState['c']) { 
+            this.otherInput.drop = true;
+            this.otherInput.used = true;
+        }
 
         // to pause the game
         // (if paused)
@@ -330,6 +339,7 @@ class Main {
             // reset keys maybe
             this.otherInput.leftShot = false;
             this.otherInput.rightShot = false;
+            this.otherInput.drop = false;
         }
         while (this.network.needsUpdate()) {
             this.game.setInput(this.network.frameBuffer);
